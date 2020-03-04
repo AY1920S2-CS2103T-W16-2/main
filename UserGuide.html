@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ZeroToOne - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-W16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-W16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ZeroToOne - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W16-2</code>      Since: <code>Feb 2020</code>      Licence: <code>NUS</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -13,16 +13,13 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#general-commands">3.1. General Commands</a></li>
+<li><a href="#workout-commands">3.2. Workout Commands</a></li>
+<li><a href="#exercise-commands">3.3. Exercise Commands</a></li>
+<li><a href="#carrying-out-workouts">3.4. Carrying Out Workouts</a></li>
+<li><a href="#scheduling-workouts">3.5. Scheduling Workouts</a></li>
+<li><a href="#logging-workouts">3.6. Logging Workouts</a></li>
+<li><a href="#saving-the-data">3.7. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -34,7 +31,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>ZeroToOne is an application for managing your exercise regimes. It allows you to transform from a round ‘0’ shape, to a fitter and healthier ‘1’ shape!</p>
+</div>
+<div class="paragraph">
+<p>ZeroToOne is for those who <strong>prefer to use a desktop app for managing their exercise and fitness regimes</strong>. More importantly, ZeroToOne is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ZeroToOne can get your exercise management tasks done faster than traditional GUI apps. Interested in the magnificent transformation from 0 to 1? Jump to Section 2, <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -47,13 +47,13 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/releases">here</a>.</p>
+<p>Download the latest <code>zerotoone.jar</code> <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your ZeroToOne.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the app. The program should start in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -69,13 +69,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>list</code></strong> : lists all workouts in the app</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>log</code></strong> : shows a log of past workouts</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>start &lt;workout&gt;</code></strong> : starts a new workout</p>
+</li>
+<li>
+<p><strong><code>stop &lt;workout&gt;</code></strong> : stops the workout</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -101,32 +104,57 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>&lt;arrow brackets&gt;</code> are the parameters to be supplied by the user e.g. in <code>start &lt;workout&gt;</code>, <code>workout</code> is a parameter which can be used as <code>start MorningWorkout</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>start &lt;workout&gt; &lt;sets&gt; [interval]</code> can be used as <code>start Morning 2 100</code> or as <code>start Morning 2</code>.</p>
 </li>
 <li>
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters must be in the specified order.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="general-commands"><a class="link" href="#general-commands">3.1. General Commands</a></h3>
+<div class="sect3">
+<h4 id="list-all-workout-plans-code-list-code"><a class="link" href="#list-all-workout-plans-code-list-code">3.1.1. List all workout plans : <code>list</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>list</code></p>
+</div>
+<div class="paragraph">
+<p>Shows a list of all workout plans in ZeroToOne.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get-help-code-help-code"><a class="link" href="#get-help-code-help-code">3.1.2. Get help : <code>help</code></a></h4>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
+<div class="paragraph">
+<p>Shows a list of all available commands in ZeroToOne.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.1.3. Exit the program: <code>exit</code></a></h4>
+<div class="paragraph">
+<p>Closes the program.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="workout-commands"><a class="link" href="#workout-commands">3.2. Workout Commands</a></h3>
+<div class="sect3">
+<h4 id="create-a-workout-plan-code-create-code"><a class="link" href="#create-a-workout-plan-code-create-code">3.2.1. Create a workout plan: <code>create</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Creates a new workout plan.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>create &lt;workout&gt;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -135,7 +163,7 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;<
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+The workout field must be a string
 </td>
 </tr>
 </table>
@@ -146,49 +174,21 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>create MorningWorkout</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>create NightWorkout</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="delete-a-workout-plan-code-delete-code"><a class="link" href="#delete-a-workout-plan-code-delete-code">3.2.2. Delete a workout plan : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Deletes the specified workout and its associated exercises.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
-</div>
-</div>
+<p>Format: <code>delete &lt;workout&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -196,44 +196,30 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>delete MorningWorkout</code></p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+</div>
+<div class="sect3">
+<h4 id="list-exercises-in-workout-plan-code-list-workout-code"><a class="link" href="#list-exercises-in-workout-plan-code-list-workout-code">3.2.3. List exercises in workout plan : <code>list &lt;workout&gt;</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Shows a list of all existing exercises in the workout plan</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
+<div class="paragraph">
+<p>Format: <code>list &lt;workout&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -241,38 +227,19 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>list MorningWorkout</code><br>
+Returns <code>"BENCH_PRESS, OVERHEAD_PRESS"</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="export-a-workout-plan-code-export-code"><a class="link" href="#export-a-workout-plan-code-export-code">3.2.4. Export a workout plan: <code>export</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Exports a specified workout plan in a .txt format and saves it to the user’s computer.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="paragraph">
+<p>Format: <code>export &lt;workout&gt;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -280,43 +247,484 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>export NightWorkout</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<div class="sect3">
+<h4 id="import-a-workout-plan-code-export-code"><a class="link" href="#import-a-workout-plan-code-export-code">3.2.5. Import a workout plan: <code>export</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Imports a workout plan in .txt format from the user’s computer into the application.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>import &lt;file_path&gt; &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import ./src/MyFriendsWorkout.txt MyFriendsWorkout</code></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exercise-commands"><a class="link" href="#exercise-commands">3.3. Exercise Commands</a></h3>
+<div class="sect3">
+<h4 id="add-an-exercise-to-workout"><a class="link" href="#add-an-exercise-to-workout">3.3.1. Add an exercise to workout</a></h4>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Format: <code>add &lt;workout&gt; &lt;exercise&gt; &lt;repetitions&gt; &lt;interval&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add Push BENCH_PRESS_60KG 5 180</code></p>
+</li>
+<li>
+<p><code>add Push OVERHEAD_PRESS_20KG 20 120</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.<br>
+<code>repetitions</code> and <code>interval</code> must be positive integers.<br>
+<code>interval</code> is in seconds.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-an-exercise-in-a-workout"><a class="link" href="#edit-an-exercise-in-a-workout">3.3.2. Edit an exercise in a workout</a></h4>
+<div class="paragraph">
+<p>Edits the details of an exercise in a particular workout, such as the number of repetitions or interval.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit &lt;workout&gt; &lt;exercise&gt; &lt;new_repetitions&gt; &lt;new_interval&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit Push BENCH_PRESS_60KG 6 200</code></p>
+</li>
+<li>
+<p><code>edit Push OVERHEAD_PRESS_20KG 25 140</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.<br>
+<code>new_repetitions</code> and <code>new_interval</code> must be positive integers.<br>
+<code>new_interval</code> is in seconds.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-an-exercise-from-a-workout-plan"><a class="link" href="#delete-an-exercise-from-a-workout-plan">3.3.3. Delete an exercise from a workout plan</a></h4>
+<div class="paragraph">
+<p>Deletes an exercise from a specified workout plan.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete &lt;workout&gt; &lt;exercise&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete Push BENCH_PRESS_60KG</code></p>
+</li>
+<li>
+<p><code>delete Push OVERHEAD_PRESS_20KG</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
+<h3 id="carrying-out-workouts"><a class="link" href="#carrying-out-workouts">3.4. Carrying Out Workouts</a></h3>
+<div class="sect3">
+<h4 id="start-a-new-workout"><a class="link" href="#start-a-new-workout">3.4.1. Start a new workout</a></h4>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>ZeroToOne starts bringing you through each of the exercises in your workout, for the specified number of sets.</p>
+</div>
+<div class="paragraph">
+<p>Format:
+<code>start &lt;workout&gt; &lt;sets&gt; [interval]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>start Push 5 100</code></p>
+</li>
+<li>
+<p><code>start Pull 6 110</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stop-a-workout"><a class="link" href="#stop-a-workout">3.4.2. Stop a workout</a></h4>
+<div class="paragraph">
+<p>Stops the current workout, effectively resetting it.</p>
+</div>
+<div class="paragraph">
+<p>Format:
+<code>stop &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>stop Push</code></p>
+</li>
+<li>
+<p><code>stop Pull</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The specified workout must be one that the user is currently running.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pause-a-workout"><a class="link" href="#pause-a-workout">3.4.3. Pause a workout</a></h4>
+<div class="paragraph">
+<p>Pauses the current workout, but keeping track of the current progress.</p>
+</div>
+<div class="paragraph">
+<p>Format:
+<code>pause &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pause Push</code></p>
+</li>
+<li>
+<p><code>pause Pull</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The specified workout must be one that the user is currently running.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="resume-a-workout"><a class="link" href="#resume-a-workout">3.4.4. Resume a workout</a></h4>
+<div class="paragraph">
+<p>Resumes the specified workout, from where the user previously left off.</p>
+</div>
+<div class="paragraph">
+<p>Format:
+<code>resume &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>resume Push</code></p>
+</li>
+<li>
+<p><code>resume Pull</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The specified workout must be one that the user is currently running.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="skip"><a class="link" href="#skip">3.4.5. Skip</a></h4>
+<div class="paragraph">
+<p>Skips the current exercise or rest and moves on to the next exercise in the workout.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>skip</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scheduling-workouts"><a class="link" href="#scheduling-workouts">3.5. Scheduling Workouts</a></h3>
+<div class="sect3">
+<h4 id="schedule-a-single-workout-session"><a class="link" href="#schedule-a-single-workout-session">3.5.1. Schedule a single workout session</a></h4>
+<div class="paragraph">
+<p>Schedules a single workout session on a specified date and time.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule single &lt;workout&gt; &lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule single Push 2020-03-14T0800</code></p>
+</li>
+<li>
+<p><code>schedule single Pull 2020-03-05T2200</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+date must be in the format {yyyy}-{mm}-{dd}T{2359}.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="schedule-a-recurring-workout-session"><a class="link" href="#schedule-a-recurring-workout-session">3.5.2. Schedule a recurring workout session</a></h4>
+<div class="paragraph">
+<p>Schedules a recurring workout session from specified date and time, with a frequency of the recurrence.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule recurring  &lt;workout&gt; &lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule recurring Push 2020-03-14T0800</code></p>
+</li>
+<li>
+<p><code>schedule recurring Pull 2020-03-05T2200</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-workout-session"><a class="link" href="#delete-a-workout-session">3.5.3. Delete a workout session</a></h4>
+<div class="paragraph">
+<p>Deletes a specified single workout session from the user’s schedule for the specified date.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule single delete &lt;workout&gt; &lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule single delete Push 2020-03-14T0800</code></p>
+</li>
+<li>
+<p><code>schedule single delete Pull 2020-03-05T2200</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-recurring-workout-session"><a class="link" href="#delete-a-recurring-workout-session">3.5.4. Delete a recurring workout session</a></h4>
+<div class="paragraph">
+<p>Deletes a recurring workout session, clearing all of the future recurring sessions from the user’s whole schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule recurring delete &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule recurring delete Push</code></p>
+</li>
+<li>
+<p><code>schedule recurring delete Pull</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-your-schedule"><a class="link" href="#list-your-schedule">3.5.5. List your schedule</a></h4>
+<div class="paragraph">
+<p>Displays a list of the user’s schedule, sorted in chronological order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>schedule list</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-workouts"><a class="link" href="#logging-workouts">3.6. Logging Workouts</a></h3>
+<div class="sect3">
+<h4 id="show-log-of-workouts"><a class="link" href="#show-log-of-workouts">3.6.1. Show log of workouts</a></h4>
+<div class="paragraph">
+<p>Displays an indexed log of the user’s past workouts, sorted in chronological order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>log</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-log-of-past-workout"><a class="link" href="#delete-log-of-past-workout">3.6.2. Delete log of past workout</a></h4>
+<div class="paragraph">
+<p>Deletes the log information at the specified log_index.
+The index refers to the index number displayed on the log list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>log delete &lt;log_index&gt;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The index must be a positive integer i.e. 1, 2, 3…
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-a-past-workout"><a class="link" href="#find-a-past-workout">3.6.3. Find a past workout</a></h4>
+<div class="paragraph">
+<p>Finds a past workout by date or keyword. Query types: DATE, EXERCISE, WORKOUT, SCHEDULE.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>log find &lt;query_type&gt; &lt;params&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>log find DATE 2020-02-18T1600</code></p>
+</li>
+<li>
+<p><code>log find EXERCISE BENCH_PRESS_60KG</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The search is case-sensitive for the params.
+Only full words will be matched.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-a-graphical-progress-chart"><a class="link" href="#show-a-graphical-progress-chart">3.6.4. Show a graphical progress chart</a></h4>
+<div class="paragraph">
+<p>Displays a line graph of the past workouts progress.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>chart</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.7. Saving the data</a></h3>
+<div class="paragraph">
+<p>ZeroToOne data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
@@ -326,7 +734,11 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ZeroToOne folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: I do not see the GUI.<br>
+<strong>A</strong>: Ensure that you have Java 11 installed on your computer. You can check your current Java version by opening up a Command Prompt or Terminal, and entering java -version. Do install Java 11 if it is not installed. If installing Java 11  does not work, then try installing JavaFX 11 Dependencies on your computer.</p>
 </div>
 </div>
 </div>
@@ -336,31 +748,24 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p>List: list</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p>Log: log</p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p>Start: start &lt;workout&gt;</p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p>Stop: stop &lt;workout&gt;</p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p>Pause: pause</p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p>Exit: exit</p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-04 04:05:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-04 08:31:11 UTC</div></div></div></body></html>
