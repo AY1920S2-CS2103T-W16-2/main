@@ -43,8 +43,8 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Assume you are planing to expand the functionality of the AddressBook (but keep it as a CLI application).
-What other user stories do you think AddressBook should support? Add those user stories to the <code>DeveloperGuide.adoc</code>.</p>
+<p>Assume you are planing to expand the functionality of the ExerciseList (but keep it as a CLI application).
+What other user stories do you think ExerciseList should support? Add those user stories to the <code>DeveloperGuide.adoc</code>.</p>
 </li>
 </ul>
 </div>
@@ -72,7 +72,7 @@ What other user stories do you think AddressBook should support? Add those user 
 <p>Add a use case to the <code>DeveloperGuide.adoc</code> to cover the case of <em>renaming of an existing tag</em>.
 e.g. rename the tag <code>friends</code> to <code>buddies</code> (i.e. all persons who had the <code>friends</code> tag will now have
 a <code>buddies</code> tag instead)
-Assume that AddressBook confirms the change with the user before carrying out the operation.</p>
+Assume that ExerciseList confirms the change with the user before carrying out the operation.</p>
 </li>
 </ul>
 </div>
@@ -132,7 +132,7 @@ Assume that AddressBook confirms the change with the user before carrying out th
 command types that mutate the data. e.g. <code>AddCommand</code></p>
 </li>
 <li>
-<p>Currently, AddressBook data are saved to the file after every command.
+<p>Currently, ExerciseList data are saved to the file after every command.
 Take advantage of the the new method you added to limit file saving to only for command types that mutate data.
 i.e. <code>add</code> command should always save the data while <code>list</code> command should never save data to the file.</p>
 </li>
@@ -188,11 +188,11 @@ optimal, will give you chance to implement a polymorphic behavior.</p>
 <h2 id="use-interfaces-code-lo-interfaces-code"><a class="link" href="#use-interfaces-code-lo-interfaces-code">Use interfaces <code>[LO-Interfaces]</code></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Note how the <code>AddressBook</code> class implements the <code>ReadOnlyAddressBook</code> interface so that clients who don&#8217;t need write access to the <code>AddressBook</code> can access the <code>AddressBook</code> through the <code>ReadOnlyAddressBook</code> interface instead.</p>
+<p>Note how the <code>ExerciseList</code> class implements the <code>ReadOnlyExerciseList</code> interface so that clients who don&#8217;t need write access to the <code>ExerciseList</code> can access the <code>ExerciseList</code> through the <code>ReadOnlyExerciseList</code> interface instead.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ReadOnlyAddressBookUsage.png" alt="ReadOnlyAddressBookUsage" width="500">
+<img src="images/ReadOnlyExerciseListUsage.png" alt="ReadOnlyExerciseListUsage" width="500">
 </div>
 </div>
 <div class="sect2">
@@ -300,7 +300,7 @@ method in the child class should not reject <code>null</code> inputs. This will 
 <div class="ulist">
 <ul>
 <li>
-<p>Do some enhancements to the AddressBook GUI. e.g. add an application icon, change font size/style</p>
+<p>Do some enhancements to the ExerciseList GUI. e.g. add an application icon, change font size/style</p>
 </li>
 </ul>
 </div>
@@ -446,7 +446,7 @@ In this case we do not apply the DIP but we still achieve DI.</p>
 That is because <code>LogicManager</code> follows the OCP i.e. <code>LogicManager</code> is <em>open to be extended</em> with more commands but <em>closed for modifications</em>.</p>
 </li>
 <li>
-<p>Is it possible to make the <code>AddressBookParser</code> class more OCP-compliant in terms of extending it to handle more
+<p>Is it possible to make the <code>ExerciseListParser</code> class more OCP-compliant in terms of extending it to handle more
 command types?</p>
 </li>
 <li>
@@ -464,14 +464,14 @@ of storages, but different number of storages (e.g. save to both a text file and
 <h2 id="work-in-a-3kloc-code-base-code-lo-3kloc-code"><a class="link" href="#work-in-a-3kloc-code-base-code-lo-3kloc-code">Work in a 3KLoC code base <code>[LO-3KLoC]</code></a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="exercise-enhance-addressbook"><a class="link" href="#exercise-enhance-addressbook">Exercise: Enhance AddressBook</a></h3>
+<h3 id="exercise-enhance-exerciselist"><a class="link" href="#exercise-enhance-exerciselist">Exercise: Enhance ExerciseList</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Enhance AddressBook in some way. e.g. add a new command</p>
+<p>Enhance ExerciseList in some way. e.g. add a new command</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-16 13:33:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-17 11:59:57 UTC</div></div></div></body></html>

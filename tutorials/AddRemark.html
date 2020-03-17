@@ -56,7 +56,7 @@
 <p>In this tutorial, we&#8217;ll walk you through the implementation of a new command&#8201;&#8212;&#8201;<code>remark</code>.</p>
 </div>
 <div class="paragraph">
-<p>This command allows users of the AddressBook application to add optional remarks to people in their address book and edit it if required.
+<p>This command allows users of the ExerciseList application to add optional remarks to people in their address book and edit it if required.
 The command should have the format of <code>remark INDEX r/REMARK</code>.
 An example of the command is <code>remark 2 r/Likes baseball</code>.</p>
 </div>
@@ -104,11 +104,11 @@ We accomplish that by returning a <code>CommandResult</code> with an accompanyin
 <div class="sect2">
 <h3 id="hook-code-remarkcommand-code-into-the-application"><a class="link" href="#hook-code-remarkcommand-code-into-the-application">Hook <code>RemarkCommand</code> into the application</a></h3>
 <div class="paragraph">
-<p>Now that we have our <code>RemarkCommand</code> ready to be executed, we need to update <code>AddressBookParser#parseCommand()</code> to recognize the <code>remark</code> keyword.
+<p>Now that we have our <code>RemarkCommand</code> ready to be executed, we need to update <code>ExerciseListParser#parseCommand()</code> to recognize the <code>remark</code> keyword.
 Add the new command to the <code>switch</code> block by creating a new <code>case</code> that returns a new instance of <code>RemarkCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p>You can refer to the changes in this <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/7d04e49e364dad661cd88f462f01923fba972d2c#diff-5338391f3f6fbb4022c44add6590b74f">diff</a>.</p>
+<p>You can refer to the changes in this <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/7d04e49e364dad661cd88f462f01923fba972d2c#diff-5338391f3f6fbb4022c44add6590b74f">diff</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -223,7 +223,7 @@ While this is not a replacement for tests, it is an obvious way to tell if our c
 </div>
 </div>
 <div class="paragraph">
-<p>Your code should look something like <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/83dd9e6b03d6b83199ceb6f3b66166483155abed#diff-34ace715a8a8d2e5a66e71289f017b47">this</a> after you are done.</p>
+<p>Your code should look something like <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/83dd9e6b03d6b83199ceb6f3b66166483155abed#diff-34ace715a8a8d2e5a66e71289f017b47">this</a> after you are done.</p>
 </div>
 </div>
 <div class="sect2">
@@ -325,13 +325,13 @@ But what about the Index? Taking a quick peek at existing an <code>Command</code
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Don&#8217;t forget to update <code>AddressBookParser</code> to use our new <code>RemarkCommandParser</code>!
+Don&#8217;t forget to update <code>ExerciseListParser</code> to use our new <code>RemarkCommandParser</code>!
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you are stuck, check out the sample <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/efdcdf0e80cec9489f7b47e3f65824f4688ad8f7#diff-fc19ecee89c3732a62fbc8c840250508">here</a>.</p>
+<p>If you are stuck, check out the sample <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/efdcdf0e80cec9489f7b47e3f65824f4688ad8f7#diff-fc19ecee89c3732a62fbc8c840250508">here</a>.</p>
 </div>
 </div>
 </div>
@@ -351,7 +351,7 @@ That means we should add a <code>Remark</code> class so that we can use a <code>
 <p>Create a new <code>Remark</code> in <code>seedu.address.model.person</code>. Since a <code>Remark</code> is a field that is similar to <code>Address</code>, we can reuse a significant bit of code.</p>
 </div>
 <div class="paragraph">
-<p>A copy-paste and search-replace later, you should have something like <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/b7a47c50c8e5f0430d343a23d2863446b6ce9298#diff-af2f075d24dfcd333876f0fbce321f25">this</a>.
+<p>A copy-paste and search-replace later, you should have something like <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/b7a47c50c8e5f0430d343a23d2863446b6ce9298#diff-af2f075d24dfcd333876f0fbce321f25">this</a>.
 Note how <code>Remark</code> has no constrains and thus does not require input validation.</p>
 </div>
 </div>
@@ -381,7 +381,7 @@ private Label remark;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>to <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-0c6b6abcfac8c205e075294f25e851fe"><code>seedu.address.ui.PersonCard</code></a>.
+<p>to <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-0c6b6abcfac8c205e075294f25e851fe"><code>seedu.address.ui.PersonCard</code></a>.
 <code>@FXML</code> is an annotation that marks a private or protected field and makes it accessible to FXML.
 It might sound like Greek to you right now, don&#8217;t worry&#8201;&#8212;&#8201;we will get back to it later.</p>
 </div>
@@ -394,7 +394,7 @@ It might sound like Greek to you right now, don&#8217;t worry&#8201;&#8212;&#820
 </div>
 </div>
 <div class="paragraph">
-<p>into <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-12580431f55d7880578aa4c16f249e71"><code>main/resources/view/PersonListCard.fxml</code></a>.</p>
+<p>into <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/2758455583f0101ed918a318fc75679270843a0d#diff-12580431f55d7880578aa4c16f249e71"><code>main/resources/view/PersonListCard.fxml</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>That&#8217;s it! Fire up the application again and you should see something like this:</p>
@@ -438,7 +438,7 @@ Use the <code>Find Usages</code> feature in IntelliJ IDEA on the <code>Person</c
 </table>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/b241ef8526bd4e8a6ad94b8118b7fc3441ec8fa3#diff-3462fc1118b9872387a01b41157b0402">this commit</a> and check that you have got everything in order!</p>
+<p>Refer to <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/b241ef8526bd4e8a6ad94b8118b7fc3441ec8fa3#diff-3462fc1118b9872387a01b41157b0402">this commit</a> and check that you have got everything in order!</p>
 </div>
 </div>
 </div>
@@ -447,7 +447,7 @@ Use the <code>Find Usages</code> feature in IntelliJ IDEA on the <code>Person</c
 <h2 id="updating-storage"><a class="link" href="#updating-storage">Updating Storage</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook stores data by serializing <code>JsonAdaptedPerson</code> into <code>json</code> with the help of an external library&#8201;&#8212;&#8201;Jackson.
+<p>ExerciseList stores data by serializing <code>JsonAdaptedPerson</code> into <code>json</code> with the help of an external library&#8201;&#8212;&#8201;Jackson.
 Let&#8217;s update <code>JsonAdaptedPerson</code> to work with our new <code>Person</code>!</p>
 </div>
 <div class="paragraph">
@@ -460,14 +460,14 @@ Let&#8217;s update <code>JsonAdaptedPerson</code> to work with our new <code>Per
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-You must delete AddressBook&#8217;s storage file located at <code>/data/addressbook.json</code> before running it!
-Not doing so will cause AddressBook to default to an empty address book!
+You must delete ExerciseList&#8217;s storage file located at <code>/data/exerciseList.json</code> before running it!
+Not doing so will cause ExerciseList to default to an empty address book!
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Check out <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/ce4f9b70f524d2395948861d80d57fda9ae6e82e#diff-07708562699e2436c717f3330bafae1e">this commit</a> to see what the changes entail.</p>
+<p>Check out <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/ce4f9b70f524d2395948861d80d57fda9ae6e82e#diff-07708562699e2436c717f3330bafae1e">this commit</a> to see what the changes entail.</p>
 </div>
 </div>
 </div>
@@ -478,7 +478,7 @@ Not doing so will cause AddressBook to default to an empty address book!
 <p>Now that we have finalized the <code>Person</code> class and its dependencies, we can now bind the <code>Remark</code> field to the UI.</p>
 </div>
 <div class="paragraph">
-<p>Just add <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/56d5cb662c31dd38b02f6a5301ba6ab3c667d6a3#diff-0c6b6abcfac8c205e075294f25e851fe">this one line of code!</a></p>
+<p>Just add <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/56d5cb662c31dd38b02f6a5301ba6ab3c667d6a3#diff-0c6b6abcfac8c205e075294f25e851fe">this one line of code!</a></p>
 </div>
 <div class="listingblock">
 <div class="title">PersonCard.java</div>
@@ -546,7 +546,7 @@ Since all fields in a <code>Person</code> are immutable, we create a new instanc
 </div>
 </div>
 <div class="paragraph">
-<p>Make one last <a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/b3307d7a42acb613a8f1d36979a7f547abcf6623#diff-34ace715a8a8d2e5a66e71289f017b47">check</a> to ensure that everything is working properly&#8230;&#8203;</p>
+<p>Make one last <a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/b3307d7a42acb613a8f1d36979a7f547abcf6623#diff-34ace715a8a8d2e5a66e71289f017b47">check</a> to ensure that everything is working properly&#8230;&#8203;</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -604,7 +604,7 @@ In this case, <code>CommandTestUtil#assertCommandSuccess</code> is the best fit 
 </div>
 <div class="paragraph">
 <p>You should end up with a test that looks something like
-<a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/b3307d7a42acb613a8f1d36979a7f547abcf6623#diff-d749de38392f7ea504da7824641ba8d9">this</a>.</p>
+<a href="https://github.com/nus-cs2103-AY1920S1/exerciseList-level3/commit/b3307d7a42acb613a8f1d36979a7f547abcf6623#diff-d749de38392f7ea504da7824641ba8d9">this</a>.</p>
 </div>
 </div>
 </div>
@@ -613,7 +613,7 @@ In this case, <code>CommandTestUtil#assertCommandSuccess</code> is the best fit 
 <h2 id="conclusion"><a class="link" href="#conclusion">Conclusion</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This concludes the tutorial for adding a new <code>Command</code> to AddressBook.</p>
+<p>This concludes the tutorial for adding a new <code>Command</code> to ExerciseList.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-16 13:33:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-17 11:59:57 UTC</div></div></div></body></html>
