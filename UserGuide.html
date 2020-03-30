@@ -14,16 +14,22 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#general-commands">3.1. General Commands</a></li>
-<li><a href="#workout-commands">3.2. Workout Commands</a></li>
-<li><a href="#exercise-commands">3.3. Exercise Commands</a></li>
-<li><a href="#carrying-out-workouts">3.4. Carrying Out Workouts</a></li>
-<li><a href="#scheduling-workouts">3.5. Scheduling Workouts</a></li>
-<li><a href="#logging-workouts">3.6. Logging Workouts</a></li>
-<li><a href="#saving-the-data">3.7. Saving the data</a></li>
+<li><a href="#exercise-commands">3.2. Exercise Commands</a></li>
+<li><a href="#workout-commands">3.3. Workout Commands</a></li>
+<li><a href="#schedule-commands">3.4. Schedule Commands</a></li>
+<li><a href="#log-commands">3.5. Log Commands</a></li>
+<li><a href="#saving-the-data">3.6. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#command-summary">5. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#workout-commands-2">5.1. Workout Commands</a></li>
+<li><a href="#exercise-commands-2">5.2. Exercise Commands</a></li>
+<li><a href="#scheduling-workouts">5.3. Scheduling Workouts</a></li>
+<li><a href="#logging-workouts">5.4. Logging Workouts</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -31,10 +37,25 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ZeroToOne is an application for managing your exercise regimes. It allows you to transform from a round ‘0’ shape, to a fitter and healthier ‘1’ shape!</p>
+<p>ZeroToOne is a one-stop application for managing your exercise regimes. Transform yourself from a ‘0’ to ‘1’ in no time!</p>
 </div>
 <div class="paragraph">
-<p>ZeroToOne is for those who <strong>prefer to use a desktop app for managing their exercise and fitness regimes</strong>. More importantly, ZeroToOne is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ZeroToOne can get your exercise management tasks done faster than traditional GUI apps. Interested in the magnificent transformation from 0 to 1? Jump to Section 2, <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>ZeroToOne has 4 major features for you that we think you will find useful.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, add any custom weight training exercises you want and create a workout. Popular exercises and workouts come by default!</p>
+</div>
+<div class="paragraph">
+<p>Next, plan your workouts in the schedule and get timely reminders so you never miss a workout again.</p>
+</div>
+<div class="paragraph">
+<p>Now that it is time for a workout session, get started with the session feature in the home tab, which serves as a follow-along guide that helps you time your rest and remembers which exercises are next up for you.</p>
+</div>
+<div class="paragraph">
+<p>Our logging feature automatically tracks your session when you are done and provides in-depth details of your progress.</p>
+</div>
+<div class="paragraph">
+<p>Ready to start? Let&#8217;s go!</p>
 </div>
 </div>
 </div>
@@ -75,10 +96,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>log</code></strong> : shows a log of past workouts</p>
 </li>
 <li>
-<p><strong><code>start &lt;workout&gt;</code></strong> : starts a new workout</p>
+<p><strong><code>start &lt;workout_id&gt;</code></strong> : starts a new workout</p>
 </li>
 <li>
-<p><strong><code>stop &lt;workout&gt;</code></strong> : stops the workout</p>
+<p><strong><code>stop</code></strong> : stops the workout</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -104,16 +125,51 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>&lt;arrow brackets&gt;</code> are the parameters to be supplied by the user e.g. in <code>start &lt;workout&gt;</code>, <code>session</code> is a parameter which can be used as <code>start MorningWorkout</code>.</p>
+<p>Words in <code>&lt;arrow brackets&gt;</code> are the parameters to be supplied by the user e.g. in <code>start &lt;workout_id&gt;</code>, <code>workout_id</code> is a parameter which can be used as <code>start 1</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>start &lt;workout&gt; &lt;sets&gt; [interval]</code> can be used as <code>start Morning 2 100</code> or as <code>start Morning 2</code>.</p>
-</li>
-<li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items in square brackets are optional e.g <code>start &lt;workout_id&gt; [interval]</code> can be used as <code>start 2 100</code> or as <code>start 2</code>.</p>
 </li>
 <li>
 <p>Parameters must be in the specified order.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Flags</strong></p>
+</div>
+<div class="paragraph">
+<p>All user-fillable fields must be prefixed with a flag when the user inputs the command. This allows ZeroToOne to accept parameters in any order.
+Reserved flags are a set of special symbols that are reserved for use by the program only. Please avoid using them in your input to this application.</p>
+</div>
+<div class="paragraph">
+<p>They are listed as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e/ - exercise name</p>
+</li>
+<li>
+<p>w/ - workout name</p>
+</li>
+<li>
+<p>s/ - number of sets</p>
+</li>
+<li>
+<p>r/ - number of reps</p>
+</li>
+<li>
+<p>m/ - weights (in kilograms)</p>
+</li>
+<li>
+<p>d/ - datetime</p>
+</li>
+<li>
+<p>f/ - frequency of schedule</p>
+</li>
+<li>
+<p>p/ - file path</p>
 </li>
 </ul>
 </div>
@@ -121,607 +177,126 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 <div class="sect2">
 <h3 id="general-commands"><a class="link" href="#general-commands">3.1. General Commands</a></h3>
-<div class="sect3">
-<h4 id="list-all-workout-plans-code-list-code"><a class="link" href="#list-all-workout-plans-code-list-code">3.1.1. List all workout plans : <code>list</code></a></h4>
-<div class="paragraph">
-<p>Format: <code>list</code></p>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Start a session : <code>start</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Shows a list of all workout plans in ZeroToOne.</p>
+<p>Format: <code>start &lt;EXERCISE_ID&gt;</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Stop a session : <code>stop</code></p>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="get-help-code-help-code"><a class="link" href="#get-help-code-help-code">3.1.2. Get help : <code>help</code></a></h4>
-<div class="paragraph">
-<p>Format: <code>help</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Complete a set : <code>done</code></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Shows a list of all available commands in ZeroToOne.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Skip a set : <code>skip</code></p>
+</li>
+</ul>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Get help : <code>help</code></p>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.1.3. Exit the program: <code>exit</code></a></h4>
-<div class="paragraph">
-<p>Closes the program.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Exit the program: <code>exit</code></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="workout-commands"><a class="link" href="#workout-commands">3.2. Workout Commands</a></h3>
-<div class="sect3">
-<h4 id="create-a-workout-plan-code-create-code"><a class="link" href="#create-a-workout-plan-code-create-code">3.2.1. Create a workout plan: <code>create</code></a></h4>
-<div class="paragraph">
-<p>Creates a new workout plan.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>create &lt;workout&gt;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout field must be a string
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<h3 id="exercise-commands"><a class="link" href="#exercise-commands">3.2. Exercise Commands</a></h3>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>create MorningWorkout</code></p>
-</li>
-<li>
-<p><code>create NightWorkout</code></p>
+<p>Command title: <code>code</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-workout-plan-code-delete-code"><a class="link" href="#delete-a-workout-plan-code-delete-code">3.2.2. Delete a workout plan : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified workout and its associated exercises.</p>
+<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
 </div>
-<div class="paragraph">
-<p>Format: <code>delete &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete MorningWorkout</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-exercises-in-workout-plan-code-list-workout-code"><a class="link" href="#list-exercises-in-workout-plan-code-list-workout-code">3.2.3. List exercises in workout plan : <code>list &lt;workout&gt;</code></a></h4>
-<div class="paragraph">
-<p>Shows a list of all existing exercises in the workout plan</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>list &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list MorningWorkout</code><br>
-Returns <code>"BENCH_PRESS, OVERHEAD_PRESS"</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="export-a-workout-plan-code-export-code"><a class="link" href="#export-a-workout-plan-code-export-code">3.2.4. Export a workout plan: <code>export</code></a></h4>
-<div class="paragraph">
-<p>Exports a specified workout plan in a .txt format and saves it to the user’s computer.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>export &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>export NightWorkout</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="import-a-workout-plan-code-export-code"><a class="link" href="#import-a-workout-plan-code-export-code">3.2.5. Import a workout plan: <code>export</code></a></h4>
-<div class="paragraph">
-<p>Imports a workout plan in .txt format from the user’s computer into the application.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>import &lt;file_path&gt; &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>import ./src/MyFriendsWorkout.txt MyFriendsWorkout</code></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exercise-commands"><a class="link" href="#exercise-commands">3.3. Exercise Commands</a></h3>
-<div class="sect3">
-<h4 id="add-an-exercise-to-workout"><a class="link" href="#add-an-exercise-to-workout">3.3.1. Add an exercise to workout</a></h4>
-<div class="paragraph">
-<p>Format: <code>add &lt;workout&gt; &lt;exercise&gt; &lt;repetitions&gt; &lt;interval&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<h3 id="workout-commands"><a class="link" href="#workout-commands">3.3. Workout Commands</a></h3>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>add Push BENCH_PRESS_60KG 5 180</code></p>
-</li>
-<li>
-<p><code>add Push OVERHEAD_PRESS_20KG 20 120</code></p>
+<p>Command title: <code>code</code></p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.<br>
-<code>repetitions</code> and <code>interval</code> must be positive integers.<br>
-<code>interval</code> is in seconds.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="edit-an-exercise-in-a-workout"><a class="link" href="#edit-an-exercise-in-a-workout">3.3.2. Edit an exercise in a workout</a></h4>
 <div class="paragraph">
-<p>Edits the details of an exercise in a particular workout, such as the number of repetitions or interval.</p>
+<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
 </div>
-<div class="paragraph">
-<p>Format: <code>edit &lt;workout&gt; &lt;exercise&gt; &lt;new_repetitions&gt; &lt;new_interval&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit Push BENCH_PRESS_60KG 6 200</code></p>
-</li>
-<li>
-<p><code>edit Push OVERHEAD_PRESS_20KG 25 140</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.<br>
-<code>new_repetitions</code> and <code>new_interval</code> must be positive integers.<br>
-<code>new_interval</code> is in seconds.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-an-exercise-from-a-workout-plan"><a class="link" href="#delete-an-exercise-from-a-workout-plan">3.3.3. Delete an exercise from a workout plan</a></h4>
-<div class="paragraph">
-<p>Deletes an exercise from a specified workout plan.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>delete &lt;workout&gt; &lt;exercise&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete Push BENCH_PRESS_60KG</code></p>
-</li>
-<li>
-<p><code>delete Push OVERHEAD_PRESS_20KG</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="carrying-out-workouts"><a class="link" href="#carrying-out-workouts">3.4. Carrying Out Workouts</a></h3>
-<div class="sect3">
-<h4 id="start-a-new-workout"><a class="link" href="#start-a-new-workout">3.4.1. Start a new workout</a></h4>
-<div class="paragraph">
-<p>ZeroToOne starts bringing you through each of the exercises in your workout, for the specified number of sets.</p>
-</div>
-<div class="paragraph">
-<p>Format:
-<code>start &lt;workout&gt; &lt;sets&gt; [interval]</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<h3 id="schedule-commands"><a class="link" href="#schedule-commands">3.4. Schedule Commands</a></h3>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>start Push 5 100</code></p>
-</li>
-<li>
-<p><code>start Pull 6 110</code></p>
+<p>Command title: <code>code</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="stop-a-workout"><a class="link" href="#stop-a-workout">3.4.2. Stop a workout</a></h4>
 <div class="paragraph">
-<p>Stops the current workout, effectively resetting it.</p>
+<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
 </div>
-<div class="paragraph">
-<p>Format:
-<code>stop &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>stop Push</code></p>
-</li>
-<li>
-<p><code>stop Pull</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The specified workout must be one that the user is currently running.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="pause-a-workout"><a class="link" href="#pause-a-workout">3.4.3. Pause a workout</a></h4>
-<div class="paragraph">
-<p>Pauses the current workout, but keeping track of the current progress.</p>
-</div>
-<div class="paragraph">
-<p>Format:
-<code>pause &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>pause Push</code></p>
-</li>
-<li>
-<p><code>pause Pull</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The specified workout must be one that the user is currently running.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="resume-a-workout"><a class="link" href="#resume-a-workout">3.4.4. Resume a workout</a></h4>
-<div class="paragraph">
-<p>Resumes the specified workout, from where the user previously left off.</p>
-</div>
-<div class="paragraph">
-<p>Format:
-<code>resume &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>resume Push</code></p>
-</li>
-<li>
-<p><code>resume Pull</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The specified workout must be one that the user is currently running.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="skip"><a class="link" href="#skip">3.4.5. Skip</a></h4>
-<div class="paragraph">
-<p>Skips the current exercise or rest and moves on to the next exercise in the workout.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>skip</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="scheduling-workouts"><a class="link" href="#scheduling-workouts">3.5. Scheduling Workouts</a></h3>
-<div class="sect3">
-<h4 id="schedule-a-single-workout-session"><a class="link" href="#schedule-a-single-workout-session">3.5.1. Schedule a single workout session</a></h4>
-<div class="paragraph">
-<p>Schedules a single workout session on a specified date and time.</p>
-</div>
-<div class="paragraph">
-<p>Format:</p>
-</div>
-<div class="paragraph">
-<p><code>schedule single &lt;workout&gt; &lt;date&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<h3 id="log-commands"><a class="link" href="#log-commands">3.5. Log Commands</a></h3>
+<div class="exampleblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>schedule single Push 2020-03-14T0800</code></p>
-</li>
-<li>
-<p><code>schedule single Pull 2020-03-05T2200</code></p>
+<p>Command title: <code>code</code></p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-date must be in the format {yyyy}-{mm}-{dd}T{2359}.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="schedule-a-recurring-workout-session"><a class="link" href="#schedule-a-recurring-workout-session">3.5.2. Schedule a recurring workout session</a></h4>
 <div class="paragraph">
-<p>Schedules a recurring workout session from specified date and time, with a frequency of the recurrence.</p>
+<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
 </div>
-<div class="paragraph">
-<p>Format:</p>
-</div>
-<div class="paragraph">
-<p><code>schedule recurring  &lt;workout&gt; &lt;date&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule recurring Push 2020-03-14T0800</code></p>
-</li>
-<li>
-<p><code>schedule recurring Pull 2020-03-05T2200</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-workout-session"><a class="link" href="#delete-a-workout-session">3.5.3. Delete a workout session</a></h4>
-<div class="paragraph">
-<p>Deletes a specified single workout session from the user’s schedule for the specified date.</p>
-</div>
-<div class="paragraph">
-<p>Format:</p>
-</div>
-<div class="paragraph">
-<p><code>schedule single delete &lt;workout&gt; &lt;date&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule single delete Push 2020-03-14T0800</code></p>
-</li>
-<li>
-<p><code>schedule single delete Pull 2020-03-05T2200</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-recurring-workout-session"><a class="link" href="#delete-a-recurring-workout-session">3.5.4. Delete a recurring workout session</a></h4>
-<div class="paragraph">
-<p>Deletes a recurring workout session, clearing all of the future recurring sessions from the user’s whole schedule.</p>
-</div>
-<div class="paragraph">
-<p>Format:</p>
-</div>
-<div class="paragraph">
-<p><code>schedule recurring delete &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule recurring delete Push</code></p>
-</li>
-<li>
-<p><code>schedule recurring delete Pull</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-your-schedule"><a class="link" href="#list-your-schedule">3.5.5. List your schedule</a></h4>
-<div class="paragraph">
-<p>Displays a list of the user’s schedule, sorted in chronological order.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>schedule list</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-workouts"><a class="link" href="#logging-workouts">3.6. Logging Workouts</a></h3>
-<div class="sect3">
-<h4 id="show-log-of-workouts"><a class="link" href="#show-log-of-workouts">3.6.1. Show log of workouts</a></h4>
-<div class="paragraph">
-<p>Displays an indexed log of the user’s past workouts, sorted in chronological order.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>log</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-log-of-past-workout"><a class="link" href="#delete-log-of-past-workout">3.6.2. Delete log of past workout</a></h4>
-<div class="paragraph">
-<p>Deletes the log information at the specified log_index.
-The index refers to the index number displayed on the log list.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>log delete &lt;log_index&gt;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The index must be a positive integer i.e. 1, 2, 3…
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="find-a-past-workout"><a class="link" href="#find-a-past-workout">3.6.3. Find a past workout</a></h4>
-<div class="paragraph">
-<p>Finds a past workout by date or keyword. Query types: DATE, EXERCISE, WORKOUT, SCHEDULE.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>log find &lt;query_type&gt; &lt;params&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>log find DATE 2020-02-18T1600</code></p>
-</li>
-<li>
-<p><code>log find EXERCISE BENCH_PRESS_60KG</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The search is case-sensitive for the params.
-Only full words will be matched.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-a-graphical-progress-chart"><a class="link" href="#show-a-graphical-progress-chart">3.6.4. Show a graphical progress chart</a></h4>
-<div class="paragraph">
-<p>Displays a line graph of the past workouts progress.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>chart</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.7. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.6. Saving the data</a></h3>
 <div class="paragraph">
 <p>ZeroToOne data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -767,5 +342,448 @@ There is no need to save manually.</p>
 </li>
 </ul>
 </div>
+<hr>
+<hr>
+<hr>
+<div class="paragraph">
+<p>Last person delete below</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-30 12:58:10 UTC</div></div></div></body></html>
+<hr>
+<hr>
+<hr>
+<div class="sect2">
+<h3 id="workout-commands-2"><a class="link" href="#workout-commands-2">5.1. Workout Commands</a></h3>
+<div class="sect3">
+<h4 id="create-a-workout-plan-code-create-code"><a class="link" href="#create-a-workout-plan-code-create-code">5.1.1. Create a workout plan: <code>create</code></a></h4>
+<div class="paragraph">
+<p>Creates a new workout plan.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>create &lt;workout&gt;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout field must be a string
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>create MorningWorkout</code></p>
+</li>
+<li>
+<p><code>create NightWorkout</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-workout-plan-code-delete-code"><a class="link" href="#delete-a-workout-plan-code-delete-code">5.1.2. Delete a workout plan : <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified workout and its associated exercises.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete MorningWorkout</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-exercises-in-workout-plan-code-list-workout-code"><a class="link" href="#list-exercises-in-workout-plan-code-list-workout-code">5.1.3. List exercises in workout plan : <code>list &lt;workout&gt;</code></a></h4>
+<div class="paragraph">
+<p>Shows a list of all existing exercises in the workout plan</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list MorningWorkout</code><br>
+Returns <code>"BENCH_PRESS, OVERHEAD_PRESS"</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="export-a-workout-plan-code-export-code"><a class="link" href="#export-a-workout-plan-code-export-code">5.1.4. Export a workout plan: <code>export</code></a></h4>
+<div class="paragraph">
+<p>Exports a specified workout plan in a .txt format and saves it to the user’s computer.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export NightWorkout</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="import-a-workout-plan-code-export-code"><a class="link" href="#import-a-workout-plan-code-export-code">5.1.5. Import a workout plan: <code>export</code></a></h4>
+<div class="paragraph">
+<p>Imports a workout plan in .txt format from the user’s computer into the application.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>import &lt;file_path&gt; &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import ./src/MyFriendsWorkout.txt MyFriendsWorkout</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exercise-commands-2"><a class="link" href="#exercise-commands-2">5.2. Exercise Commands</a></h3>
+<div class="sect3">
+<h4 id="add-an-exercise-to-workout"><a class="link" href="#add-an-exercise-to-workout">5.2.1. Add an exercise to workout</a></h4>
+<div class="paragraph">
+<p>Format: <code>add &lt;workout&gt; &lt;exercise&gt; &lt;repetitions&gt; &lt;interval&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add Push BENCH_PRESS_60KG 5 180</code></p>
+</li>
+<li>
+<p><code>add Push OVERHEAD_PRESS_20KG 20 120</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.<br>
+<code>repetitions</code> and <code>interval</code> must be positive integers.<br>
+<code>interval</code> is in seconds.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-an-exercise-in-a-workout"><a class="link" href="#edit-an-exercise-in-a-workout">5.2.2. Edit an exercise in a workout</a></h4>
+<div class="paragraph">
+<p>Edits the details of an exercise in a particular workout, such as the number of repetitions or interval.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit &lt;workout&gt; &lt;exercise&gt; &lt;new_repetitions&gt; &lt;new_interval&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit Push BENCH_PRESS_60KG 6 200</code></p>
+</li>
+<li>
+<p><code>edit Push OVERHEAD_PRESS_20KG 25 140</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.<br>
+<code>new_repetitions</code> and <code>new_interval</code> must be positive integers.<br>
+<code>new_interval</code> is in seconds.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-an-exercise-from-a-workout-plan"><a class="link" href="#delete-an-exercise-from-a-workout-plan">5.2.3. Delete an exercise from a workout plan</a></h4>
+<div class="paragraph">
+<p>Deletes an exercise from a specified workout plan.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete &lt;workout&gt; &lt;exercise&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete Push BENCH_PRESS_60KG</code></p>
+</li>
+<li>
+<p><code>delete Push OVERHEAD_PRESS_20KG</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The workout name is case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scheduling-workouts"><a class="link" href="#scheduling-workouts">5.3. Scheduling Workouts</a></h3>
+<div class="sect3">
+<h4 id="schedule-a-single-workout-session"><a class="link" href="#schedule-a-single-workout-session">5.3.1. Schedule a single workout session</a></h4>
+<div class="paragraph">
+<p>Schedules a single workout session on a specified date and time.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule single &lt;workout&gt; &lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule single Push 2020-03-14T0800</code></p>
+</li>
+<li>
+<p><code>schedule single Pull 2020-03-05T2200</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+date must be in the format {yyyy}-{mm}-{dd}T{2359}.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="schedule-a-recurring-workout-session"><a class="link" href="#schedule-a-recurring-workout-session">5.3.2. Schedule a recurring workout session</a></h4>
+<div class="paragraph">
+<p>Schedules a recurring workout session from specified date and time, with a frequency of the recurrence.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule recurring  &lt;workout&gt; &lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule recurring Push 2020-03-14T0800</code></p>
+</li>
+<li>
+<p><code>schedule recurring Pull 2020-03-05T2200</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-workout-session"><a class="link" href="#delete-a-workout-session">5.3.3. Delete a workout session</a></h4>
+<div class="paragraph">
+<p>Deletes a specified single workout session from the user’s schedule for the specified date.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule single delete &lt;workout&gt; &lt;date&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule single delete Push 2020-03-14T0800</code></p>
+</li>
+<li>
+<p><code>schedule single delete Pull 2020-03-05T2200</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-recurring-workout-session"><a class="link" href="#delete-a-recurring-workout-session">5.3.4. Delete a recurring workout session</a></h4>
+<div class="paragraph">
+<p>Deletes a recurring workout session, clearing all of the future recurring sessions from the user’s whole schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format:</p>
+</div>
+<div class="paragraph">
+<p><code>schedule recurring delete &lt;workout&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule recurring delete Push</code></p>
+</li>
+<li>
+<p><code>schedule recurring delete Pull</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-your-schedule"><a class="link" href="#list-your-schedule">5.3.5. List your schedule</a></h4>
+<div class="paragraph">
+<p>Displays a list of the user’s schedule, sorted in chronological order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>schedule list</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-workouts"><a class="link" href="#logging-workouts">5.4. Logging Workouts</a></h3>
+<div class="sect3">
+<h4 id="show-log-of-workouts"><a class="link" href="#show-log-of-workouts">5.4.1. Show log of workouts</a></h4>
+<div class="paragraph">
+<p>Displays an indexed log of the user’s past workouts, sorted in chronological order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>log</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-log-of-past-workout"><a class="link" href="#delete-log-of-past-workout">5.4.2. Delete log of past workout</a></h4>
+<div class="paragraph">
+<p>Deletes the log information at the specified log_index.
+The index refers to the index number displayed on the log list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>log delete &lt;log_index&gt;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The index must be a positive integer i.e. 1, 2, 3…
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-a-past-workout"><a class="link" href="#find-a-past-workout">5.4.3. Find a past workout</a></h4>
+<div class="paragraph">
+<p>Finds a past workout by date or keyword. Query types: DATE, EXERCISE, WORKOUT, SCHEDULE.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>log find &lt;query_type&gt; &lt;params&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>log find DATE 2020-02-18T1600</code></p>
+</li>
+<li>
+<p><code>log find EXERCISE BENCH_PRESS_60KG</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The search is case-sensitive for the params.
+Only full words will be matched.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-a-graphical-progress-chart"><a class="link" href="#show-a-graphical-progress-chart">5.4.4. Show a graphical progress chart</a></h4>
+<div class="paragraph">
+<p>Displays a line graph of the past workouts progress.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>chart</code></p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-30 16:55:33 UTC</div></div></div></body></html>
