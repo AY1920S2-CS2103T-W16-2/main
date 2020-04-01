@@ -722,9 +722,57 @@ insert design considerations here</p>
 <div class="sect3">
 <h4 id="implementation-5"><a class="link" href="#implementation-5">3.5.1. Implementation</a></h4>
 <div class="paragraph">
-<p>insert implementation stuff here
-==== Design Considerations
-insert design considerations here</p>
+<p>The following sequence diagram shows how the <code>schedule create</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleCreateSequenceDiagram.png" alt="ScheduleCreateSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>scheduledWorkout</code> are populated to user view:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PopulateSortedScheduledWorkoutList.png" alt="PopulateSortedScheduledWorkoutList">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-handle-editing-and-deletion-of-recurring-schedules"><a class="link" href="#aspect-how-to-handle-editing-and-deletion-of-recurring-schedules">Aspect: How to handle editing and deletion of recurring schedules</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Saves <code>scheduledWorkout</code> objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Hard to maintain when it comes to <code>edit</code> or <code>delete</code> of recurring scheduled workouts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice):</strong> Saves <code>schedule</code> objects that can be used to produce <code>scheduledWorkout</code> when
+requested.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Changes to recurring schedules can populated to <code>scheduledWorkout</code> more easily.</p>
+</li>
+<li>
+<p>Cons: Much more complicated model.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -742,7 +790,7 @@ insert design considerations here</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Immutability was a huge consideration for us and hence we came up with the <code>ReadOnly</code> interface.</p>
 </div>
@@ -1288,4 +1336,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 17:55:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 19:12:40 UTC</div></div></div></body></html>
