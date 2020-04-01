@@ -562,9 +562,136 @@ If the <code>currentStatePointer</code> is at index <code>ExerciseListStateList.
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
 <div class="paragraph">
-<p>insert implementation stuff here
-==== Design Considerations
-insert design considerations here</p>
+<p>The Session feature resides on the Home page and is comprised of <code>Start</code>, <code>Stop</code>, <code>Done</code>, and <code>Skip</code> commands.
+<code>OngoingSession</code>, <code>Session</code>, <code>SessionList</code> and <code>SessionSet</code> are models that are vital components of the feature.</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram below demonstrates the actions of a user with this feature.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StartStopActivityDiagram.png" alt="StartStopActivityDiagram">
+</div>
+<div class="title">Figure 9. Session Feature Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>Start depicts the start of a valid Session (non-zero sets remaining).
+Upon depletion of all remaining sets, the session automatically stops and is saved.
+The only inputs the user is required to give throughout the activity are <code>done</code> (corresponding to the yes of the conditional branch)
+and <code>skip</code> (no of the conditional branch).
+This is a conscious design choice as elaborated in the next section.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>The operations handling these actions are found in OngoingSession:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>OngoingSession#skip()/OngoingSession#done()</code>&#8201;&#8212;&#8201;returns previous set and updates queue of remaining sets.</p>
+</li>
+<li>
+<p><code>OngoingSession#finish()</code>&#8201;&#8212;&#8201;creates and returns an immutable <code>Session</code> object for saving and logging.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Further operations are exposed in the <code>Model</code> interface as <code>Model#startSession()</code> and <code>Model#stopSession()</code>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>The inner workings of the feature are briefly expounded below through example usage.
+<code>Arms Day</code> is a <code>Workout</code> with ID = <code>2</code> and consists of 2 sets of one exercise called <code>Benchpress</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user selects an existing <code>Workout</code> called <code>Arms Day</code> with ID = <code>2</code> and starts a session with <code>start 2</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Logic</code> and <code>Parser</code> redirects control to <code>StartCommand#execute()</code> where an instance of <code>OngoingSession</code> is created with
+<code>Arms Day</code>. The upcoming set of the next exercise is displayed for the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Step 2. The user completes the first set and types <code>done</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DoneCommand#execute()</code> is invoked, which in turn calls <code>OngoingSession#done()</code> to obtain the next set and statefully
+updates the instance of <code>OngoingSession</code>.</p>
+</li>
+<li>
+<p>The rest timer starts counting from 00:00.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DoneCommandSequenceDiagram.png" alt="DoneCommandSequenceDiagram">
+</div>
+<div class="title">Figure 10. DoneCommand sequence diagram</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The user fails the last and final set of <code>Benchpress</code> and types <code>skip</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SkipCommand#execute()</code> is invoked. The instance of <code>OngoingSession</code> is updated. Since <code>OngoingSession#hasSetLeft()</code>
+returns false, <code>OngoingSession#finish()</code> is called which creates and returns an immutable <code>Session</code> object. This object
+is saved into the <code>sessionList</code> of <code>ModelManager</code> for saving and use by the <code>Log</code> feature.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>[Note] In the usual flow, the <code>stop</code> command is not used, and is reserved only for a premature (incomplete) ending of a
+session.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-seamless-user-first-experience"><a class="link" href="#aspect-seamless-user-first-experience">Aspect: Seamless user-first experience</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation:</strong> Minimal commands and typing during an ongoing session.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less interruption during actual exercising to enter commands.</p>
+</li>
+<li>
+<p>Cons: More experienced users are not able to have a more customizable workout.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-beginner-friendly-automatic-set-ordering"><a class="link" href="#aspect-beginner-friendly-automatic-set-ordering">Aspect: Beginner-friendly automatic set-ordering</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation:</strong> Exercises and sets have fixed ordering based on their creation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier for new user to follow a session, less typing required during ongoing session.</p>
+</li>
+<li>
+<p>Cons: Experienced users are not able to have an ad-hoc customizable workout without creating a new workout with the specific order they want.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -615,7 +742,7 @@ insert design considerations here</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Immutability was a huge consideration for us and hence we came up with the <code>ReadOnly</code> interface.</p>
 </div>
@@ -1161,4 +1288,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 15:58:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 17:55:27 UTC</div></div></div></body></html>
