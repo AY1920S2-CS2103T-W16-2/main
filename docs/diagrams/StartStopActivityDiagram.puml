@@ -1,0 +1,19 @@
+@startuml
+start
+':Start Session;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+repeat
+:Load next set;
+    if (Complete Set?) then ([yes])
+        :Mark set as completed;
+    else ([no])
+        :Mark set as incomplete;
+endif
+
+repeat while (Sets still remaining?) is (yes)
+->no;
+stop
+@enduml

@@ -242,10 +242,69 @@ image::CommitActivityDiagram.png[]
 // tag::session[]
 === Session
 ==== Implementation
-insert implementation stuff here
+The Session feature resides on the Home page and is comprised of `Start`, `Stop`, `Done`, and `Skip` commands.
+`OngoingSession`, `Session`, `SessionList` and `SessionSet` are models that are vital components of the feature.
+
+The activity diagram below demonstrates the actions of a user with this feature.
+
+.Session Feature Activity Diagram
+image::StartStopActivityDiagram.png[]
+
+Start depicts the start of a valid Session (non-zero sets remaining).
+Upon depletion of all remaining sets, the session automatically stops and is saved.
+The only inputs the user is required to give throughout the activity are `done` (corresponding to the yes of the conditional branch)
+and `skip` (no of the conditional branch).
+This is a conscious design choice as elaborated in the next section.
+
+---
+
+The operations handling these actions are found in OngoingSession:
+
+* `OngoingSession#skip()/OngoingSession#done()` -- returns previous set and updates queue of remaining sets.
+* `OngoingSession#finish()` -- creates and returns an immutable `Session` object for saving and logging.
+
+Further operations are exposed in the `Model` interface as `Model#startSession()` and `Model#stopSession()`.
+
+---
+
+The inner workings of the feature are briefly expounded below through example usage.
+`Arms Day` is a `Workout` with ID = `2` and consists of 2 sets of one exercise called `Benchpress`.
+
+Step 1. The user selects an existing `Workout` called `Arms Day` with ID = `2` and starts a session with `start 2`.
+
+* `Logic` and `Parser` redirects control to `StartCommand#execute()` where an instance of `OngoingSession` is created with
+`Arms Day`. The upcoming set of the next exercise is displayed for the user.
+
+Step 2. The user completes the first set and types `done`.
+
+* `DoneCommand#execute()` is invoked, which in turn calls `OngoingSession#done()` to obtain the next set and statefully
+updates the instance of `OngoingSession`.
+
+* The rest timer starts counting from 00:00.
+
+.DoneCommand sequence diagram
+image::DoneCommandSequenceDiagram.png[]
+
+Step 3. The user fails the last and final set of `Benchpress` and types `skip`.
+
+* `SkipCommand#execute()` is invoked. The instance of `OngoingSession` is updated. Since `OngoingSession#hasSetLeft()`
+returns false, `OngoingSession#finish()` is called which creates and returns an immutable `Session` object. This object
+is saved into the `sessionList` of `ModelManager` for saving and use by the `Log` feature.
+
+[Note] In the usual flow, the `stop` command is not used, and is reserved only for a premature (incomplete) ending of a
+session.
+
 ==== Design Considerations
-insert design considerations here
-// end::session[]
+===== Aspect: Seamless user-first experience
+* **Current Implementation:** Minimal commands and typing during an ongoing session.
+** Pros: Less interruption during actual exercising to enter commands.
+** Cons: More experienced users are not able to have a more customizable workout.
+
+
+===== Aspect: Beginner-friendly automatic set-ordering
+* **Current Implementation:** Exercises and sets have fixed ordering based on their creation.
+** Pros: Easier for new user to follow a session, less typing required during ongoing session.
+** Cons: Experienced users are not able to have an ad-hoc customizable workout without creating a new workout with the specific order they want.
 
 // tag::exercise[]
 === Exercise
