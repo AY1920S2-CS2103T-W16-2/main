@@ -700,9 +700,71 @@ session.</p>
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.1. Implementation</a></h4>
 <div class="paragraph">
-<p>insert implementation stuff here
-==== Design Considerations
-insert design considerations here</p>
+<p>The exercise feature forms the basic building block for the application. It allows users to CRUD exercises, which will then be used for the creation of workouts. The command is prefixed by the keyword <code>exercise</code>. Available commands are <code>create</code>, <code>edit</code>, <code>list</code>, <code>delete</code> and many more.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/exercise/CreateCommandSequenceDiagram.png" alt="CreateCommandSequenceDiagram">
+</div>
+<div class="title">Figure 11. Exercise&#8217;s CreateCommand Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>In this portion, we will trace the sequence diagram of the <code>exercise create</code> command to better understand the internals of the Exercise feature.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user enters the command <code>exercise create e/Bench Press</code></p>
+</li>
+<li>
+<p>LogicManager will pass the command to the ParserManager for parsing</p>
+</li>
+<li>
+<p>ParserManager upon seeing that the command is prefixed by <code>exercise</code> creates a ExerciseCommandParser</p>
+</li>
+<li>
+<p>ParserManager then pass <code>create e/Bench Press</code> to ExerciseCommandParser</p>
+</li>
+<li>
+<p>ExerciseCommandParser upon seeing that the command is prefixed by <code>create</code> creates a CreateCommandParser</p>
+</li>
+<li>
+<p>ExerciseCommandParser then pass the argument <code>e/Bench Press</code> to CreateCommandParser</p>
+</li>
+<li>
+<p>CreateCommandParser then attempts to create an ExerciseName object using the String in the argument</p>
+</li>
+<li>
+<p>Using the ExerciseName, CreateCommandParser then create a CreateCommand object with the exercise name</p>
+</li>
+<li>
+<p>During the construction of the CreateCommand object, a new ArrayList object is created and stored in CreateCommand</p>
+</li>
+<li>
+<p>The CreateCommand is then passed back to the LogicManager</p>
+</li>
+<li>
+<p>LogicManager calls the <code>c.execute()</code></p>
+</li>
+<li>
+<p>CreateCommand will attempt to create an Exercise using the exercise name and the empty ArrayList</p>
+</li>
+<li>
+<p>After creating the Exercise object, the CreateCommand will attempt to store the new exercise by calling the <code>addExercise</code> method of Model</p>
+</li>
+<li>
+<p>After the exercise is successfully added, a CommandResult object is created</p>
+</li>
+<li>
+<p>This result is then passed back to the LogicManager which will display the output on the GUI</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>One of the consideration while designing was that the commands in exercise are extremely nested. We have commands such as <code>exercise set create r/1 m/10</code>. While we could have chucked all the parsing in <code>ExerciseSetCreateParser</code> class, we realised that it will be better if we were to abstract the parser into separate classes. This allows us to group the functionalities of the parser in a single file. For example, <code>ExerciseCommandParser</code> will parse any string that has the word <code>exercise</code> as the prefix. <code>SetCommandParser</code> will do so for a prefix of <code>set</code>. This means that for the above command, while we have to go through multiple parsers which can make the performance of the application suffer, each of the parsers have a single responsibility which makes it a better design choice.</p>
 </div>
 </div>
 </div>
@@ -806,7 +868,7 @@ depicts flow of the program when the command <code>workout find w/Strength Train
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.3. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-exercises-in-workout"><a class="link" href="#aspect-exercises-in-workout">Aspect: Exercises in workout</a></h5>
 <div class="ulist">
@@ -870,7 +932,7 @@ to construct workouts was better.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-handle-editing-and-deletion-of-recurring-schedules"><a class="link" href="#aspect-how-to-handle-editing-and-deletion-of-recurring-schedules">Aspect: How to handle editing and deletion of recurring schedules</a></h5>
 <div class="ulist">
@@ -921,7 +983,7 @@ requested.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Immutability was a huge consideration for us and hence we came up with the <code>ReadOnly</code> interface.</p>
 </div>
@@ -1467,4 +1529,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 19:35:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 19:38:56 UTC</div></div></div></body></html>
