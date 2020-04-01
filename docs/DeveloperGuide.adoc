@@ -332,13 +332,19 @@ insert design considerations here
 
 // tag::log[]
 === Log
+For logging, we propose saving the session data in the following class architecture.
+
 ==== Implementation
-insert implementation stuff here
+
+image::WorkoutSessionDiagram.png[]
+
 ==== Design Considerations
-insert design considerations here
+Immutability was a huge consideration for us and hence we came up with the `ReadOnly` interface.
+
+Also, due to the lack of a database backing our application, we have no choice but to nest our object.
+
 // end::log[]
 
-[[Implementation-Configuration]]
 === Configuration
 
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
