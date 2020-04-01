@@ -1,3 +1,4 @@
+//@@author gb3h
 package seedu.zerotoone.model.session;
 
 import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
