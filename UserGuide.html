@@ -9,781 +9,1387 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#about-this-document">1. About This Document</a></li>
+<li><a href="#introducing-zerotoone">2. Introducing ZeroToOne</a></li>
+<li><a href="#getting-started">3. Getting Started</a></li>
+<li><a href="#user-interface-basics">4. User Interface Basics</a>
 <ul class="sectlevel2">
-<li><a href="#general-commands">3.1. General Commands</a></li>
-<li><a href="#exercise-commands">3.2. Exercise Commands</a></li>
-<li><a href="#workout-commands">3.3. Workout Commands</a></li>
-<li><a href="#schedule-commands">3.4. Schedule Commands</a></li>
-<li><a href="#log-commands">3.5. Log Commands</a></li>
-<li><a href="#saving-the-data">3.6. Saving the data</a></li>
+<li><a href="#navigation-tabs">4.1. Navigation Tabs</a></li>
+<li><a href="#result-display">4.2. Result Display</a></li>
+<li><a href="#feedback-display">4.3. Feedback Display</a></li>
+<li><a href="#command-box">4.4. Command Box</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a>
+<li><a href="#using-zerotoone">5. Using ZeroToOne</a>
 <ul class="sectlevel2">
-<li><a href="#workout-commands-2">5.1. Workout Commands</a></li>
-<li><a href="#exercise-commands-2">5.2. Exercise Commands</a></li>
-<li><a href="#scheduling-workouts">5.3. Scheduling Workouts</a></li>
-<li><a href="#logging-workouts">5.4. Logging Workouts</a></li>
+<li><a href="#overview">5.1. Overview</a></li>
+<li><a href="#getting-help">5.2. Getting Help</a></li>
+<li><a href="#closing-zerotoone-in-progress">5.3. Closing ZeroToOne (In Progress)</a></li>
+<li><a href="#starting-a-workout-session">5.4. Starting A Workout Session</a></li>
+<li><a href="#completing-an-exercise-set">5.5. Completing An Exercise Set</a></li>
+<li><a href="#skipping-an-exercise-set">5.6. Skipping An Exercise Set</a></li>
+<li><a href="#stopping-a-workout-session">5.7. Stopping A Workout Session</a></li>
+<li><a href="#managing-your-exercises">5.8. Managing Your Exercises</a></li>
+<li><a href="#managing-your-workouts">5.9. Managing Your Workouts</a></li>
+<li><a href="#managing-your-scheduled-sessions">5.10. Managing Your Scheduled Sessions</a></li>
+<li><a href="#managing-your-session-logs-in-progress">5.11. Managing Your Session Logs (In Progress)</a></li>
 </ul>
 </li>
+<li><a href="#troubleshooting">6. Troubleshooting</a></li>
+<li><a href="#command-list">7. Command List</a></li>
+<li><a href="#glossary">8. Glossary</a></li>
 </ul>
 </div>
 </div>
 <div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<h2 id="about-this-document"><a class="link" href="#about-this-document">1. About This Document</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ZeroToOne is a one-stop application for managing your exercise regimes. Transform yourself from a ‘0’ to ‘1’ in no time!</p>
+<p>Welcome to the ZeroToOne User Guide!</p>
 </div>
 <div class="paragraph">
-<p>ZeroToOne has 4 major features for you that we think you will find useful.</p>
+<p>We have read and tried to follow numerous badly written user guides. They are often poorly organised, and extremely painful to read. At ZeroToOne, we seek to make your user experience a seamless and pleasurable one. This is why we created this foolproof, step-by-step guide to help you kickstart your ZeroToOne journey.</p>
 </div>
 <div class="paragraph">
-<p>Firstly, add any custom weight training exercises you want and create a workout. Popular exercises and workouts come by default!</p>
+<p>To help you better understand this document, here is a list of notations that we will be using:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. ZeroToOne Notation</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Notation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exercise delete EXERCISE_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A grey highlight alongside a monospace font indicates that this is a command that can be entered into the command line and executed by the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>w/&lt;workout_name&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A word surrounded by arrow brackets denotes a user fillable field in the parameter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[d/&lt;datetime&gt;]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A parameter surrounded by square brackets indicates that it is an optional parameter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{e/&lt;exercise_name&gt; | w/&lt;workout_name&gt; | d/&lt;datetime&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A set of parameters surrounded by curly brackets indicates that at least one of the parameters have to be filled up</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EXERCISE_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uppercase parameters indicate that it is an index from a list in ZeroToOne</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-zerotoone"><a class="link" href="#introducing-zerotoone">2. Introducing ZeroToOne</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ZeroToOne is a one-stop application to manage your fitness regimes. Using ZeroToOne, you can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Customise your favourite workout programmes</p>
+</li>
+<li>
+<p>Start a workout session which guides you through your workout routines</p>
+</li>
+<li>
+<p>Schedule your workout sessions and receive timely reminders</p>
+</li>
+<li>
+<p>Track your fitness progress</p>
+</li>
+<li>
+<p>and much more!</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Next, plan your workouts in the schedule and get timely reminders so you never miss a workout again.</p>
-</div>
-<div class="paragraph">
-<p>Now that it is time for a workout ongoingSession, get started with the ongoingSession feature in the home tab, which serves as a follow-along guide that helps you time your rest and remembers which exercises are next up for you.</p>
-</div>
-<div class="paragraph">
-<p>Our logging feature automatically tracks your ongoingSession when you are done and provides in-depth details of your progress.</p>
-</div>
-<div class="paragraph">
-<p>Ready to start? Let&#8217;s go!</p>
+<p>Are you ready to transform yourself from a plump ‘0’ shape to a healthier ‘1’ shape? Kickstart your ZeroToOne journey today by following the steps listed below!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="getting-started"><a class="link" href="#getting-started">3. Getting Started</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you can start using ZeroToOne, you will need to ensure that Java 11 is installed on your computer. If not, please follow the instructions on this website to install Java 11 on your computer.</p>
+</div>
+<div class="paragraph">
+<p>To start your ZeroToOne journey, you will have to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create an empty folder in your computer.</p>
+</li>
+<li>
+<p>Download the latest stable version of ZeroToOne from <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/releases/latest">our GitHub page</a> into the folder that you created.</p>
+</li>
+<li>
+<p>Double-click the executable file to start the application.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgMainPage.png" alt="UgMainPage">
+</div>
+<div class="title">Figure 1. ZeroToOne Main Page</div>
+</div>
+<div class="paragraph">
+<p>At this stage, you should have successfully started ZeroToOne and will be able see the main page as described in Figure 1. If the application did not start, please refer to <a href="#troubleshooting">Section 6, &#8220;Troubleshooting&#8221;</a> for more information to resolve the issue. Otherwise, the next step is to begin your ZeroToOne journey, by customising your favourite workout programmes!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-interface-basics"><a class="link" href="#user-interface-basics">4. User Interface Basics</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before we delve into the commands that you can use, let us first explain the components of the User Interface, and how we can navigate through them.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgUiComponents.png" alt="UgUiComponents">
+</div>
+<div class="title">Figure 2. Components of the User Interface</div>
+</div>
+<div class="sect2">
+<h3 id="navigation-tabs"><a class="link" href="#navigation-tabs">4.1. Navigation Tabs</a></h3>
+<div class="paragraph">
+<p>The navigation tabs allow you to easily access different parts of our application. Simply click on each tab to bring you to your desired feature! The coloured underline indicates which tab is currently activated and hence which feature you are currently accessing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="result-display"><a class="link" href="#result-display">4.2. Result Display</a></h3>
+<div class="paragraph">
+<p>This is where the results of your executed command will be displayed. The display will change according to the feature that you are currently using.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback-display"><a class="link" href="#feedback-display">4.3. Feedback Display</a></h3>
+<div class="paragraph">
+<p>Whenever you enter a command into the Command Box, the application will output a feedback message to you through this display!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-box"><a class="link" href="#command-box">4.4. Command Box</a></h3>
+<div class="paragraph">
+<p>You type all of your commands in here. To execute the command, simply press the "Enter" button on your keyboard.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-zerotoone"><a class="link" href="#using-zerotoone">5. Using ZeroToOne</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At this point, you should have sufficient knowledge to start using ZeroToOne. In this section, we will describe in-depth the features that ZeroToOne has, and how you can interact with them.</p>
+</div>
+<div class="sect2">
+<h3 id="overview"><a class="link" href="#overview">5.1. Overview</a></h3>
+<div class="paragraph">
+<p>For ZeroToOne commands, every user-fillable parameter is identified by a flag prefix. This allows ZeroToOne to accept parameters in any order. However, to correctly parse your command, we have reserved these flags as special symbols that are to be used only by the program. Please avoid using them in your commands. The reserved flags are listed as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>e/</code> - exercise name</p>
+</li>
+<li>
+<p><code>w/</code> - workout name</p>
+</li>
+<li>
+<p><code>s/</code> - number of sets</p>
+</li>
+<li>
+<p><code>r/</code> - number of reps</p>
+</li>
+<li>
+<p><code>m/</code> - weights (in kilograms)</p>
+</li>
+<li>
+<p><code>d/</code> - datetime</p>
+</li>
+<li>
+<p><code>f/</code> - frequency of schedule</p>
+</li>
+<li>
+<p><code>p/</code> - file path</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-help"><a class="link" href="#getting-help">5.2. Getting Help</a></h3>
+<div class="paragraph">
+<p>Can’t remember the commands off the top of your head? Fret not. ZeroToOne provides you with a convenient way to view a list of all available commands that you can try. Simply enter the following command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>help</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgHelp.png" alt="UgHelp">
+</div>
+<div class="title">Figure 3. Help Window</div>
+</div>
+<div class="paragraph">
+<p>A pop-up window will appear, showing you a list of all available commands that you can try.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="closing-zerotoone-in-progress"><a class="link" href="#closing-zerotoone-in-progress">5.3. Closing ZeroToOne (In Progress)</a></h3>
+<div class="paragraph">
+<p>After you have finished using the application, you can exit the application by simply entering the following command into the command box:</p>
+</div>
+<div class="paragraph">
+<p><code>exit</code></p>
+</div>
+<div class="paragraph">
+<p>The application will close gracefully, and all data in the current usage session will be saved in the data directory. If the command is executed successfully, you should see the following message before the application closes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Thank you for using ZeroToOne! Your data has been saved successfully. Hope to see you soon for your next workout!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="starting-a-workout-session"><a class="link" href="#starting-a-workout-session">5.4. Starting A Workout Session</a></h3>
+<div class="paragraph">
+<p>Are you ready to start working out now? To begin a new workout session, simply enter the following command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>start WORKOUT_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+start 1</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgStartWorkout.png" alt="UgStartWorkout">
+</div>
+<div class="title">Figure 4. Started Workout</div>
+</div>
+<div class="paragraph">
+<p>The User Interface will automatically switch to the “General” tab. ZeroToOne will start displaying every exercise set in your workout, guiding you through set by set in your workout.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* This command assumes that you have already created a workout in the application. If you have not, refer to the section on "Managing your workouts" to create a new workout.
+* WORKOUT_ID cannot be null and should be a value from the command `workout list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="completing-an-exercise-set"><a class="link" href="#completing-an-exercise-set">5.5. Completing An Exercise Set</a></h3>
+<div class="paragraph">
+<p>Completed your exercise set? To mark the current exercise set as completed and move on to the next set, simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>done</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgDoneSet.png" alt="UgDoneSet">
+</div>
+<div class="title">Figure 5. Done Set</div>
+</div>
+<div class="paragraph">
+<p>The background color of the completed set will turn green in a few seconds, indicating that the set is successfully completed. ZeroToOne will then progress your workout forward, by starting on the next set. If you are already on your last set, ZeroToOne will automatically stop the workout session after this command is executed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="skipping-an-exercise-set"><a class="link" href="#skipping-an-exercise-set">5.6. Skipping An Exercise Set</a></h3>
+<div class="paragraph">
+<p>Unable to complete your current exercise set? No worries, it happens to everyone. To skip the current exercise set, simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>skip</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgSkippedSet.png" alt="UgSkippedSet">
+</div>
+<div class="title">Figure 6. Skipped Set</div>
+</div>
+<div class="paragraph">
+<p>The background color of the completed set will turn red for a few seconds, indicating that the set is incomplete. ZeroToOne will then progress your workout forward, by starting on the next set. If you are already on your last set, ZeroToOne will automatically stop the workout session after this command is executed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stopping-a-workout-session"><a class="link" href="#stopping-a-workout-session">5.7. Stopping A Workout Session</a></h3>
+<div class="paragraph">
+<p>Need to stop the workout session prematurely? Simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>stop</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will stop the workout that is currently in progress, and will stop tracking the progress of this workout. The user interface will automatically return to the main screen. Any incomplete sets will be logged by ZeroToOne. If stopping a workout session is successful, you should see the following in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Stopped session: Bench Press at 1 Apr 2020, 10:32:10 AM</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-your-exercises"><a class="link" href="#managing-your-exercises">5.8. Managing Your Exercises</a></h3>
+<div class="paragraph">
+<p>The commands in this section allows you to manage your customised exercises in ZeroToOne. These exercises will eventually be the building blocks of a workout.</p>
+</div>
+<div class="sect3">
+<h4 id="creating-a-new-exercise"><a class="link" href="#creating-a-new-exercise">5.8.1. Creating a new exercise</a></h4>
+<div class="paragraph">
+<p>To create a new exercise in ZeroToOne, simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise create e/&lt;exercise_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise create e/Bench Press</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgCreatedExercise.png" alt="UgCreatedExercise">
+</div>
+<div class="title">Figure 7. Created Exercise</div>
+</div>
+<div class="paragraph">
+<p>The newly created exercise will be automatically added to the bottom of the exercise list. This exercise will not contain any sets at this point.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+&lt;exercise_name&gt; has to be a String, consisting of only Alphanumeric characters</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-set-to-an-exercise"><a class="link" href="#adding-a-set-to-an-exercise">5.8.2. Adding a set to an exercise</a></h4>
+<div class="paragraph">
+<p>After you have created a new exercise in ZeroToOne, the next step is to add a set to the exercise! To add a set, simply enter this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise set add EXERCISE_ID r/&lt;num_of_reps&gt; m/&lt;weight&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set add 2 r/2 m/30</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgAddedExerciseSet.png" alt="UgAddedExerciseSet">
+</div>
+<div class="title">Figure 8. Added Exercise Set</div>
+</div>
+<div class="paragraph">
+<p>The exercise set will be automatically appended to the current list of sets in the exercise. The user interface will be updated to show the edited exercise.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* This command assumes that you have already created an exercise under EXERCISE_ID. If you have not created the exercise, refer to the section on “Creating a new exercise” first.
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* &lt;num_of_reps&gt; should be a positive integer
+* &lt;weight&gt; should be a positive integer between 1 and 1000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-set-in-an-exercise"><a class="link" href="#editing-a-set-in-an-exercise">5.8.3. Editing a set in an exercise</a></h4>
+<div class="paragraph">
+<p>Changed your mind on the details of an exercise set? No worries, you can edit the information in an exercise set by simply entering this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise set edit EXERCISE_ID SET_ID r/&lt;num_of_reps&gt; m/&lt;weight&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set edit 1 1 r/20 m/30</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise set will be automatically updated in the exercise list. If so, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited exercise set: Deadlift</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* SET_ID refers to the index of the set in the exercise
+* &lt;num_of_reps&gt; has to be a positive integer
+* &lt;weight&gt; has to be a positive integer between 1 and 1000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-set-in-an-exercise"><a class="link" href="#deleting-a-set-in-an-exercise">5.8.4. Deleting a set in an exercise</a></h4>
+<div class="paragraph">
+<p>Want to delete an exercise set from the exercise? You can do so by simply entering this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise set delete EXERCISE_ID SET_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set delete 1 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise set will be removed from the exercise, and the view will automatically update to show that the exercise no longer contains that set. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Exercise Set: Deadlift</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* SET_ID refers to the index of the set in the exercise</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-exercises"><a class="link" href="#listing-all-exercises">5.8.5. Listing all exercises</a></h4>
+<div class="paragraph">
+<p>To show a list of exercises that you have created in ZeroToOne, simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgExerciseList.png" alt="UgExerciseList">
+</div>
+<div class="title">Figure 9. Exercise List</div>
+</div>
+<div class="paragraph">
+<p>The User Interface will automatically switch to the “Exercise” tab, and the result display will automatically update with the list of exercises (Figure 6).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-an-exercise-by-name"><a class="link" href="#finding-an-exercise-by-name">5.8.6. Finding an exercise by name</a></h4>
+<div class="paragraph">
+<p>To find and view the information of a particular exercise that you have previously created, you can simply enter this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise find e/&lt;exercise_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise find e/Bench Press</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Result Display will automatically update to only show exercises that match the search keyword.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgFindExercise.png" alt="UgFindExercise">
+</div>
+<div class="title">Figure 10. Find Exercise</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* &lt;exercise_name&gt; has to be a String, consisting of only Alphanumeric characters
+* &lt;exercise_name&gt; can be a partial substring of the full exercise name
+* &lt;exercise_name&gt; is not case-sensitive</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-an-exercise-s-name"><a class="link" href="#changing-an-exercise-s-name">5.8.7. Changing an exercise’s name</a></h4>
+<div class="paragraph">
+<p>Made a mistake while creating the exercise’s name? You can change the exercise name by simply running this command in the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise edit EXERCISE_ID e/&lt;exercise_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise edit 1 e/Squat</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise in ZeroToOne will be automatically updated to show its new name. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited exercise: Squat</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* &lt;exercise_name&gt; has to be a String, consisting of only Alphanumeric characters</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-exercise-in-progress"><a class="link" href="#deleting-an-exercise-in-progress">5.8.8. Deleting an exercise (In Progress)</a></h4>
+<div class="paragraph">
+<p>Want to remove an exercise from ZeroToOne? You can do so by entering this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise delete EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise will be removed from ZeroToOne. At the same time, all current workouts that contain this exercise will also have this exercise removed. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Exercise: Deadlift</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-your-workouts"><a class="link" href="#managing-your-workouts">5.9. Managing Your Workouts</a></h3>
+<div class="paragraph">
+<p>After creating and modifying your exercises however you desire, it’s time to use those exercises to create workouts! In this section, we will walk you through how to manage all your workouts.</p>
+</div>
+<div class="sect3">
+<h4 id="creating-a-new-workout"><a class="link" href="#creating-a-new-workout">5.9.1. Creating a new workout</a></h4>
+<div class="paragraph">
+<p>To create a new workout, simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout create w/&lt;workout_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout create w/Abs Workout</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgCreateWorkout.png" alt="UgCreateWorkout">
+</div>
+<div class="title">Figure 11. Creating A Workout</div>
+</div>
+<div class="paragraph">
+<p>The feedback display will let you know if the creation of your workout was successful. The application view will also update to display your new workout!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-exercise-to-a-workout"><a class="link" href="#adding-an-exercise-to-a-workout">5.9.2. Adding an exercise to a workout</a></h4>
+<div class="paragraph">
+<p>After creating your workout, the next step is to add an exercise to it! To do so, simply enter the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout exercise add WORKOUT_ID EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout exercise add 1 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Added exercise to workout: Bench Press</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-an-exercise-in-a-workout-in-progress"><a class="link" href="#changing-an-exercise-in-a-workout-in-progress">5.9.3. Changing an exercise in a workout (In Progress)</a></h4>
+<div class="paragraph">
+<p>If you add the wrong exercise to a workout by mistake, or want to change a particular exercise to a different one, no worries! You can run this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout exercise edit WORKOUT_ID EXERCISE_ID NEW_EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout exercise edit 1 2 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command allows you to edit an exercise in a workout, by replacing the exercise corresponding to <code>EXERCISE_ID</code> with the exercise corresponding to <code>NEW_EXERCISE_ID</code>. ZeroToOne will automatically update the exercise in the workout on your result display.  If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited exercise in workout: Overhead Press</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* EXERCISE_ID refers to the index of the exercise in `workout find w/&lt;workout_name&gt;`
+* NEW_EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-exercise-in-a-workout"><a class="link" href="#deleting-an-exercise-in-a-workout">5.9.4. Deleting an exercise in a workout</a></h4>
+<div class="paragraph">
+<p>If editing an exercise does not work for your purposes, you can also choose to simply delete any exercise from a workout. You may type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout exercise delete WORKOUT_ID EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout exercise delete 1 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will delete the set with the specified set ID, from the exercise with the specified exercise ID. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted workout exercise: Strength Training Workout set:</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-workouts"><a class="link" href="#listing-all-workouts">5.9.5. Listing all workouts</a></h4>
+<div class="paragraph">
+<p>Now that we have covered how to manage individual workouts, how about viewing all your workouts in one place? Simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgWorkoutList.png" alt="UgWorkoutList">
+</div>
+<div class="title">Figure 12. Workout List</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will show you a list of all the workouts you have created! From this list, you can see the names of all your workouts, as well as their corresponding workout IDs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-a-workout-by-name-in-progress"><a class="link" href="#finding-a-workout-by-name-in-progress">5.9.6. Finding a workout by name (In Progress)</a></h4>
+<div class="paragraph">
+<p>You may find that you need to know a workout’s ID for some commands, or that you need to retrieve the details of a specific workout. Fret not! Simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout find w/&lt;workout_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout find w/Strength Training</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgFindWorkout.png" alt="UgFindWorkout">
+</div>
+<div class="title">Figure 13. Find Workout</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will return a list of all the workouts whose name matches the workout name you have typed into the command. From this command, you can find out the workout ID number of the workout you are looking for, as well as see the details of each exercise in the workout.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* &lt;workout_name&gt; is not case sensitive
+* &lt;workout_name&gt; can be a partial substring of the actual workout name</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-a-workout-s-name"><a class="link" href="#changing-a-workout-s-name">5.9.7. Changing a workout’s name</a></h4>
+<div class="paragraph">
+<p>If you ever want to change the name of a workout, simply type this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout edit WORKOUT_ID w/&lt;new_workout_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout edit 1 w/Arms Training</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will update its display to show you the new workout name.  If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited workout: Arms Training</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-workout"><a class="link" href="#deleting-a-workout">5.9.8. Deleting a workout</a></h4>
+<div class="paragraph">
+<p>To delete a workout from ZeroToOne, simply type this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout delete WORKOUT_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will update its display to show you the updated list of workouts. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Workout: Arms Training</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exporting-a-workout-plan-to-a-file-proposed"><a class="link" href="#exporting-a-workout-plan-to-a-file-proposed">5.9.9. Exporting a workout plan to a file (Proposed)</a></h4>
+<div class="paragraph">
+<p>Do you enjoy sharing your fitness journey with your friends? Well, this feature allows you to share your workouts with your friends, so you can help each other out in the journey to become fit!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout export WORKOUT_ID p/&lt;file_path&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout export 1 p/data/myWorkout.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully exported workout 1 to /data/myWorkout.txt!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="importing-a-workout-plan-from-a-file-proposed"><a class="link" href="#importing-a-workout-plan-from-a-file-proposed">5.9.10. Importing a workout plan from a file (Proposed)</a></h4>
+<div class="paragraph">
+<p>ZeroToOne will import a workout from a plain text file stored in the specified file_path in your computer. This feature allows you to get workouts from your friends, so you can help each other out in the journey to become fit.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout import p/&lt;file_path&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout import p/data/myFriendsWorkout.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully imported /data/myFriendsWorkout.txt into ZeroToOne!</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-your-scheduled-sessions"><a class="link" href="#managing-your-scheduled-sessions">5.10. Managing Your Scheduled Sessions</a></h3>
+<div class="paragraph">
+<p>You are now an expert in managing your workouts, and can start a workout any time! However, wouldn’t you like to have the ability to schedule your workout sessions? In this section, we will guide you to learn how ZeroToOne can help you in this aspect!</p>
+</div>
+<div class="sect3">
+<h4 id="scheduling-a-new-workout-session"><a class="link" href="#scheduling-a-new-workout-session">5.10.1. Scheduling a new workout session</a></h4>
+<div class="paragraph">
+<p>To schedule a new workout session, simply type in this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule create WORKOUT_ID d/&lt;datetime&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule create 1 d/2020-02-06 18:00</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgScheduleSession.png" alt="UgScheduleSession">
+</div>
+<div class="title">Figure 14. Scheduling a workout session</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+WORKOUT_ID refers to the index of the workout in `workout list`
+&lt;datetime&gt; must follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-future-scheduled-sessions"><a class="link" href="#listing-all-future-scheduled-sessions">5.10.2. Listing all future scheduled sessions</a></h4>
+<div class="paragraph">
+<p>To view all of your future schedule sessions, type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgCalendarSchedule.png" alt="UgCalendarSchedule">
+</div>
+<div class="title">Figure 15. Calendar display of schedule</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne displays an intuitive calendar view, showing your upcoming schedule! From this graphical view, you can see what workout sessions are coming up, as well as their corresponding schedule IDs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-a-scheduled-session-to-another-date"><a class="link" href="#changing-a-scheduled-session-to-another-date">5.10.3. Changing a scheduled session to another date</a></h4>
+<div class="paragraph">
+<p>If you need to shift your scheduled session to another date, try the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule edit SCHEDULED_WORKOUT_ID d/&lt;datetime&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule edit 1 d/2020-02-08T1800</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited schedule: Strength Workout on 2020-02-08 18:00</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* SCHEDULED_WORKOUT_ID refers to the index of the scheduled workout in `schedule list`
+* &lt;datetime&gt; must follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-scheduled-session"><a class="link" href="#deleting-a-scheduled-session">5.10.4. Deleting a scheduled session</a></h4>
+<div class="paragraph">
+<p>Want to delete a scheduled session? You can do so by typing the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule delete SCHEDULED_WORKOUT_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This deletes an existing scheduled workout session with the corresponding scheduled workout ID. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted scheduled workout: Strength Training</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* SCHEDULED_WORKOUT_ID refers to the index of the scheduled workout in `schedule list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scheduling-a-recurring-workout-session-proposed"><a class="link" href="#scheduling-a-recurring-workout-session-proposed">5.10.5. Scheduling a recurring workout session (Proposed)</a></h4>
+<div class="paragraph">
+<p>Sometimes you will want to schedule a workout session that repeats over time, with a certain frequency. No problem! Simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule recurring create WORKOUT_ID d/&lt;datetime&gt; f/&lt;frequency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule recurring create WORKOUT_ID d/2020-03-26T1000 f/MONTHLY</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if you want to have the workout Arms Workout on a monthly basis, starting from the 26th of March 2020 at 10am, you can type <code>schedule recurring create WORKOUT_ID d/2020-03-26T1000 f/MONTHLY</code>.  If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>New recurring schedule added: Strength Workout on 2020-02-06 18:00 Monthly</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* &lt;datetime&gt; must follow the format {yyyy}-{mm}-{dd} {HH:mm}
+* &lt;frequency&gt; must be one of the following: DAILY, WEEKLY, MONTHLY</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-your-session-logs-in-progress"><a class="link" href="#managing-your-session-logs-in-progress">5.11. Managing Your Session Logs (In Progress)</a></h3>
+<div class="paragraph">
+<p>You have successfully gone through the whole process of managing your workouts and scheduling them, good job! To take it one step further, ZeroToOne also allows you to log your past completed workout sessions. Read on to learn how!</p>
+</div>
+<div class="sect3">
+<h4 id="viewing-your-logs"><a class="link" href="#viewing-your-logs">5.11.1. Viewing your logs</a></h4>
+<div class="paragraph">
+<p>To view a list of all your logged past workout sessions, simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>log list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgLogList.png" alt="UgLogList">
+</div>
+<div class="title">Figure 16. List of logged workout sessions</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will display a list of all the logged workout sessions you have carried out. Here, you can see all the logged sessions as well as their corresponding log ID number.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="filtering-your-logs"><a class="link" href="#filtering-your-logs">5.11.2. Filtering your logs</a></h4>
+<div class="paragraph">
+<p>We understand that viewing too many logs at once can be confusing at times, so finding a particular log can be difficult. In order to filter your logs by a search query, simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>log find {st/&lt;datetime&gt; | et/&lt;datetime&gt; | e/&lt;exercise_name&gt;}</code></pre>
+</div>
+</div>
+<div class="openblock example-use">
+<div class="content">
+<div class="paragraph">
+<p>Example uses:
+log find et/2020-04-27 10:10
+log find st/2020-04-27 10:10
+log find e/Deadlift</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will return a list of all the logged sessions whose name matches either the datetime, the exercise_name, or the workout_name you have typed into the command. From this command, you can find out the log ID number of the logged session you are looking for, as well as see the details of the logged session. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Listed 1 logged workout session(s)!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-logged-session"><a class="link" href="#deleting-a-logged-session">5.11.3. Deleting a logged session</a></h4>
+<div class="paragraph">
+<p>Want to delete a logged workout session? Simply type in the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>log delete LOG_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+log delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The view will automatically update with the updated list of logged sessions. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully deleted: Arms Workout at 2020-02-04 10:00!</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* LOG_ID refers to the index of the logged past workout session in `log list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-progress-in-a-graphical-view-proposed"><a class="link" href="#displaying-progress-in-a-graphical-view-proposed">5.11.4. Displaying progress in a graphical view (Proposed)</a></h4>
+<div class="paragraph">
+<p>To view your progress in a graphical view, simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>log display</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set add 1 r/2 m/30</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UgGraphicalLogs.png" alt="UgGraphicalLogs">
+</div>
+<div class="title">Figure 17. Graphical view of logs</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will display a graphical line chart that depicts your overall progress. This means you can quickly see at a glance how successful you have been in completing your sessions. This can help motivate you to work harder to improve, or continue maintaining your progress.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting"><a class="link" href="#troubleshooting">6. Troubleshooting</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+<p>How do I transfer my data to another computer?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Install the app on the other computer.</p>
 </li>
 <li>
-<p>Download the latest <code>zerotoone.jar</code> <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/releases">here</a>.</p>
+<p>Copy the <code>/data</code> folder from the old computer to the new computer and place it in the folder you are running the app from.</p>
 </li>
-<li>
-<p>Copy the file to the folder you want to use as the home folder for your ZeroToOne.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The program should start in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
+</ol>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+<p>I am unable to view the GUI.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Ensure that you have Java 11 installed on your computer.</p>
 </li>
 <li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all workouts in the app</p>
+<p>You can check your current Java version by opening up a Command Prompt or Terminal, and entering <code>java -version</code>.</p>
 </li>
 <li>
-<p><strong><code>session</code></strong> : shows a log of past workouts</p>
+<p>Do install Java 11 if it is not installed. If installing Java 11 does not work, then try installing JavaFX 11 Dependencies on your computer.</p>
 </li>
-<li>
-<p><strong><code>start &lt;workout_id&gt;</code></strong> : starts a new workout</p>
-</li>
-<li>
-<p><strong><code>stop</code></strong> : stops the workout</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
+</ol>
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>I cannot double-click on the application!</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Ensure that you have Java 11 installed on your computer.</p>
+</li>
+<li>
+<p>Open up a Command Prompt or Terminal</p>
+</li>
+<li>
+<p>Navigate to the directory that ZeroToOne is stored in</p>
+</li>
+<li>
+<p>Run <code>java -jar &lt;zerotoone_filename&gt;.jar</code></p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="command-list"><a class="link" href="#command-list">7. Command List</a></h2>
 <div class="sectionbody">
-<div class="exampleblock">
+<div class="paragraph">
+<p><strong>GLOBAL FLAGS</strong></p>
+</div>
+<div class="listingblock">
 <div class="content">
-<div class="paragraph">
-<p><strong>Command Format</strong></p>
+<pre class="CodeRay highlight"><code>e/ - exercise name
+w/ - workout name
+s/ - number of sets
+r/ - number of reps
+m/ - weights
+d/ - datetime
+f/ - frequency
+p/ - file path</code></pre>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in <code>&lt;arrow brackets&gt;</code> are the parameters to be supplied by the user e.g. in <code>start &lt;workout_id&gt;</code>, <code>workout_id</code> is a parameter which can be used as <code>start 1</code>.</p>
-</li>
-<li>
-<p>Items in square brackets are optional e.g <code>start &lt;workout_id&gt; [interval]</code> can be used as <code>start 2 100</code> or as <code>start 2</code>.</p>
-</li>
-<li>
-<p>Parameters must be in the specified order.</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p><strong>Flags</strong></p>
+<p><strong>General: &lt;command&gt; &lt;arguments&gt;</strong></p>
 </div>
-<div class="paragraph">
-<p>All user-fillable fields must be prefixed with a flag when the user inputs the command. This allows ZeroToOne to accept parameters in any order.
-Reserved flags are a set of special symbols that are reserved for use by the program only. Please avoid using them in your input to this application.</p>
-</div>
-<div class="paragraph">
-<p>They are listed as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>e/ - exercise name</p>
-</li>
-<li>
-<p>w/ - workout name</p>
-</li>
-<li>
-<p>s/ - number of sets</p>
-</li>
-<li>
-<p>r/ - number of reps</p>
-</li>
-<li>
-<p>m/ - weights (in kilograms)</p>
-</li>
-<li>
-<p>d/ - datetime</p>
-</li>
-<li>
-<p>f/ - frequency of schedule</p>
-</li>
-<li>
-<p>p/ - file path</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="general-commands"><a class="link" href="#general-commands">3.1. General Commands</a></h3>
-<div class="exampleblock">
+<div class="listingblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Start a ongoingSession : <code>start</code></p>
-</li>
-</ul>
+<pre class="CodeRay highlight"><code>start WORKOUT_ID
+stop
+done
+skip
+help
+exit</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>start &lt;EXERCISE_ID&gt;</code></p>
+<p><strong>Exercise: exercise &lt;command&gt; &lt;arguments&gt;</strong></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Stop a ongoingSession : <code>stop</code></p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Complete a set : <code>done</code></p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Skip a set : <code>skip</code></p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Get help : <code>help</code></p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Exit the program: <code>exit</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exercise-commands"><a class="link" href="#exercise-commands">3.2. Exercise Commands</a></h3>
-<div class="exampleblock">
+<div class="listingblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Command title: <code>code</code></p>
-</li>
-</ul>
+<pre class="CodeRay highlight"><code>exercise create e/&lt;exercise_name&gt;
+exercise set add EXERCISE_ID r/&lt;num_reps&gt; m/&lt;weight&gt;
+exercise set delete EXERCISE_ID SET_ID
+exercise set edit EXERCISE_ID SET_ID r/&lt;num_reps&gt; m/&lt;weight&gt;
+exercise find e/&lt;exercise_name&gt;
+exercise list
+exercise edit EXERCISE_ID e/&lt;exercise_name&gt;
+exercise delete EXERCISE_ID</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
+<p><strong>Workout: workout &lt;command&gt; &lt;arguments&gt;</strong></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="workout-commands"><a class="link" href="#workout-commands">3.3. Workout Commands</a></h3>
-<div class="exampleblock">
+<div class="listingblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Command title: <code>code</code></p>
-</li>
-</ul>
+<pre class="CodeRay highlight"><code>workout create w/&lt;workout_name&gt;
+workout exercise add WORKOUT_ID EXERCISE_ID
+workout exercise edit WORKOUT_ID EXERCISE_ID NEW_EXERCISE_ID
+workout exercise delete WORKOUT_ID EXERCISE_ID
+workout find w/&lt;workout_name&gt;
+workout delete WORKOUT_ID
+workout list
+workout edit WORKOUT_ID w/&lt;workout_name&gt;
+workout export WORKOUT_ID p/&lt;file_path&gt;
+workout import p/&lt;file_path&gt;</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
+<p><strong>Schedule: schedule &lt;command&gt; &lt;arguments&gt;</strong></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="schedule-commands"><a class="link" href="#schedule-commands">3.4. Schedule Commands</a></h3>
-<div class="exampleblock">
+<div class="listingblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Command title: <code>code</code></p>
-</li>
-</ul>
+<pre class="CodeRay highlight"><code>schedule create WORKOUT_ID d/&lt;datetime&gt;
+schedule edit SCHEDULED_WORKOUT_ID d/&lt;datetime&gt;
+schedule delete SCHEDULED_WORKOUT_ID
+schedule list
+schedule recurring create WORKOUT_ID d/&lt;datetime&gt; f/&lt;frequency&gt;</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
+<p><strong>Log: log &lt;command&gt; &lt;arguments&gt;</strong></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="log-commands"><a class="link" href="#log-commands">3.5. Log Commands</a></h3>
-<div class="exampleblock">
+<div class="listingblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Command title: <code>code</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Format: <code>code e/&lt;PARAM&gt;</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.6. Saving the data</a></h3>
-<div class="paragraph">
-<p>ZeroToOne data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<pre class="CodeRay highlight"><code>log list
+log delete LOG_ID
+log find [st/&lt;datetime&gt;] [et/&lt;datetime&gt;] [e/&lt;exercise_name&gt;] [w/&lt;workout_name&gt;]
+log display</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="glossary"><a class="link" href="#glossary">8. Glossary</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ZeroToOne folder.</p>
+<p><strong>CLI</strong></p>
 </div>
 <div class="paragraph">
-<p><strong>Q</strong>: I do not see the GUI.<br>
-<strong>A</strong>: Ensure that you have Java 11 installed on your computer. You can check your current Java version by opening up a Command Prompt or Terminal, and entering java -version. Do install Java 11 if it is not installed. If installing Java 11  does not work, then try installing JavaFX 11 Dependencies on your computer.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>List: list</p>
-</li>
-<li>
-<p>Log: log</p>
-</li>
-<li>
-<p>Start: start &lt;workout&gt;</p>
-</li>
-<li>
-<p>Stop: stop &lt;workout&gt;</p>
-</li>
-<li>
-<p>Pause: pause</p>
-</li>
-<li>
-<p>Exit: exit</p>
-</li>
-</ul>
-</div>
-<hr>
-<hr>
-<hr>
-<div class="paragraph">
-<p>Last person delete below</p>
-</div>
-<hr>
-<hr>
-<hr>
-<div class="sect2">
-<h3 id="workout-commands-2"><a class="link" href="#workout-commands-2">5.1. Workout Commands</a></h3>
-<div class="sect3">
-<h4 id="create-a-workout-plan-code-create-code"><a class="link" href="#create-a-workout-plan-code-create-code">5.1.1. Create a workout plan: <code>create</code></a></h4>
-<div class="paragraph">
-<p>Creates a new workout plan.</p>
+<p>Stands for Command Line Interface, which processes commands to a computer program in the form of lines of text.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>create &lt;workout&gt;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout field must be a string
-</td>
-</tr>
-</table>
+<p><strong>Exercise</strong></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>create MorningWorkout</code></p>
-</li>
-<li>
-<p><code>create NightWorkout</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-workout-plan-code-delete-code"><a class="link" href="#delete-a-workout-plan-code-delete-code">5.1.2. Delete a workout plan : <code>delete</code></a></h4>
-<div class="paragraph">
-<p>Deletes the specified workout and its associated exercises.</p>
+<p>A single type of exercise, for example push ups or crunches.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete &lt;workout&gt;</code></p>
+<p><strong>Gradle</strong></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete MorningWorkout</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-exercises-in-workout-plan-code-list-workout-code"><a class="link" href="#list-exercises-in-workout-plan-code-list-workout-code">5.1.3. List exercises in workout plan : <code>list &lt;workout&gt;</code></a></h4>
-<div class="paragraph">
-<p>Shows a list of all existing exercises in the workout plan</p>
+<p>A build automation tool&#8230;&#8203;</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>list &lt;workout&gt;</code></p>
+<p><strong>GUI</strong></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list MorningWorkout</code><br>
-Returns <code>"BENCH_PRESS, OVERHEAD_PRESS"</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="export-a-workout-plan-code-export-code"><a class="link" href="#export-a-workout-plan-code-export-code">5.1.4. Export a workout plan: <code>export</code></a></h4>
-<div class="paragraph">
-<p>Exports a specified workout plan in a .txt format and saves it to the user’s computer.</p>
+<p>Stands for Graphical User Interface, which is a form of user interface that allows
+users to interact with electronic devices through graphical means, not textual means.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>export &lt;workout&gt;</code></p>
+<p><strong>Instance</strong></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>export NightWorkout</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="import-a-workout-plan-code-export-code"><a class="link" href="#import-a-workout-plan-code-export-code">5.1.5. Import a workout plan: <code>export</code></a></h4>
-<div class="paragraph">
-<p>Imports a workout plan in .txt format from the user’s computer into the application.</p>
+<p>A specific instantiation of an object.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>import &lt;file_path&gt; &lt;workout&gt;</code></p>
+<p><strong>Java</strong></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>import ./src/MyFriendsWorkout.txt MyFriendsWorkout</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exercise-commands-2"><a class="link" href="#exercise-commands-2">5.2. Exercise Commands</a></h3>
-<div class="sect3">
-<h4 id="add-an-exercise-to-workout"><a class="link" href="#add-an-exercise-to-workout">5.2.1. Add an exercise to workout</a></h4>
-<div class="paragraph">
-<p>Format: <code>add &lt;workout&gt; &lt;exercise&gt; &lt;repetitions&gt; &lt;interval&gt;</code></p>
+<p>A programming language&#8230;&#8203;</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add Push BENCH_PRESS_60KG 5 180</code></p>
-</li>
-<li>
-<p><code>add Push OVERHEAD_PRESS_20KG 20 120</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.<br>
-<code>repetitions</code> and <code>interval</code> must be positive integers.<br>
-<code>interval</code> is in seconds.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="edit-an-exercise-in-a-workout"><a class="link" href="#edit-an-exercise-in-a-workout">5.2.2. Edit an exercise in a workout</a></h4>
-<div class="paragraph">
-<p>Edits the details of an exercise in a particular workout, such as the number of repetitions or interval.</p>
+<p><strong>Mainstream OS</strong></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit &lt;workout&gt; &lt;exercise&gt; &lt;new_repetitions&gt; &lt;new_interval&gt;</code></p>
+<p>Windows, Linux, Unix, OS-X</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit Push BENCH_PRESS_60KG 6 200</code></p>
-</li>
-<li>
-<p><code>edit Push OVERHEAD_PRESS_20KG 25 140</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.<br>
-<code>new_repetitions</code> and <code>new_interval</code> must be positive integers.<br>
-<code>new_interval</code> is in seconds.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-an-exercise-from-a-workout-plan"><a class="link" href="#delete-an-exercise-from-a-workout-plan">5.2.3. Delete an exercise from a workout plan</a></h4>
-<div class="paragraph">
-<p>Deletes an exercise from a specified workout plan.</p>
+<p><strong>Schedule</strong></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete &lt;workout&gt; &lt;exercise&gt;</code></p>
+<p>A workout that has been planned to be carried out on a specific date or dates.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete Push BENCH_PRESS_60KG</code></p>
-</li>
-<li>
-<p><code>delete Push OVERHEAD_PRESS_20KG</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The workout name is case-sensitive.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="scheduling-workouts"><a class="link" href="#scheduling-workouts">5.3. Scheduling Workouts</a></h3>
-<div class="sect3">
-<h4 id="schedule-a-single-workout-ongoingsession"><a class="link" href="#schedule-a-single-workout-ongoingsession">5.3.1. Schedule a single workout ongoingSession</a></h4>
-<div class="paragraph">
-<p>Schedules a single workout ongoingSession on a specified date and time.</p>
+<p><strong>Session</strong></p>
 </div>
 <div class="paragraph">
-<p>Format:</p>
+<p>An instance of a workout, whereby the workout is a template for a session.</p>
 </div>
 <div class="paragraph">
-<p><code>schedule single &lt;workout&gt; &lt;date&gt;</code></p>
+<p><strong>Set</strong></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule single Push 2020-03-14T0800</code></p>
-</li>
-<li>
-<p><code>schedule single Pull 2020-03-05T2200</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-date must be in the format {yyyy}-{mm}-{dd}T{2359}.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="schedule-a-recurring-workout-ongoingsession"><a class="link" href="#schedule-a-recurring-workout-ongoingsession">5.3.2. Schedule a recurring workout ongoingSession</a></h4>
-<div class="paragraph">
-<p>Schedules a recurring workout ongoingSession from specified date and time, with a frequency of the recurrence.</p>
+<p>An exercise set that consists of the number of repetitions and its weight.</p>
 </div>
 <div class="paragraph">
-<p>Format:</p>
+<p><strong>Workout</strong></p>
 </div>
 <div class="paragraph">
-<p><code>schedule recurring  &lt;workout&gt; &lt;date&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule recurring Push 2020-03-14T0800</code></p>
-</li>
-<li>
-<p><code>schedule recurring Pull 2020-03-05T2200</code></p>
-</li>
-</ul>
+<p>A list of exercises to be done together, in a certain order.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="delete-a-workout-ongoingsession"><a class="link" href="#delete-a-workout-ongoingsession">5.3.3. Delete a workout ongoingSession</a></h4>
-<div class="paragraph">
-<p>Deletes a specified single workout ongoingSession from the user’s schedule for the specified date.</p>
-</div>
-<div class="paragraph">
-<p>Format:</p>
-</div>
-<div class="paragraph">
-<p><code>schedule single delete &lt;workout&gt; &lt;date&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule single delete Push 2020-03-14T0800</code></p>
-</li>
-<li>
-<p><code>schedule single delete Pull 2020-03-05T2200</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-recurring-workout-ongoingsession"><a class="link" href="#delete-a-recurring-workout-ongoingsession">5.3.4. Delete a recurring workout ongoingSession</a></h4>
-<div class="paragraph">
-<p>Deletes a recurring workout ongoingSession, clearing all of the future recurring sessions from the user’s whole schedule.</p>
-</div>
-<div class="paragraph">
-<p>Format:</p>
-</div>
-<div class="paragraph">
-<p><code>schedule recurring delete &lt;workout&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>schedule recurring delete Push</code></p>
-</li>
-<li>
-<p><code>schedule recurring delete Pull</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-your-schedule"><a class="link" href="#list-your-schedule">5.3.5. List your schedule</a></h4>
-<div class="paragraph">
-<p>Displays a list of the user’s schedule, sorted in chronological order.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>schedule list</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging-workouts"><a class="link" href="#logging-workouts">5.4. Logging Workouts</a></h3>
-<div class="sect3">
-<h4 id="show-log-of-workouts"><a class="link" href="#show-log-of-workouts">5.4.1. Show log of workouts</a></h4>
-<div class="paragraph">
-<p>Displays an indexed log of the user’s past workouts, sorted in chronological order.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>session</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-log-of-past-workout"><a class="link" href="#delete-log-of-past-workout">5.4.2. Delete log of past workout</a></h4>
-<div class="paragraph">
-<p>Deletes the log information at the specified log_index.
-The index refers to the index number displayed on the log list.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>log delete &lt;log_index&gt;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The index must be a positive integer i.e. 1, 2, 3…
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="find-a-past-workout"><a class="link" href="#find-a-past-workout">5.4.3. Find a past workout</a></h4>
-<div class="paragraph">
-<p>Finds a past workout by date or keyword. Query types: DATE, EXERCISE, WORKOUT, SCHEDULE.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>log find &lt;query_type&gt; &lt;params&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>log find DATE 2020-02-18T1600</code></p>
-</li>
-<li>
-<p><code>log find EXERCISE BENCH_PRESS_60KG</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The search is case-sensitive for the params.
-Only full words will be matched.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-a-graphical-progress-chart"><a class="link" href="#show-a-graphical-progress-chart">5.4.4. Show a graphical progress chart</a></h4>
-<div class="paragraph">
-<p>Displays a line graph of the past workouts progress.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>chart</code></p>
-</div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-01 19:38:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 05:04:34 UTC</div></div></div></body></html>
