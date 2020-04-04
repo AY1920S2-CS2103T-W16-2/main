@@ -9,8 +9,6 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-import seedu.zerotoone.model.exercise.Exercise;
-import seedu.zerotoone.model.exercise.ExerciseSet;
 import seedu.zerotoone.model.workout.Workout;
 import seedu.zerotoone.model.workout.WorkoutName;
 
@@ -31,7 +29,8 @@ public class OngoingWorkout {
     public OngoingWorkout(Workout workout, LocalDateTime startTime) {
         requireAllNonNull(workout);
         this.workoutName = workout.getWorkoutName();
-        this.toDo.addAll(workout.getWorkoutExercises().stream().map((x) -> new OngoingSession(x, startTime)).collect(Collectors.toList()));
+        this.toDo.addAll(workout.getWorkoutExercises().stream().map((x) -> new OngoingSession(x, startTime))
+                .collect(Collectors.toList()));
         this.startTime = startTime;
     }
 

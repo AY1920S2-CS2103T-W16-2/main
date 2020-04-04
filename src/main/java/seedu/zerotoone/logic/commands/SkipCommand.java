@@ -8,7 +8,6 @@ import java.time.format.FormatStyle;
 
 import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.model.Model;
-import seedu.zerotoone.model.session.OngoingSession;
 import seedu.zerotoone.model.session.OngoingWorkout;
 import seedu.zerotoone.model.session.SessionSet;
 
@@ -19,7 +18,8 @@ public class SkipCommand extends Command {
     public static final String COMMAND_WORD = "skip";
     public static final String MESSAGE_USAGE = "Usage: skip";
     public static final String MESSAGE_SKIP_SET = "Skipped set: %1$s";
-    public static final String MESSAGE_SKIPPED_LAST = "You have skipped the last set, you workout session is done and saved!";
+    public static final String MESSAGE_SKIPPED_LAST = "You have skipped the last set, "
+            + "your workout session is done and saved!";
     public static final String MESSAGE_NOT_STARTED = "There is no session in progress!";
     private final FormatStyle formatStyle = FormatStyle.MEDIUM;
 

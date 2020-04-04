@@ -23,7 +23,6 @@ import seedu.zerotoone.model.schedule.ScheduleList;
 import seedu.zerotoone.model.schedule.ScheduledWorkout;
 import seedu.zerotoone.model.schedule.Scheduler;
 import seedu.zerotoone.model.session.CompletedWorkout;
-import seedu.zerotoone.model.session.OngoingSession;
 import seedu.zerotoone.model.session.OngoingWorkout;
 import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.session.Session;
@@ -222,7 +221,8 @@ public class ModelManager implements Model {
     public void stopSession(LocalDateTime currentDateTime) {
         OngoingWorkout ongoingWorkout = this.currentWorkout.get();
         CompletedWorkout workout = ongoingWorkout.finish(currentDateTime);
-//        this.sessionList.addSession(session);
+        // Jiachen u need to fix this
+        // this.sessionList.addSession(session);
         this.currentWorkout = Optional.empty();
     }
 

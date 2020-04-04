@@ -12,7 +12,6 @@ import seedu.zerotoone.commons.core.index.Index;
 import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.model.Model;
 import seedu.zerotoone.model.exercise.Exercise;
-import seedu.zerotoone.model.session.OngoingSession;
 import seedu.zerotoone.model.session.OngoingWorkout;
 import seedu.zerotoone.model.workout.Workout;
 
@@ -26,16 +25,16 @@ public class StartCommand extends Command {
     public static final String MESSAGE_IN_SESSION = "There is a workout session already in progress!";
     public static final String MESSAGE_EMPTY_WORKOUT = "Unable to start an empty workout!";
     public static final String MESSAGE_EMPTY_EXERCISE = "Some exercises in this workout are invalid!";
-    private final Index workoutID;
+    private final Index workoutId;
     private final FormatStyle formatStyle = FormatStyle.MEDIUM;
-
-    public Index getWorkoutID() {
-        return workoutID;
-    }
 
     public StartCommand(Index targetIndex) {
         requireNonNull(targetIndex);
-        this.workoutID = targetIndex;
+        this.workoutId = targetIndex;
+    }
+
+    public Index getWorkoutId() {
+        return workoutId;
     }
 
     @Override
@@ -43,11 +42,11 @@ public class StartCommand extends Command {
         requireNonNull(model);
         List<Workout> lastShownList = model.getFilteredWorkoutList();
 
-        if (workoutID.getZeroBased() >= lastShownList.size()) {
+        if (workoutId.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_INDEX);
         }
 
-        Workout workoutToStart = lastShownList.get(workoutID.getZeroBased());
+        Workout workoutToStart = lastShownList.get(workoutId.getZeroBased());
         List<Exercise> exercises = workoutToStart.getWorkoutExercises();
         if (exercises.isEmpty()) {
             throw new CommandException(MESSAGE_EMPTY_WORKOUT);
@@ -77,6 +76,6 @@ public class StartCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof StartCommand // instanceof handles nulls
-                && workoutID.equals(((StartCommand) other).workoutID)); // state check
+                && workoutId.equals(((StartCommand) other).workoutId)); // state check
     }
 }
