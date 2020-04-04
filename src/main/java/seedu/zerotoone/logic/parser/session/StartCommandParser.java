@@ -7,7 +7,7 @@ import seedu.zerotoone.commons.core.index.Index;
 import seedu.zerotoone.logic.commands.StartCommand;
 import seedu.zerotoone.logic.parser.Parser;
 import seedu.zerotoone.logic.parser.exceptions.ParseException;
-import seedu.zerotoone.logic.parser.exercise.ExerciseParserUtil;
+import seedu.zerotoone.logic.parser.util.ParserUtil;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object
@@ -26,7 +26,7 @@ public class StartCommandParser implements Parser<StartCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, StartCommand.MESSAGE_USAGE));
         }
 
-        Index index = ExerciseParserUtil.parseIndex(args);
+        Index index = ParserUtil.parseIndex(args);
         return new StartCommand(index);
     }
 }
