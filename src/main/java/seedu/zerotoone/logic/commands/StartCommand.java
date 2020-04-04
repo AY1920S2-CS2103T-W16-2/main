@@ -13,50 +13,63 @@ import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.model.Model;
 import seedu.zerotoone.model.exercise.Exercise;
 import seedu.zerotoone.model.session.OngoingSession;
+import seedu.zerotoone.model.session.OngoingWorkout;
+import seedu.zerotoone.model.workout.Workout;
 
 /**
  * Starts a new session based on a displayed index from the exercise list.
  */
 public class StartCommand extends Command {
     public static final String COMMAND_WORD = "start";
-    public static final String MESSAGE_USAGE = "Usage: start EXERCISE_ID";
-    public static final String MESSAGE_START_EXERCISE_SUCCESS = "Started exercise: %1$s at ";
+    public static final String MESSAGE_USAGE = "Usage: start WORKOUT_ID";
+    public static final String MESSAGE_START_WORKOUT_SUCCESS = "Started workout: %1$s at ";
     public static final String MESSAGE_IN_SESSION = "There is a workout session already in progress!";
-    public static final String MESSAGE_NO_SET_LEFT = "No sets left. You are done with your exercise!";
-    private final Index exerciseId;
+    public static final String MESSAGE_EMPTY_WORKOUT = "Unable to start an empty workout!";
+    public static final String MESSAGE_EMPTY_EXERCISE = "Some exercises in this workout are invalid!";
+    private final Index workoutID;
     private final FormatStyle formatStyle = FormatStyle.MEDIUM;
+
+    public Index getWorkoutID() {
+        return workoutID;
+    }
 
     public StartCommand(Index targetIndex) {
         requireNonNull(targetIndex);
-        this.exerciseId = targetIndex;
+        this.workoutID = targetIndex;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Exercise> lastShownList = model.getFilteredExerciseList();
+        List<Workout> lastShownList = model.getFilteredWorkoutList();
 
-        if (exerciseId.getZeroBased() >= lastShownList.size()) {
+        if (workoutID.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_INDEX);
         }
 
-        Exercise exerciseToStart = lastShownList.get(exerciseId.getZeroBased());
+        Workout workoutToStart = lastShownList.get(workoutID.getZeroBased());
+        List<Exercise> exercises = workoutToStart.getWorkoutExercises();
+        if (exercises.isEmpty()) {
+            throw new CommandException(MESSAGE_EMPTY_WORKOUT);
+        }
+
+        for (Exercise each: exercises) {
+            if (each.getExerciseSets().isEmpty()) {
+                throw new CommandException(MESSAGE_EMPTY_EXERCISE);
+            }
+        }
 
         if (model.isInSession()) {
-            throw new CommandException((MESSAGE_IN_SESSION));
+            throw new CommandException(MESSAGE_IN_SESSION);
         }
 
         LocalDateTime currentDateTime = LocalDateTime.now();
-        OngoingSession current = model.startSession(exerciseToStart, currentDateTime);
-        if (!current.hasSetLeft()) {
-            model.stopSession(currentDateTime);
-            throw new CommandException((MESSAGE_NO_SET_LEFT));
-        }
+        OngoingWorkout current = model.startSession(workoutToStart, currentDateTime);
 
         String formatted = currentDateTime.format(DateTimeFormatter.ofLocalizedDateTime(this.formatStyle));
 
-        String outputMessage = String.format(MESSAGE_START_EXERCISE_SUCCESS,
-                exerciseToStart.getExerciseName().toString()) + formatted;
+        String outputMessage = String.format(MESSAGE_START_WORKOUT_SUCCESS,
+                workoutToStart.getWorkoutName().toString()) + formatted;
         return new CommandResult(outputMessage);
     }
 
@@ -64,6 +77,6 @@ public class StartCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof StartCommand // instanceof handles nulls
-                && exerciseId.equals(((StartCommand) other).exerciseId)); // state check
+                && workoutID.equals(((StartCommand) other).workoutID)); // state check
     }
 }

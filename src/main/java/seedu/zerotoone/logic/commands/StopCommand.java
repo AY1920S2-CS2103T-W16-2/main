@@ -27,7 +27,6 @@ public class StopCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Exercise> lastShownList = model.getFilteredExerciseList();
 
         if (!model.isInSession()) {
             throw new CommandException((MESSAGE_NOT_STARTED));
@@ -36,7 +35,7 @@ public class StopCommand extends Command {
         LocalDateTime currentDateTime = LocalDateTime.now();
         String formatted = currentDateTime.format(DateTimeFormatter.ofLocalizedDateTime(this.formatStyle));
         String outputMessage = String.format(MESSAGE_STOP_SESSION_SUCCESS,
-                model.getCurrentSession().get().getExerciseName().toString()) + formatted;
+                model.getCurrentWorkout().get().getExerciseName().toString()) + formatted;
 
         model.stopSession(currentDateTime);
 

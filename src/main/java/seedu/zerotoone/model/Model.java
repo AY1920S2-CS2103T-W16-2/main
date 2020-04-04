@@ -13,9 +13,11 @@ import seedu.zerotoone.model.schedule.Schedule;
 import seedu.zerotoone.model.schedule.ScheduleList;
 import seedu.zerotoone.model.schedule.ScheduledWorkout;
 import seedu.zerotoone.model.session.OngoingSession;
+import seedu.zerotoone.model.session.OngoingWorkout;
 import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.session.Session;
 import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;
+import seedu.zerotoone.model.workout.Workout;
 import seedu.zerotoone.model.workout.WorkoutModel;
 
 /**
@@ -112,13 +114,13 @@ public interface Model extends WorkoutModel {
      */
     boolean isInSession();
 
-    OngoingSession startSession(Exercise exerciseToStart, LocalDateTime currentDateTime);
+    OngoingWorkout startSession(Workout workoutToStart, LocalDateTime currentDateTime);
 
     void stopSession(LocalDateTime currentDateTime);
 
     // todo write java docs
 
-    Optional<OngoingSession> getCurrentSession();
+    Optional<OngoingWorkout> getCurrentWorkout();
     boolean hasSchedule(Schedule schedule);
     void addSchedule(Schedule schedule);
     void setSchedule(Schedule scheduleToEdit, Schedule editedSchedule);

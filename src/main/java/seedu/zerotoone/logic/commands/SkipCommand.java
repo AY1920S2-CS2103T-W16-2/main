@@ -33,7 +33,7 @@ public class SkipCommand extends Command {
         }
 
         LocalDateTime currentDateTime = LocalDateTime.now();
-        OngoingSession current = model.getCurrentSession().get();
+        OngoingSession current = model.getCurrentWorkout().get();
 
         SessionSet set = current.skip();
 

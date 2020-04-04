@@ -234,7 +234,7 @@ public class CreateCommandTest {
         }
 
         @Override
-        public Optional<OngoingSession> getCurrentSession() {
+        public Optional<OngoingSession> getCurrentWorkout() {
             throw new AssertionError("This method should not be called.");
         }
 
