@@ -22,7 +22,7 @@ import seedu.zerotoone.model.workout.Workout;
 public class StartCommand extends Command {
     public static final String COMMAND_WORD = "start";
     public static final String MESSAGE_USAGE = "Usage: start WORKOUT_ID";
-    public static final String MESSAGE_START_WORKOUT_SUCCESS = "Started workout: %1$s at ";
+    public static final String MESSAGE_START_WORKOUT_SUCCESS = "Started workout session: %1$s at ";
     public static final String MESSAGE_IN_SESSION = "There is a workout session already in progress!";
     public static final String MESSAGE_EMPTY_WORKOUT = "Unable to start an empty workout!";
     public static final String MESSAGE_EMPTY_EXERCISE = "Some exercises in this workout are invalid!";

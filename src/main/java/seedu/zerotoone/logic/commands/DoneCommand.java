@@ -9,6 +9,7 @@ import java.time.format.FormatStyle;
 import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.model.Model;
 import seedu.zerotoone.model.session.OngoingSession;
+import seedu.zerotoone.model.session.OngoingWorkout;
 import seedu.zerotoone.model.session.SessionSet;
 
 /**
@@ -18,7 +19,7 @@ public class DoneCommand extends Command {
     public static final String COMMAND_WORD = "done";
     public static final String MESSAGE_USAGE = "Usage: done";
     public static final String MESSAGE_DONE_SET = "Completed set: %1$s";
-    public static final String MESSAGE_NONE_LEFT = "You have isFinished the last set!";
+    public static final String MESSAGE_NONE_LEFT = "You have finished the last set, your workout session is done and saved!";
     public static final String MESSAGE_NOT_STARTED = "There is no session in progress!";
     private final FormatStyle formatStyle = FormatStyle.MEDIUM;
 
@@ -33,13 +34,13 @@ public class DoneCommand extends Command {
         }
 
         LocalDateTime currentDateTime = LocalDateTime.now();
-        OngoingSession current = model.getCurrentWorkout().get();
+        OngoingWorkout current = model.getCurrentWorkout().get();
 
         SessionSet set = current.done();
 
         String outputMessage = String.format(MESSAGE_DONE_SET, set.toString());
 
-        if (!current.hasSetLeft()) {
+        if (!current.hasExerciseLeft()) {
             model.stopSession(currentDateTime);
             outputMessage = outputMessage + "\n" + MESSAGE_NONE_LEFT;
         }
