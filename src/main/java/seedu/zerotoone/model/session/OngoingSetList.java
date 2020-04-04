@@ -6,7 +6,6 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.zerotoone.model.exercise.ExerciseSet;
 
 /**
  * Wraps all data at the session list level.

@@ -4,7 +4,6 @@ import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import seedu.zerotoone.commons.core.index.Index;
 import seedu.zerotoone.model.exercise.ExerciseName;
 import seedu.zerotoone.model.exercise.ExerciseSet;
 import seedu.zerotoone.model.exercise.NumReps;
@@ -33,7 +32,7 @@ public class OngoingSet {
         this.index = index;
     }
 
-    public int getIndex(){
+    public int getIndex() {
         return this.index;
     }
 

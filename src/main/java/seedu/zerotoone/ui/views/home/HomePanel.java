@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
-import javafx.scene.text.Text;
-import seedu.zerotoone.model.session.OngoingSession;
 import seedu.zerotoone.model.session.OngoingSet;
 import seedu.zerotoone.ui.util.UiPart;
 

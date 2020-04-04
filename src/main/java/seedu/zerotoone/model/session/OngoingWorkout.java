@@ -11,7 +11,6 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-import seedu.zerotoone.commons.core.index.Index;
 import seedu.zerotoone.model.exercise.ExerciseSet;
 import seedu.zerotoone.model.workout.Workout;
 import seedu.zerotoone.model.workout.WorkoutName;
