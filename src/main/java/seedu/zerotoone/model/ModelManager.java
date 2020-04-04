@@ -23,7 +23,9 @@ import seedu.zerotoone.model.schedule.ScheduleList;
 import seedu.zerotoone.model.schedule.ScheduledWorkout;
 import seedu.zerotoone.model.schedule.Scheduler;
 import seedu.zerotoone.model.session.CompletedWorkout;
+import seedu.zerotoone.model.session.OngoingSetList;
 import seedu.zerotoone.model.session.OngoingWorkout;
+import seedu.zerotoone.model.session.ReadOnlyOngoingSetList;
 import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.session.Session;
 import seedu.zerotoone.model.session.SessionList;
@@ -53,6 +55,7 @@ public class ModelManager implements Model {
     // Session
     private Optional<OngoingWorkout> currentWorkout;
     private final StopWatch stopwatch;
+    private final OngoingSetList ongoingSetList;
 
     // Schedule
     private final Scheduler scheduler;
@@ -90,6 +93,7 @@ public class ModelManager implements Model {
 
         this.currentWorkout = Optional.empty();
         this.stopwatch = new StopWatch();
+        this.ongoingSetList = new OngoingSetList();
 
         this.sessionList = new SessionList(sessionList);
         filteredSessions = new FilteredList<>(this.sessionList.getSessionList());
@@ -214,6 +218,7 @@ public class ModelManager implements Model {
     public OngoingWorkout startSession(Workout workoutToStart, LocalDateTime currentDateTime) {
         OngoingWorkout ongoingWorkout = new OngoingWorkout(workoutToStart, currentDateTime);
         this.currentWorkout = Optional.of(ongoingWorkout);
+        ongoingSetList.setSessionList(ongoingWorkout.getRemainingSets());
         return ongoingWorkout;
     }
 
@@ -221,6 +226,7 @@ public class ModelManager implements Model {
     public void stopSession(LocalDateTime currentDateTime) {
         OngoingWorkout ongoingWorkout = this.currentWorkout.get();
         CompletedWorkout workout = ongoingWorkout.finish(currentDateTime);
+        ongoingSetList.resetData(new OngoingSetList());
         // Jiachen u need to fix this
         // this.sessionList.addSession(session);
         this.currentWorkout = Optional.empty();
@@ -229,6 +235,11 @@ public class ModelManager implements Model {
     @Override
     public Optional<OngoingWorkout> getCurrentWorkout() {
         return Optional.ofNullable(this.currentWorkout.orElse(null));
+    }
+
+    @Override
+    public ReadOnlyOngoingSetList getOngoingSetList() {
+        return this.ongoingSetList;
     }
 
     // -----------------------------------------------------------------------------------------
@@ -247,8 +258,6 @@ public class ModelManager implements Model {
     public ObservableList<Session> getFilteredSessionList() {
         return filteredSessions;
     }
-
-
 
     @Override
     public boolean hasSchedule(Schedule schedule) {

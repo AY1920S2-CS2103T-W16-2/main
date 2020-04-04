@@ -4,11 +4,15 @@ package seedu.zerotoone.model.session;
 import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
+import seedu.zerotoone.commons.core.index.Index;
+import seedu.zerotoone.model.exercise.ExerciseSet;
 import seedu.zerotoone.model.workout.Workout;
 import seedu.zerotoone.model.workout.WorkoutName;
 
@@ -36,6 +40,22 @@ public class OngoingWorkout {
 
     public WorkoutName getWorkoutName() {
         return this.workoutName;
+    }
+
+    public List<OngoingSession> getRemainingExercises() {
+        return Collections.unmodifiableList(new LinkedList<>(this.toDo));
+    }
+
+    public List<OngoingSet> getRemainingSets() {
+        List<OngoingSet> sets = new LinkedList<>();
+        for (OngoingSession o: getRemainingExercises()) {
+            int i = 1;
+            for (ExerciseSet e: o.getRemaining()) {
+                sets.add(new OngoingSet(e, o.getExerciseName(), i));
+                i++;
+            }
+        }
+        return sets;
     }
 
     /**

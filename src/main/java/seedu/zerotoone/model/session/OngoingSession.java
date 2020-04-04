@@ -4,7 +4,9 @@ package seedu.zerotoone.model.session;
 import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 
@@ -70,6 +72,10 @@ public class OngoingSession {
 
     public Optional<SessionSet> last() {
         return Optional.ofNullable(exerciseDone.peek());
+    }
+
+    public List<ExerciseSet> getRemaining() {
+        return Collections.unmodifiableList(new LinkedList<>(this.exerciseQueue));
     }
 
     /**

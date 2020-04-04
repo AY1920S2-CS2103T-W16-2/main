@@ -10,6 +10,7 @@ import seedu.zerotoone.logic.parser.exceptions.ParseException;
 import seedu.zerotoone.model.exercise.Exercise;
 import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;
 import seedu.zerotoone.model.schedule.ScheduledWorkout;
+import seedu.zerotoone.model.session.OngoingSet;
 import seedu.zerotoone.model.session.Session;
 
 /**
@@ -62,6 +63,13 @@ public interface Logic extends WorkoutLogic {
      * @see seedu.zerotoone.model.Model#getSessionList()
      */
     ObservableList<Session> getSessionList();
+
+    /**
+     * Returns the OngoingSessionList.
+     *
+     * @see seedu.zerotoone.model.Model#getOngoingSetList()
+     */
+    ObservableList<OngoingSet> getOngoingSetList();
 
     /** Returns an unmodifiable view of the filtered list of sessions */
     ObservableList<Session> getFilteredSessionList();

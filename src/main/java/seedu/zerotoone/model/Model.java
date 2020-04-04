@@ -13,6 +13,7 @@ import seedu.zerotoone.model.schedule.Schedule;
 import seedu.zerotoone.model.schedule.ScheduleList;
 import seedu.zerotoone.model.schedule.ScheduledWorkout;
 import seedu.zerotoone.model.session.OngoingWorkout;
+import seedu.zerotoone.model.session.ReadOnlyOngoingSetList;
 import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.session.Session;
 import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;
@@ -117,6 +118,8 @@ public interface Model extends WorkoutModel {
 
     void stopSession(LocalDateTime currentDateTime);
 
+    ReadOnlyOngoingSetList getOngoingSetList();
+
     // todo write java docs
 
     Optional<OngoingWorkout> getCurrentWorkout();
@@ -141,7 +144,4 @@ public interface Model extends WorkoutModel {
     void deleteSession(int target);
 
     void setSessionListFilePath(Path sessionListFilePath);
-
-
-
 }

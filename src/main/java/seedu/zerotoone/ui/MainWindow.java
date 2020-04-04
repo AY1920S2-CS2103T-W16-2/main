@@ -2,6 +2,7 @@ package seedu.zerotoone.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -19,6 +20,8 @@ import seedu.zerotoone.logic.Logic;
 import seedu.zerotoone.logic.commands.CommandResult;
 import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.logic.parser.exceptions.ParseException;
+import seedu.zerotoone.model.session.OngoingSet;
+import seedu.zerotoone.model.session.OngoingSetList;
 import seedu.zerotoone.ui.util.UiPart;
 import seedu.zerotoone.ui.views.exercise.ExerciseListPanel;
 import seedu.zerotoone.ui.views.home.HomePanel;
@@ -144,7 +147,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        homePanel = new HomePanel();
+        homePanel = new HomePanel(logic.getOngoingSetList());
         homeContentPlaceholder.getChildren().add(homePanel.getRoot());
 
         exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
