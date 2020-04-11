@@ -10,13 +10,13 @@ import seedu.zerotoone.logic.parser.exceptions.ParseException;
 import seedu.zerotoone.logic.parser.util.ParserUtil;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new StartCommand object
  */
 public class StartCommandParser implements Parser<StartCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the DeleteCommand
-     * and returns a DeleteCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the StartCommand
+     * and returns a StartCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public StartCommand parse(String args) throws ParseException {

@@ -12,7 +12,6 @@ import seedu.zerotoone.commons.core.index.Index;
 import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.model.Model;
 import seedu.zerotoone.model.exercise.Exercise;
-import seedu.zerotoone.model.session.OngoingWorkout;
 import seedu.zerotoone.model.workout.Workout;
 
 /**
@@ -21,12 +20,11 @@ import seedu.zerotoone.model.workout.Workout;
 public class StartCommand extends Command {
     public static final String COMMAND_WORD = "start";
     public static final String MESSAGE_USAGE = "Usage: start WORKOUT_ID";
-    public static final String MESSAGE_START_WORKOUT_SUCCESS = "Started workout session: %1$s at ";
-    public static final String MESSAGE_IN_SESSION = "There is a workout session already in progress!";
+    public static final String MESSAGE_SUCCESS = "Started workout session: %1$s at ";
     public static final String MESSAGE_EMPTY_WORKOUT = "Unable to start an empty workout!";
     public static final String MESSAGE_EMPTY_EXERCISE = "Some exercises in this workout are invalid!";
+    public static final FormatStyle FORMAT_STYLE = FormatStyle.MEDIUM;
     private final Index workoutId;
-    private final FormatStyle formatStyle = FormatStyle.MEDIUM;
 
     public StartCommand(Index targetIndex) {
         requireNonNull(targetIndex);
@@ -39,6 +37,22 @@ public class StartCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+        if (model.isInSession()) {
+            throw new CommandException(Command.MESSAGE_SESSION_STARTED);
+        }
+
+        return executeHelper(model, LocalDateTime.now());
+    }
+
+    /**
+     * Helper method for execute, such that we keep the method from being too stateful with LocalDateTime objects.
+     * This lets us test more extensively.
+     * @param model model in use.
+     * @param currentDateTime passed in by execute with a call to getDateTimeNow().
+     * @return returns the CommandResult as per normal execute method behaviour.
+     */
+    public CommandResult executeHelper(Model model, LocalDateTime currentDateTime) throws CommandException {
         requireNonNull(model);
         List<Workout> lastShownList = model.getFilteredWorkoutList();
 
@@ -58,16 +72,11 @@ public class StartCommand extends Command {
             }
         }
 
-        if (model.isInSession()) {
-            throw new CommandException(MESSAGE_IN_SESSION);
-        }
+        model.startSession(workoutToStart, currentDateTime);
 
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        OngoingWorkout current = model.startSession(workoutToStart, currentDateTime);
+        String formatted = currentDateTime.format(DateTimeFormatter.ofLocalizedDateTime(FORMAT_STYLE));
 
-        String formatted = currentDateTime.format(DateTimeFormatter.ofLocalizedDateTime(this.formatStyle));
-
-        String outputMessage = String.format(MESSAGE_START_WORKOUT_SUCCESS,
+        String outputMessage = String.format(MESSAGE_SUCCESS,
                 workoutToStart.getWorkoutName().toString()) + formatted;
         return new CommandResult(outputMessage);
     }

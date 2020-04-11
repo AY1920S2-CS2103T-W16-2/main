@@ -15,7 +15,7 @@ import seedu.zerotoone.model.exercise.ExerciseName;
 import seedu.zerotoone.model.exercise.ExerciseSet;
 
 /**
- * Represents a single Session.
+ * Represents a single Ongoing Session.
  */
 public class OngoingSession {
 
@@ -26,10 +26,10 @@ public class OngoingSession {
     private final Queue<CompletedSet> exerciseDone = new LinkedList<>();
 
     /**
-     * Every field must be present and not null.
+     * Exercise field must be non null.
      */
     public OngoingSession(Exercise exercise, LocalDateTime startTime) {
-        requireAllNonNull(exercise);
+        requireAllNonNull(exercise, startTime);
         this.exerciseName = exercise.getExerciseName();
         int i = 0;
         for (ExerciseSet s: exercise.getExerciseSets()) {
@@ -45,7 +45,7 @@ public class OngoingSession {
 
     /**
      * Completes the top exercise that is left in the exerciseQueue and puts it into the done list.
-     * @return set: the done SessionSet
+     * @return set: the done CompletedSet
      */
     public CompletedSet done() {
         OngoingSet ongoingSet = exerciseQueue.poll();
@@ -56,7 +56,7 @@ public class OngoingSession {
 
     /**
      * Skips the top exercise that is left in the exerciseQueue and puts it into the done list.
-     * @return set: the skipped SessionSet
+     * @return set: the skipped CompletedSet
      */
     public CompletedSet skip() {
         OngoingSet ongoingSet = exerciseQueue.poll();
@@ -88,7 +88,7 @@ public class OngoingSession {
      * Ends a Session (prematurely if queue is still filled) with a endTime, and labelling
      * incomplete sets as unfinished.
      * @param endTime the time of completion
-     * @return returns a new immutable CompletedSession.
+     * @return returns a new immutable CompletedExercise.
      */
     public CompletedExercise finish(LocalDateTime endTime) {
         while (this.hasSetLeft()) {
@@ -96,5 +96,34 @@ public class OngoingSession {
         }
         return new CompletedExercise(this.exerciseName, new LinkedList<>(exerciseDone),
                 startTime, endTime);
+    }
+
+    /**
+     * Returns true if both OngoingSessions have the same identity and data fields.
+     * This defines a stronger notion of equality between two OngoingSessions.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof OngoingSession)) {
+            return false;
+        }
+
+        OngoingSession otherOngoingSession = (OngoingSession) other;
+        return otherOngoingSession.getExerciseName().equals(getExerciseName())
+                && otherOngoingSession.getRemaining().equals(getRemaining())
+                && otherOngoingSession.getDateTime().equals(getDateTime());
+    }
+
+    private LocalDateTime getDateTime() {
+        return this.startTime;
+    }
+
+    @Override
+    public String toString() {
+        return this.getExerciseName().fullName + " " + this.startTime.toString();
     }
 }

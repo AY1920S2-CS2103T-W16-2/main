@@ -8,7 +8,7 @@ import seedu.zerotoone.logic.parser.Parser;
 import seedu.zerotoone.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DoneCommand object
+ * Parses input arguments and creates a new SkipCommand object
  */
 public class SkipCommandParser implements Parser<SkipCommand> {
 

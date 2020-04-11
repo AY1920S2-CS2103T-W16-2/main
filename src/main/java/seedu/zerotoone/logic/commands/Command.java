@@ -8,6 +8,7 @@ import seedu.zerotoone.model.Model;
  */
 public abstract class Command {
     public static final String MESSAGE_SESSION_STARTED = "Finish your workout session before trying this command!";
+    public static final String MESSAGE_SESSION_NOT_STARTED = "There is no session in progress!";
 
     /**
      * Executes the command and returns the result message.

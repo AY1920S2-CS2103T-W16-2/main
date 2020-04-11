@@ -25,8 +25,8 @@ public class OngoingSet {
     /**
      * Every field must be present and not null.
      */
-    public OngoingSet(ExerciseSet set, ExerciseName name, int index) {
-        requireAllNonNull(set, name);
+    public OngoingSet(ExerciseSet set, ExerciseName name, Integer index) {
+        requireAllNonNull(set, name, index);
         this.set = set;
         this.exerciseName = name;
         this.index = index;
@@ -68,9 +68,11 @@ public class OngoingSet {
             return false;
         }
 
-        OngoingSet otherExerciseSet = (OngoingSet) other;
-        return otherExerciseSet.getWeight().equals(getWeight())
-                && otherExerciseSet.getNumReps().equals(getNumReps());
+        OngoingSet otherOngoingSet = (OngoingSet) other;
+        return otherOngoingSet.getWeight().equals(getWeight())
+                && otherOngoingSet.getNumReps().equals(getNumReps())
+                && otherOngoingSet.getExerciseName().equals(getExerciseName())
+                && otherOngoingSet.getIndex() == getIndex();
     }
 
     @Override
