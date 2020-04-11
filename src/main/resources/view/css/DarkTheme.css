@@ -137,7 +137,7 @@
 .list-cell:filled:selected {
     /*-fx-background-color: transparent;*/
     /*-fx-background-color: #66504e;*/
-    -fx-background-color: rgba(60, 76, 105, 0.52);
+    -fx-background-color: rgba(54, 82, 137, 0.52);
 }
 
 .list-cell:filled:selected #cardPane {
