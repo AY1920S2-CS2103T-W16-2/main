@@ -21,9 +21,9 @@ public class OngoingSessionCard extends UiPart<Region> {
      */
 
     @FXML
-    private Label exerciseName;
+    private Label sessionSet;
     @FXML
-    private Label exerciseReps;
+    private Label sessionReps;
 
     public OngoingSessionCard(OngoingSet ongoingSet) {
         super(FXML);
@@ -31,8 +31,8 @@ public class OngoingSessionCard extends UiPart<Region> {
         String set = String.valueOf(ongoingSet.getIndex() + 1);
         String weight = ongoingSet.getWeight().value;
         String reps = ongoingSet.getNumReps().value;
-        exerciseName.setText(name + ": " + "Set " + set);
-        exerciseReps.setText(reps + " reps, " + weight + "kg");
+        sessionSet.setText(name + ": " + "Set " + set);
+        sessionReps.setText(reps + " reps, " + weight + "kg");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class OngoingSessionCard extends UiPart<Region> {
 
         // state check
         OngoingSessionCard card = (OngoingSessionCard) other;
-        return exerciseName.getText().equals(card.exerciseName.getText())
-                && exerciseReps.getText().equals(card.exerciseReps.getText());
+        return sessionSet.getText().equals(card.sessionSet.getText())
+                && sessionReps.getText().equals(card.sessionReps.getText());
     }
 }
