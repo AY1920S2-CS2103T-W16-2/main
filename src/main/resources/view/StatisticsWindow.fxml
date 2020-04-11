@@ -11,7 +11,7 @@
 <?import javafx.stage.*?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<fx:root minHeight="640" minWidth="540" resizable="false" title="ZeroToOne Report Card" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="650" minWidth="530" resizable="false" title="ZeroToOne Report Card" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
 
     <icons>
         <Image url="@/images/icon.png" />
@@ -27,19 +27,22 @@
             <VBox>
                 <HBox>
                     <padding>
-                        <Insets bottom="10" left="10" right="10" top="10" />
+                        <Insets left="20" right="20" top="20" />
                     </padding>
                      <Text fx:id="statisticsTitle">ZeroToOne Report Card</Text>
                 </HBox>
 
                 <HBox>
                     <padding>
-                        <Insets bottom="10" left="10" right="10" />
+                        <Insets bottom="10" left="20" right="20" />
                     </padding>
                     <Text fx:id="statisticsSubTitle">Statistics generated from </Text>
                 </HBox>
 
                 <VBox alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets bottom="10" left="20" right="20" />
+                    </padding>
                         <HBox>
                             <Label prefWidth="175.0" styleClass="metricLabel">Total # of Workouts: </Label>
                             <Label fx:id="totalWorkoutCount" styleClass="metricResult">3</Label>

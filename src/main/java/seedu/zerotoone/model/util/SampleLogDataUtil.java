@@ -24,13 +24,16 @@ public class SampleLogDataUtil {
 
         final int dayCount = 10;
 
+        int[] workoutTimeVariance = new int[] {5, 9, 22, 31, 33, 45, 59, 51, 62, 70};
+
         String[] workoutNames = new String[] {"Legs Day", "Arms day", "Strength"};
         LocalDateTime start = LocalDateTime.now().minusDays(dayCount);
-        LocalDateTime end = start.plusMinutes(90);
+        LocalDateTime end = LocalDateTime.now().minusDays(dayCount);
 
         for (int i = 0; i < dayCount; i++) {
             completedWorkouts.add(
-                new CompletedWorkout(new WorkoutName(workoutNames[i % 3]), getCompletedExercises(start), start, end));
+                new CompletedWorkout(new WorkoutName(workoutNames[i % 3]), getCompletedExercises(start), start,
+                    end.plusMinutes(workoutTimeVariance[i])));
             start = start.plusDays(1);
             end = end.plusDays(1);
         }

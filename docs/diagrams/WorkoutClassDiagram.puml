@@ -1,0 +1,23 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor WORKOUT_COLOR
+skinparam classBackgroundColor WORKOUT_COLOR_T1
+
+Package Workout <<Rectangle>> {
+Class ModelManager
+Class WorkoutList
+Class FilteredWorkoutList
+Class Workout
+
+Class WorkoutName
+Class Exercise
+}
+
+ModelManager *-right-> "1" WorkoutList
+FilteredWorkoutList o-left-> "1" WorkoutList
+WorkoutList *-down-> "*" Workout
+
+Workout *-down-> "1" WorkoutName
+Workout *-down-> "*" Exercise
+@enduml

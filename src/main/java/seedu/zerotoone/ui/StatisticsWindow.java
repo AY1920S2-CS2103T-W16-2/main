@@ -89,23 +89,28 @@ public class StatisticsWindow extends UiPart<Stage> {
         // Populate Line Chart
 
         NumberAxis xAxis = new NumberAxis();
-        xAxis.setLabel("Day number");
+        xAxis.setLabel("Session Number");
 
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Workout Time in minutes");
+        yAxis.setLabel("Workout Time in Minutes");
 
         LineChart lineChart = new LineChart(xAxis, yAxis);
 
         XYChart.Series dataSeries = new XYChart.Series();
         dataSeries.setName("ZeroToOne Progress");
 
-        int dayCount = 1;
+        int sessionCount = 1;
         for (CompletedWorkout workout : statisticsData.getWorkouts()) {
-            dataSeries.getData().add(new XYChart.Data(dayCount++,
+            dataSeries.getData().add(new XYChart.Data(sessionCount++,
                 DateViewUtil.getDurationInMinutes(workout.getStartTime(), workout.getEndTime())));
         }
 
         lineChart.getData().add(dataSeries);
+
+        if (lineChartContainer.getChildren().size() > 0) {
+            lineChartContainer.getChildren().removeAll();
+        }
+
         lineChartContainer.getChildren().add(lineChart);
     }
 

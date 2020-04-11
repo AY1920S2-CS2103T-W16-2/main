@@ -1,0 +1,97 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor WORKOUT_COLOR
+skinparam classBackgroundColor WORKOUT_COLOR_T1
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":ParserManager" as ParserManager LOGIC_COLOR
+participant ":WorkoutCommandParser" as WorkoutCommandParser WORKOUT_COLOR_T1
+participant ":FindCommandParser" as FindCommandParser WORKOUT_COLOR_T1
+participant "f:FindCommand" as FindCommand WORKOUT_COLOR_T1
+participant "wn:WorkoutName" as WorkoutName WORKOUT_COLOR_T1
+participant "p:PredicateFilterWorkoutName" as PredicateFilterWorkoutName WORKOUT_COLOR_T1
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("workout find w/Arms Workout")
+activate LogicManager
+
+LogicManager -> ParserManager : parse("workout find w/Arms Workout")
+activate ParserManager
+
+ParserManager -> WorkoutCommandParser : parse("find w/Arms Workout")
+activate WorkoutCommandParser
+
+create FindCommandParser
+WorkoutCommandParser -> FindCommandParser
+activate FindCommandParser
+
+FindCommandParser --> WorkoutCommandParser
+deactivate FindCommandParser
+
+WorkoutCommandParser -> FindCommandParser : parse("w/Arms Workout")
+activate FindCommandParser
+
+create WorkoutName
+FindCommandParser --> WorkoutName : WorkoutName("Arms Workout")
+activate WorkoutName
+
+WorkoutName --> FindCommandParser : wn
+deactivate WorkoutName
+
+create FindCommand
+FindCommandParser -> FindCommand : FindCommand(wn)
+activate FindCommand
+
+create PredicateFilterWorkoutName
+FindCommand --> PredicateFilterWorkoutName : PredicateFilterWorkoutName(wn)
+activate PredicateFilterWorkoutName
+
+PredicateFilterWorkoutName --> FindCommand : p
+deactivate PredicateFilterWorkoutName
+
+FindCommand --> FindCommandParser : f
+deactivate FindCommand
+
+FindCommandParser --> WorkoutCommandParser : f
+deactivate FindCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+FindCommandParser -[hidden]-> WorkoutCommandParser
+destroy FindCommandParser
+
+WorkoutCommandParser --> ParserManager : f
+deactivate WorkoutCommandParser
+WorkoutCommandParser -[hidden]-> ParserManager
+destroy WorkoutCommandParser
+
+ParserManager --> LogicManager : f
+deactivate ParserManager
+
+LogicManager -> FindCommand : execute()
+activate FindCommand
+
+FindCommand -> Model : updateFilteredWorkoutList("Arms Workout")
+activate Model
+
+Model --> FindCommand
+deactivate Model
+
+create CommandResult
+FindCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> FindCommand
+deactivate CommandResult
+
+FindCommand --> LogicManager : result
+deactivate FindCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
