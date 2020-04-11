@@ -1097,29 +1097,29 @@ schedule recurring create WORKOUT_ID d/2020-03-26 10:00 f/MONTHLY</code></pre>
 <pre class="CodeRay highlight"><code>log find [st/&lt;datetime&gt;] [et/&lt;datetime&gt;] [e/&lt;exercise_name&gt;]</code></pre>
 </div>
 </div>
-<div class="openblock example-use">
+<div class="listingblock">
 <div class="content">
-<div class="paragraph">
-<p>Example uses:
-log find et/2020-04-27 10:10
+<pre class="CodeRay highlight"><code>Example uses:
 log find st/2020-04-27 10:10
-log find e/Deadlift</p>
-</div>
+log find et/2020-04-27 10:10
+log find st/2020-04-04 10:10 et/2020-04-05 10:10
+log find w/Arms Day
+log find w/arms</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>ZeroToOne will return a list of all the logged completedExercises whose name matches either the datetime, the exercise_name, or the workout_name you have typed into the command. From this command, you can find out the log ID number of the logged completedExercise you are looking for, as well as see the details of the logged completedExercise. If this is successful, the following message will be displayed in the feedback display:</p>
+<p>ZeroToOne will return a list of all the logged workout sessions that matches either the start_time, end_time or whose workout_name contains the workout name you have typed into the command. From this command, you will be able to see the details of the logged session(s) being searched for. If this is successful, the following message will be displayed in the feedback display:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Listed 1 logged workout completedExercise(s)!</code></pre>
+<pre class="CodeRay highlight"><code>Listed 1 logged workout sessions(s) found!</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-logged-completedexercise"><a class="link" href="#deleting-a-logged-completedexercise">5.11.3. Deleting a logged completedExercise</a></h4>
+<h4 id="deleting-a-log"><a class="link" href="#deleting-a-log">5.11.3. Deleting a log</a></h4>
 <div class="paragraph">
-<p>Want to delete a logged workout completedExercise? Simply type in the following command:</p>
+<p>Want to delete a log? Simply type in the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1133,34 +1133,46 @@ log delete 1</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The view will automatically update with the updated list of logged completedExercises. If this is successful, the following message will be displayed in the feedback display:</p>
+<p>The view will automatically update with the updated list of logged sessions. If this is successful, the following message will be displayed in the feedback display:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Successfully deleted: Arms Workout at 2020-02-04 10:00!</code></pre>
+<pre class="CodeRay highlight"><code>Successfully deleted log: Legs Day on 1 April 2020, 21:50, Wed</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
-* LOG_ID refers to the index of the logged past workout completedExercise in `log list`</code></pre>
+* LOG_ID refers to the index of the log as viewed on the screen
+* This include results returned through the find command</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-progress-in-a-graphical-view-proposed"><a class="link" href="#displaying-progress-in-a-graphical-view-proposed">5.11.4. Displaying progress in a graphical view (Proposed)</a></h4>
+<h4 id="displaying-progress-in-workout-logs"><a class="link" href="#displaying-progress-in-workout-logs">5.11.4. Displaying progress in workout logs</a></h4>
 <div class="paragraph">
-<p>To view your progress in a graphical view, simply type the following command:</p>
+<p>To view your progress in a graphical view over a particular time period, simply type the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>log display</code></pre>
+<pre class="CodeRay highlight"><code>log display [st/&lt;start_time&gt;] [et/&lt;end_time&gt;]</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>Example use:
-exercise set add 1 r/2 m/30</code></pre>
+log display
+log display st/2020-04-01 10:10
+log display st/2020-01-01 00:00 et/2020-02-01 00:00</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* Statistics will considered ALL entries in range between &lt;start_time&gt; and &lt;end_time&gt; inclusive
+* If &lt;start_time&gt; is omitted then logs will be considered regardless of their start timings
+* If &lt;end_time&gt; is omitted then logs will be considered regardless of their end timings
+* If both &lt;start_time&gt; and &lt;end_time&gt; are omitted then ALL logs will be considered</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1172,6 +1184,36 @@ exercise set add 1 r/2 m/30</code></pre>
 <div class="paragraph">
 <p>ZeroToOne will display a graphical line chart that depicts your overall progress. This means you can quickly see at a glance how successful you have been in completing your completedExercises. This can help motivate you to work harder to improve, or continue maintaining your progress.</p>
 </div>
+<div class="paragraph">
+<p>Here is a list and explanation of the metrics provided:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. ZeroToOne Report Card Metrics</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Notation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total Number of Workouts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of successfully completed workouts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total Time Spend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The total sum of time spend in all the workouts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Average Time Per Session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of time spent on average per workout session</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1248,7 +1290,9 @@ r/ - number of reps
 m/ - weights
 d/ - datetime
 f/ - frequency
-p/ - file path</code></pre>
+p/ - file path
+st/ - start time
+et/ end time</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1315,8 +1359,8 @@ schedule recurring create WORKOUT_ID d/&lt;datetime&gt; f/&lt;frequency&gt;</cod
 <div class="content">
 <pre class="CodeRay highlight"><code>log list
 log delete LOG_ID
-log find [st/&lt;datetime&gt;] [et/&lt;datetime&gt;] [e/&lt;exercise_name&gt;] [w/&lt;workout_name&gt;]
-log display</code></pre>
+log find [st/&lt;datetime&gt;] [et/&lt;datetime&gt;] [w/&lt;workout_name&gt;]
+log display [st/&lt;datetime&gt;] [et/&lt;datetime&gt;]</code></pre>
 </div>
 </div>
 </div>
@@ -1391,5 +1435,9 @@ users to interact with electronic devices through graphical means, not textual m
 <div class="paragraph">
 <p>A list of exercises to be done together, in a certain order.</p>
 </div>
+<div class="paragraph">
+<p><strong>Log</strong>
+A workout that has been completed and stored away safely.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 18:42:17 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 18:46:28 UTC</div></div></div></body></html>
