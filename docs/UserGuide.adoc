@@ -51,8 +51,8 @@ To help you better understand this document, here is a list of notations that we
 ZeroToOne is a one-stop application to manage your fitness regimes. Using ZeroToOne, you can:
 
 * Customise your favourite workout programmes
-* Start a workout completedExercise which guides you through your workout routines
-* Schedule your workout completedExercises and receive timely reminders
+* Start a workout session which guides you through your workout routines
+* Schedule your workout session and receive timely reminders
 * Track your fitness progress
 * and much more!
 
@@ -148,12 +148,12 @@ start 1
 .Started Workout
 image::UgStartWorkout.png[]
 
-The User Interface will automatically switch to the “General” tab. ZeroToOne will start displaying every exercise set in your workout, guiding you through set by set in your workout.
+The User Interface will automatically switch to the “Home” tab. ZeroToOne will start displaying every exercise set in your workout, guiding you through set by set in your workout.
 
 ```
 NOTE:
 * This command assumes that you have already created a workout in the application. If you have not, refer to the section on "Managing your workouts" to create a new workout.
-* WORKOUT_ID cannot be null and should be a value from the command `workout list`
+* WORKOUT_ID cannot be null and should be a value from the command `workout list`.
 ```
 
 === Completing An Exercise Set
