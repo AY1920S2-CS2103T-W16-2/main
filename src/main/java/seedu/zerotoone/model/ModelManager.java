@@ -114,6 +114,9 @@ public class ModelManager implements Model {
         this.timerList = new TimerList();
         this.start = 0;
         this.timer = new Timer();
+        List<Integer> data = new LinkedList<>();
+        data.add(0);
+        timerList.setSessionList(data);
 
         this.logList = new LogList(logList);
         filteredLogList = new FilteredList<>(this.logList.getLogList());
@@ -301,10 +304,12 @@ public class ModelManager implements Model {
 
         // Timer stuff
         this.start = 0;
-        this.timerList.resetData(new TimerList());
         this.timer.cancel();
         this.timer.purge();
         this.timer = new Timer();
+        List<Integer> data = new LinkedList<>();
+        data.add(0);
+        timerList.setSessionList(data);
     }
 
     @Override

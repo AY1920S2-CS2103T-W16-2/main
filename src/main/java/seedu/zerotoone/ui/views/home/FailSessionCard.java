@@ -21,9 +21,9 @@ public class FailSessionCard extends UiPart<Region> {
      */
 
     @FXML
-    private Label exerciseName;
+    private Label sessionName;
     @FXML
-    private Label exerciseReps;
+    private Label sessionPastReps;
 
     public FailSessionCard(CompletedSet completedSet) {
         super(FXML);
@@ -31,8 +31,8 @@ public class FailSessionCard extends UiPart<Region> {
         String set = String.valueOf(completedSet.getIndex() + 1);
         String weight = completedSet.getWeight().value;
         String reps = completedSet.getNumReps().value;
-        exerciseName.setText(name + ": " + "Set " + set);
-        exerciseReps.setText(reps + " reps, " + weight + "kg");
+        sessionName.setText(name + ": " + "Set " + set);
+        sessionPastReps.setText(reps + " reps, " + weight + "kg");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class FailSessionCard extends UiPart<Region> {
 
         // state check
         FailSessionCard card = (FailSessionCard) other;
-        return exerciseName.getText().equals(card.exerciseName.getText())
-                && exerciseReps.getText().equals(card.exerciseReps.getText());
+        return sessionName.getText().equals(card.sessionName.getText())
+                && sessionPastReps.getText().equals(card.sessionPastReps.getText());
     }
 }

@@ -487,7 +487,7 @@
     -fx-font-size: 72;
 }
 
-#sessionSet {
+#sessionSet, #sessionName {
     -fx-focus-color: transparent;
     -fx-font-family: "Open Sans Bold";
     -fx-font-size: 22px;
@@ -495,10 +495,10 @@
     -fx-padding: 3px 0px 6px 0px;
 }
 
-#sessionReps {
+#sessionReps, #sessionPastReps {
     -fx-focus-color: transparent;
     -fx-font-family: "Open Sans SemiBold";
     -fx-font-size: 16px;
-    -fx-text-fill: #ffc6ab;
+    -fx-text-fill: #fff0e6;
     -fx-padding: 3px 0px 6px 0px;
 }
