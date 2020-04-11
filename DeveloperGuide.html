@@ -25,7 +25,7 @@
 <li><a href="#proposed-undo-redo-feature-sample">3.1. [Proposed] Undo/Redo feature [SAMPLE]</a></li>
 <li><a href="#session">3.2. Session</a></li>
 <li><a href="#exercise">3.3. Exercise</a></li>
-<li><a href="#workout-manager">3.4. Workout Manager</a></li>
+<li><a href="#workout">3.4. Workout</a></li>
 <li><a href="#schedule">3.5. Schedule</a></li>
 <li><a href="#log">3.6. Log</a></li>
 <li><a href="#configuration">3.7. Configuration</a></li>
@@ -70,19 +70,6 @@
 </div>
 <div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/docs/diagrams/">diagrams</a> folder.
-Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
@@ -209,7 +196,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>ExerciseListParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>ParserManager</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -769,16 +756,15 @@ completedExercise.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="workout-manager"><a class="link" href="#workout-manager">3.4. Workout Manager</a></h3>
+<h3 id="workout"><a class="link" href="#workout">3.4. Workout</a></h3>
 <div class="sect3">
 <h4 id="overview"><a class="link" href="#overview">3.4.1. Overview</a></h4>
 <div class="paragraph">
-<p>The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it,
-as well as edit the workout and its exercises.</p>
+<p>The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.4.2. Implementation</a></h4>
+<h4 id="components"><a class="link" href="#components">3.4.2. Components</a></h4>
 <div class="paragraph">
 <p>The Workout Manager consists of a <code>WorkoutList</code>, which contains a number of workouts that the user has created.
 Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> and finally, an <code>WorkoutExerciseList</code>.</p>
@@ -788,12 +774,13 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/WorkoutManagerClassDiagram.png" alt="WorkoutManagerClassDiagram">
+<img src="images/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
+</div>
+<div class="title">Figure 12. Workout Class Diagram</div>
 </div>
 </div>
-<div class="paragraph">
-<p>Figure: Workout Manager Class Diagram</p>
-</div>
+<div class="sect3">
+<h4 id="workout-model"><a class="link" href="#workout-model">3.4.3. Workout Model</a></h4>
 <div class="paragraph">
 <p>ZeroToOne&#8217;s <code>Model</code> extends the <code>WorkoutModel</code>. Here are all the functions to carry out workout-related activities:</p>
 </div>
@@ -824,6 +811,9 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <p><code>Model#setWorkout(Workout target, Workout editedWorkout)</code> - Replaces a particular workout with an edited workout</p>
 </li>
 <li>
+<p><code>Model#deleteExerciseFromWorkout(Exercise exercise)</code> - Deletes any instance of an exercise from all workouts</p>
+</li>
+<li>
 <p><code>Model#getFilteredWorkoutList()</code> - Returns an unmodifiable view of <code>ObservableList&lt;Workout&gt;</code></p>
 </li>
 <li>
@@ -831,70 +821,76 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="command-execution"><a class="link" href="#command-execution">3.4.4. Command Execution</a></h4>
 <div class="paragraph">
 <p>To illustrate an example of a command from the Workout Manager, the following sequence diagram
-depicts flow of the program when the command <code>workout find w/Strength Training</code></p>
+depicts flow of the program when the command <code>workout find w/Arms Workout</code> is run.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/WorkoutManagerSequenceDiagram.png" alt="WorkoutManagerSequenceDiagram">
+<img src="images/WorkoutSequenceDiagram.png" alt="WorkoutSequenceDiagram">
 </div>
-</div>
-<div class="paragraph">
-<p>Figure: Workout Manager Sequence Diagram</p>
+<div class="title">Figure 13. Sequence Diagram for Finding a Workout</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>When the user runs the command <code>workout find w/Strength Training</code>, the <code>LogicManager</code> will first take in the command, by calling the <code>execute()</code> function on it.</p>
+<p>When the user runs the command <code>workout find w/Arms Workout</code>, the <code>LogicManager</code> will first take in the command, by calling the <code>execute()</code> function on it.</p>
 </li>
 <li>
-<p>Next, the <code>WorkoutCommandParser</code> has to <code>parseCommand()</code> for the command.</p>
+<p>The <code>ParserManager</code> then has to <code>parse("workout find w/Arms Workout"</code>.</p>
 </li>
 <li>
-<p>Once the command has been parsed as a <code>FindCommand</code>, it will be passed on to the <code>FindCommandParser</code>, which will then <code>findWorkout()</code> for the requested workout in the <code>Model</code>.</p>
+<p>Next, the <code>WorkoutCommandParser</code> has to <code>parse("find w/Arms Workout")</code> for the command.</p>
 </li>
 <li>
-<p>Finally, the requested <code>Workout</code> will be returned as the <code>CommandResult</code>.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<p>Once the command has been parsed as a <code>FindCommand</code>, it will be passed on to the <code>FindCommandParser</code>, which will then create a new <code>WorkoutName</code>.</p>
+</li>
+<li>
+<p>The <code>FindCommandParser</code> can then create a <code>FindCommand</code>, which in turn creates a <code>PredicateFilterWorkoutName</code>.</p>
+</li>
+<li>
+<p>The <code>FindCommand</code> can be returned to the <code>LogicManager</code>, where it will <code>execute()</code> the <code>FindCommand</code>.</p>
+</li>
 <li>
 <p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> is used to update the view of the workout list to show the requested Workout(s).</p>
 </li>
-</ol>
-</div>
+<li>
+<p>Finally, the resulting output message will be returned as the <code>CommandResult</code>.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.3. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.5. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-exercises-in-workout"><a class="link" href="#aspect-exercises-in-workout">Aspect: Exercises in workout</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Option 1: Use existing Exercise class in workouts</p>
+<p>Option 1: Use existing <code>Exercise</code> class in <code>Workout</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Advantage: Building on an existing class is simpler and more intuitive</p>
+<p>Advantage: Building on an existing class is simpler and more intuitive.</p>
 </li>
 <li>
-<p>Disadvantage: Introduces a dependency on the Exercise class</p>
+<p>Disadvantage: Introduces a dependency on the <code>Exercise</code> class</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Option 2: Create a new WorkoutExercise class for workouts</p>
+<p>Option 2: Create a new <code>WorkoutExercise</code> class for the <code>Workout</code> class</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Advantage: Creates an extra layer of abstraction</p>
+<p>Advantage: Creates an extra layer of abstraction and removes the dependency on <code>Exercise</code>.</p>
 </li>
 <li>
-<p>Disadvantage: More code needed which may be redundant</p>
+<p>Disadvantage: More code needed which may be redundant.</p>
 </li>
 </ul>
 </div>
@@ -902,10 +898,9 @@ depicts flow of the program when the command <code>workout find w/Strength Train
 </ul>
 </div>
 <div class="paragraph">
-<p>In the end, we decided to stick with Option 1. This is because creating a new WorkoutExercise class
+<p>In the end, I decided to stick with Option 1. This is because creating a new WorkoutExercise class
 is redundant and unnecessary, when there is no functional difference between an Exercise and a WorkoutExercise,
-other than the context that they are referenced in. To simplify matters, using the existing Exercise class
-to construct workouts was better.</p>
+other than the context that they are referenced in. In addition, this would make the deletion of any instance of a particular Exercise from a Workout easier, when an Exercise is deleted from the ExerciseList. Hence, to simplify matters, using the existing Exercise class to construct workouts was better.</p>
 </div>
 </div>
 </div>
@@ -913,7 +908,7 @@ to construct workouts was better.</p>
 <div class="sect2">
 <h3 id="schedule"><a class="link" href="#schedule">3.5. Schedule</a></h3>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.5.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The following sequence diagram shows how the <code>schedule create</code> operation works:</p>
 </div>
@@ -975,7 +970,7 @@ requested.</p>
 <p>For logging, we propose saving the completedExercise data in the following class architecture.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-6"><a class="link" href="#implementation-6">3.6.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/WorkoutSessionDiagram.png" alt="WorkoutSessionDiagram">
@@ -1082,6 +1077,18 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User who wants to track live progress while exercising</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time each part of my workout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stay on track for each workout session I do</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User who does a large variety of kinds of exercises</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keep track of all my exercises for different fitness purposes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stay organised</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User with many different workouts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Keep track of all my workouts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stay organised</p></td>
@@ -1099,10 +1106,10 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Check if I am reaching my goals</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who has exercise goals</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set and adjust goals accordingly</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Make plans to reach my goals, and improve upon those plans as I see fit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User who likes to schedule single workout sessions, but will occasionally do recurring ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keep track of the two types of workouts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manage different types of workouts simultaneously</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1112,9 +1119,9 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who does exercises in sets</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Keep track of how many repetitions per exercise</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Know the details of each exercise</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User who enjoys social activities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Share my workout routines with my friends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Help each other out by sharing new exercise regimes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -1142,26 +1149,8 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who enjoys graphical displays</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have a graphical overview of various health statistics</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Easily comprehend and view my statistics</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who enjoys exercising and discussing it</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Share my workout routines with my friends</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Help each other out by sharing new exercise regimes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User who has many different types of workouts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">To categorize the different types of workout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Achieve better organisation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who has many different workouts and exercises</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To have an overview of all my workout related information</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Achieve better organisation</p></td>
 </tr>
 <tr>
@@ -1181,12 +1170,6 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User who sometimes gets a little bored when working out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">To have a way to entertain or distract myself when working out</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Keep myself on the task at hand by giving an extra motivation boost</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User who enjoys exercising to music that matches the exercise</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To have music tailored to my current workout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have even more fun with my workouts</p></td>
 </tr>
 </tbody>
 </table>
@@ -1529,4 +1512,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 14:26:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-11 14:30:31 UTC</div></div></div></body></html>
