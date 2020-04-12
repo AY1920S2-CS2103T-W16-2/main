@@ -9,8 +9,8 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant "current:OngoingSession" as OngoingSession MODEL_COLOR
-participant "s:SessionSet" as SessionSet MODEL_COLOR
+participant "current:OngoingWorkout" as OngoingWorkout MODEL_COLOR
+participant "cs:CompletedSet" as CompletedSet MODEL_COLOR
 end box
 [-> LogicManager : execute(done)
 activate LogicManager
@@ -31,25 +31,24 @@ deactivate ExerciseListParser
 LogicManager -> DoneCommand : execute()
 activate DoneCommand
 
-DoneCommand -> Model : getCurrentSession()
+DoneCommand -> Model : done()
 activate Model
 
 
+Model -> OngoingWorkout : done()
+activate OngoingWorkout
 
-Model --> DoneCommand : current
+create CompletedSet
+OngoingWorkout -> CompletedSet
+activate CompletedSet
+CompletedSet --> OngoingWorkout
+deactivate CompletedSet
+
+OngoingWorkout --> Model :cs
+deactivate OngoingWorkout
+
+Model --> DoneCommand : cs
 deactivate Model
-
-DoneCommand -> OngoingSession : done()
-activate OngoingSession
-
-create SessionSet
-OngoingSession -> SessionSet
-activate SessionSet
-SessionSet --> OngoingSession
-deactivate SessionSet
-
-OngoingSession --> DoneCommand : s
-deactivate OngoingSession
 
 DoneCommand --> LogicManager : result
 deactivate DoneCommand

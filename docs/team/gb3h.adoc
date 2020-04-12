@@ -13,46 +13,63 @@ ZeroToOne is a desktop application that serves as an all-in-one exercise tracker
 
 == Summary of contributions
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+* *Major enhancement*: added the *Workout Session Functionality*
+** What it does: Allows the user to start a workout session by providing a `WORKOUT_ID`.
+The session keeps track of the user's workout by providing a queue of upcoming sets and the progress of the previous set.
+The session also includes a rest timer that helps users keep to their workout schedule between sets.
+** Justification: This feature is a core feature within the app. It helps users keep to their workouts and ensures that even the most tired user will not forget any exercise during a workout session.
+** Highlights: This feature required stellar design consideration in order to maintain a stateful representation of a workout session that is bug-free, with a user-facing experience that automatically logs completed sessions.
+The `OngoingWorkout` model and related classes demonstrate this.
 
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
+* *Major enhancement*: added the *Rest Timer feature*
+** What it does: Seamlessly integrated with the *Workout Session Functionality*, the timer helps users keep to their workout schedule and times rest between sets.
+** Justification: Helps users manage their workout session and keep to their rest time for an optimal workout.
+** Highlights: This feature requires the use of a thread to update the clock.
+Major design consideration was required to ensure that the timer was not computationally expensive yet reliable, and that the feature was user-facing and fit well within the app.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+* *Code contributed*:
+
+** *Overview*: [https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=gb3h&tabRepo=AY1920S2-CS2103T-W16-2%2Fmain%5Bmaster%5D[Reposense]]
+
+** *Functional Code*:
+
+1. [https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/commands[github folder]] <- Commands (Start, Stop, Skip, Done)
+2. [https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/session[github folder]] <- Parsers
+3. [https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/model/session[github folder]] <- Models (All the Ongoing- models and worked in collaboration with @Jiachen247 for some Completed- models)
+4. [https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/ui/views/home[github folder]] <- UI work
+5. [https://github.com/gb3h/main/tree/master/src/main/resources/view/home[github folder]] <- FXML
+6. [https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/java/seedu/zerotoone/model/ModelManager.java[github file]] <- Timer functionality (and major session-related functions)
+
+** *Tests*:
+
+1. [https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/commands[github folder]] <- Command Tests (Start, Stop, Skip, Done)
+2. [https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/session[github folder]] <- Parser Tests
+3. [https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/model/session[github folder]] <- Model Tests
+
+---
 
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+*** Organised and managed weekly team meetings including taking minutes on google docs.
+*** Facilitated task delegation at the inception of the tP.
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** Edit GUI for overall cohesiveness (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/213[#213], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/213[#219])
+*** Disabled non session related commands during a session for more predictable app behaviour (no editing of workouts during workout) (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/187[#187])
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Add documentation coverage for the entire workout session feature including diagrams. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/110[#14]
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
-
-_{you can add/remove categories in the list above}_
+*** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S2-CS2103T-W16-2/main/pull/114[#114], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66[#66]
+*** Total PRs reviewed: https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Agb3h[13]
+*** Reviewed other teams documentation: https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/29[#29]
 
 == Contributions to the User Guide
-
 
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=delete]
-
-include::../UserGuide.adoc[tag=dataencryption]
+include::../UserGuide.adoc[tag=session]
 
 == Contributions to the Developer Guide
 
@@ -60,13 +77,7 @@ include::../UserGuide.adoc[tag=dataencryption]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
+include::../DeveloperGuide.adoc[tag=session]
 
 
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
+include::../DeveloperGuide.adoc[tag=timer]
