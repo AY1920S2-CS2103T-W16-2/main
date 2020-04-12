@@ -13,22 +13,22 @@
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Main">2.2. Main Component</a></li>
+<li><a href="#Design-Ui">2.3. UI Component</a></li>
+<li><a href="#Design-Logic">2.4. Logic Component</a></li>
+<li><a href="#Design-Model">2.5. Model Component</a></li>
+<li><a href="#Design-Storage">2.6. Storage Component</a></li>
+<li><a href="#Design-Commons">2.7. Common Classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature-sample">3.1. [Proposed] Undo/Redo feature [SAMPLE]</a></li>
-<li><a href="#session-home">3.2. Session (Home)</a></li>
-<li><a href="#exercise">3.3. Exercise</a></li>
-<li><a href="#workout">3.4. Workout</a></li>
-<li><a href="#schedule">3.5. Schedule</a></li>
-<li><a href="#log">3.6. Log</a></li>
-<li><a href="#configuration">3.7. Configuration</a></li>
+<li><a href="#session-home">3.1. Session (Home)</a></li>
+<li><a href="#exercise">3.2. Exercise</a></li>
+<li><a href="#workout">3.3. Workout</a></li>
+<li><a href="#schedule">3.4. Schedule</a></li>
+<li><a href="#log">3.5. Log</a></li>
+<li><a href="#configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -72,7 +72,7 @@
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -151,55 +151,72 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Main"><a class="link" href="#Design-Main">2.2. Main Component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/MainClassDiagram.png" alt="MainClassDiagram">
+</div>
+<div class="title">Figure 4. Structure of the Main Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/Main.java"><code>Main.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Main</code> class consists of the <code>SplashScreen</code> and the <code>MainApp</code>.</p>
+</div>
+<div class="paragraph">
+<p>When the app starts up, <code>Main#main</code> is called. This sets the <code>Preloader</code> of the <code>Application</code> to be <code>SplashScreen</code>. Thereafter, it launches <code>MainApp</code>.</p>
+</div>
+<div class="paragraph">
+<p>During the GUI start up process, the <code>SplashScreen</code> will first load on a <code>Thread</code>. In the meantime, <code>MainApp#init</code> will run. Once <code>MainApp#init</code> completes, and just as <code>MainApp#start</code> is about to run, <code>MainApp</code> will send a <code>Preloader.StateChangeNotification</code> to <code>SplashScreen</code> to close its window. After that, <code>UiManager#start</code> is called, which creates the view for the main application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.3. UI Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
 </div>
-<div class="title">Figure 4. Structure of the UI Component</div>
+<div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>ExerciseListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of a <code>CommandBox</code>, <code>ResultDisplay</code> and other panels. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The <code>UI</code> component executes user commands using the <code>Logic</code> component.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
-</li>
-<li>
-<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>For more information about each component, check out the 'Implementation' section.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.4. Logic Component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-<div class="title">Figure 5. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>ParserManager</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>ParserManager</code> class to parse the user command</p>
 </li>
 <li>
-<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+<p>The <code>ParserManager</code> creates and returns a <code>Command</code> object</p>
+</li>
+<li>
+<p>The <code>Command</code> object is executed by the <code>LogicManager</code></p>
 </li>
 <li>
 <p>The command execution can affect the <code>Model</code> (e.g. adding a exercise).</p>
@@ -208,9 +225,12 @@ The following class plays an important role at the architecture level:</p>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
 </li>
 <li>
-<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying the list of workouts.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Inside the <code>Logic</code> package, there are some utility classes such as the <code>ArgumentTokenizer</code>. It is responsible for tokenizing an input and returning an <code>ArgumentMultimap</code>, which can be used to get the value of a particular <code>Prefix</code>.</p>
 </div>
 <div class="paragraph">
 <p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
@@ -219,7 +239,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="content">
 <img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -228,22 +248,25 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>For more information about each component, check out the 'Implementation' section.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.5. Model Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -254,72 +277,70 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Session data.</p>
+<p>stores an <code>ExerciseList</code> that represents the list of exercises.</p>
 </li>
 <li>
-<p>stores the Exercise data.</p>
+<p>stores a <code>WorkoutList</code> that represents the list of workouts available.</p>
 </li>
 <li>
-<p>stores the Workout data.</p>
+<p>stores a <code>ScheduleList</code> that represents the list of upcoming schedules.</p>
 </li>
 <li>
-<p>stores the Schedule data.</p>
+<p>stores a <code>LogList</code> that represents the list of completed data.</p>
 </li>
 <li>
-<p>stores the Log data.</p>
-</li>
-<li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Session&gt;</code>, <code>ObservableList&lt;Exercise&gt;</code>, <code>ObservableList&lt;Workout&gt;</code>, <code>ObservableList&lt;ScheduledWorkout&gt;</code>, <code>ObservableList&lt;Log&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Exercise&gt;</code>, <code>ObservableList&lt;Workout&gt;</code>, <code>ObservableList&lt;ScheduledWorkout&gt;</code>, <code>ObservableList&lt;Log&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other components.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Zero To One</code>, which <code>Exercise</code> can reference. This would allow <code>Zero To One</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Exercise</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>For more information about each component, check out the 'Implementation' section.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.6. Storage Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/src/main/java/seedu.zerotoone/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p>The <code>Storage</code> component is resonsible for the persistent storage of the application. It can save these class in JSON format and read it back:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+<p><code>UserPrefs</code></p>
 </li>
 <li>
-<p>can save the Zero To One data in json format and read it back.</p>
+<p><code>Exercise</code></p>
+</li>
+<li>
+<p><code>Workout</code></p>
+</li>
+<li>
+<p><code>Schedule</code></p>
+</li>
+<li>
+<p><code>Log</code></p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>For more information about each component, check out the 'Implementation' section.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.7. Common Classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.zerotoone.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu/zerotoone.commons</code> package.</p>
 </div>
 </div>
 </div>
@@ -328,226 +349,12 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Zero To One</
 <h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
+<p>This section describes some noteworthy details on how each features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature-sample"><a class="link" href="#proposed-undo-redo-feature-sample">3.1. [Proposed] Undo/Redo feature [SAMPLE]</a></h3>
+<h3 id="session-home"><a class="link" href="#session-home">3.1. Session (Home)</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedExerciseList</code>.
-It extends <code>ExerciseList</code> with an undo/redo history, stored internally as an <code>ExerciseListStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedExerciseList#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedExerciseList#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedExerciseList#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitExerciseList()</code>, <code>Model#undoExerciseList()</code> and <code>Model#redoExerciseList()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedExerciseList</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th exercise in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new exercise. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitExerciseList()</code>, so the address book state will not be saved into the <code>ExerciseListStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the exercise was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoExerciseList()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoExerciseList()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>ExerciseListStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoExerciseList()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitExerciseList()</code>, <code>Model#undoExerciseList()</code> or <code>Model#redoExerciseList()</code>. Thus, the <code>ExerciseListStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitExerciseList()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>ExerciseListStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the exercise being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedExerciseList</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="session-home"><a class="link" href="#session-home">3.2. Session (Home)</a></h3>
-<div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The Session feature resides on the Home page and is comprised of <code>Start</code>, <code>Stop</code>, <code>Done</code>, and <code>Skip</code> commands.
 <code>OngoingWorkout</code>, <code>OngoingSession</code>, <code>OngoingSet</code>, and <code>OngoingSetList</code> are models that are vital components of the feature.</p>
@@ -559,7 +366,7 @@ If the <code>currentStatePointer</code> is at index <code>ExerciseListStateList.
 <div class="content">
 <img src="images/StartStopActivityDiagram.png" alt="StartStopActivityDiagram">
 </div>
-<div class="title">Figure 9. Session Feature Activity Diagram</div>
+<div class="title">Figure 10. Session Feature Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>Start depicts the start of a valid (non-zero sets remaining) Workout Session.
@@ -596,7 +403,7 @@ and <code>skip</code> (no of the conditional branch). <code>Stop</code> is optio
 <div class="content">
 <img src="images/sessionExample.png" alt="sessionExample">
 </div>
-<div class="title">Figure 10. Example Workout Session</div>
+<div class="title">Figure 11. Example Workout Session</div>
 </div>
 <div class="paragraph">
 <p>Step 1. The user selects an existing <code>Workout</code> called <code>Arms Day</code> with ID = <code>2</code> and starts a completedExercise with <code>start 2</code>.</p>
@@ -630,7 +437,7 @@ updates the instance of <code>OngoingWorkout</code>.</p>
 <div class="content">
 <img src="images/DoneCommandSequenceDiagram.png" alt="DoneCommandSequenceDiagram">
 </div>
-<div class="title">Figure 11. DoneCommand sequence diagram</div>
+<div class="title">Figure 12. DoneCommand sequence diagram</div>
 </div>
 <div class="ulist">
 <ul>
@@ -667,7 +474,7 @@ workout session.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-seamless-user-first-experience"><a class="link" href="#aspect-seamless-user-first-experience">Aspect: Seamless user-first experience</a></h5>
 <div class="ulist">
@@ -711,17 +518,20 @@ workout session.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exercise"><a class="link" href="#exercise">3.3. Exercise</a></h3>
+<h3 id="exercise"><a class="link" href="#exercise">3.2. Exercise</a></h3>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.1. Implementation</a></h4>
+<h4 id="overview"><a class="link" href="#overview">3.2.1. Overview</a></h4>
 <div class="paragraph">
 <p>The exercise feature forms the basic building block for the application. It allows users to CRUD exercises, which will then be used for the creation of workouts. The command is prefixed by the keyword <code>exercise</code>. Available commands are <code>create</code>, <code>edit</code>, <code>list</code>, <code>delete</code> and many more.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.2.2. Implementation</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/exercise/CreateCommandSequenceDiagram.png" alt="CreateCommandSequenceDiagram">
 </div>
-<div class="title">Figure 12. Exercise&#8217;s CreateCommand Sequence Diagram</div>
+<div class="title">Figure 13. Exercise&#8217;s CreateCommand Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>In this portion, we will trace the sequence diagram of the <code>exercise create</code> command to better understand the internals of the Exercise feature.</p>
@@ -777,22 +587,22 @@ workout session.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p>One of the consideration while designing was that the commands in exercise are extremely nested. We have commands such as <code>exercise set create r/1 m/10</code>. While we could have chucked all the parsing in <code>ExerciseSetCreateParser</code> class, we realised that it will be better if we were to abstract the parser into separate classes. This allows us to group the functionalities of the parser in a single file. For example, <code>ExerciseCommandParser</code> will parse any string that has the word <code>exercise</code> as the prefix. <code>SetCommandParser</code> will do so for a prefix of <code>set</code>. This means that for the above command, while we have to go through multiple parsers which can make the performance of the application suffer, each of the parsers have a single responsibility which makes it a better design choice.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="workout"><a class="link" href="#workout">3.4. Workout</a></h3>
+<h3 id="workout"><a class="link" href="#workout">3.3. Workout</a></h3>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">3.4.1. Overview</a></h4>
+<h4 id="overview-2"><a class="link" href="#overview-2">3.3.1. Overview</a></h4>
 <div class="paragraph">
 <p>The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="components"><a class="link" href="#components">3.4.2. Components</a></h4>
+<h4 id="components"><a class="link" href="#components">3.3.2. Components</a></h4>
 <div class="paragraph">
 <p>The Workout Manager consists of a <code>WorkoutList</code>, which contains a number of workouts that the user has created.
 Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> and finally, an <code>WorkoutExerciseList</code>.</p>
@@ -804,11 +614,11 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <div class="content">
 <img src="images/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
 </div>
-<div class="title">Figure 13. Workout Class Diagram</div>
+<div class="title">Figure 14. Workout Class Diagram</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="workout-model"><a class="link" href="#workout-model">3.4.3. Workout Model</a></h4>
+<h4 id="workout-model"><a class="link" href="#workout-model">3.3.3. Workout Model</a></h4>
 <div class="paragraph">
 <p>ZeroToOne&#8217;s <code>Model</code> extends the <code>WorkoutModel</code>. Here are all the functions to carry out workout-related activities:</p>
 </div>
@@ -851,7 +661,7 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 </div>
 </div>
 <div class="sect3">
-<h4 id="command-execution"><a class="link" href="#command-execution">3.4.4. Command Execution</a></h4>
+<h4 id="command-execution"><a class="link" href="#command-execution">3.3.4. Command Execution</a></h4>
 <div class="paragraph">
 <p>To illustrate an example of a command from the Workout Manager, the following sequence diagram
 depicts flow of the program when the command <code>workout find w/Arms Workout</code> is run.</p>
@@ -860,7 +670,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 <div class="content">
 <img src="images/WorkoutSequenceDiagram.png" alt="WorkoutSequenceDiagram">
 </div>
-<div class="title">Figure 14. Sequence Diagram for Finding a Workout</div>
+<div class="title">Figure 15. Sequence Diagram for Finding a Workout</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -892,7 +702,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.5. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.5. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-exercises-in-workout"><a class="link" href="#aspect-exercises-in-workout">Aspect: Exercises in workout</a></h5>
 <div class="ulist">
@@ -934,9 +744,9 @@ other than the context that they are referenced in. In addition, this would make
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule"><a class="link" href="#schedule">3.5. Schedule</a></h3>
+<h3 id="schedule"><a class="link" href="#schedule">3.4. Schedule</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The following sequence diagram shows how the <code>schedule create</code> operation works:</p>
 </div>
@@ -955,7 +765,7 @@ other than the context that they are referenced in. In addition, this would make
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-handle-editing-and-deletion-of-recurring-schedules"><a class="link" href="#aspect-how-to-handle-editing-and-deletion-of-recurring-schedules">Aspect: How to handle editing and deletion of recurring schedules</a></h5>
 <div class="ulist">
@@ -993,12 +803,12 @@ requested.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="log"><a class="link" href="#log">3.6. Log</a></h3>
+<h3 id="log"><a class="link" href="#log">3.5. Log</a></h3>
 <div class="paragraph">
 <p>For logging, we propose saving the completedExercise data in the following class architecture.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
+<h4 id="implementation-5"><a class="link" href="#implementation-5">3.5.1. Implementation</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/WorkoutSessionDiagram.png" alt="WorkoutSessionDiagram">
@@ -1006,7 +816,7 @@ requested.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Immutability was a huge consideration for us and hence we came up with the <code>ReadOnly</code> interface.</p>
 </div>
@@ -1016,7 +826,7 @@ requested.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">3.7. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1384,7 +1194,7 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 100 workouts a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 100 workouts without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -1540,4 +1350,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 13:05:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 13:58:39 UTC</div></div></div></body></html>
