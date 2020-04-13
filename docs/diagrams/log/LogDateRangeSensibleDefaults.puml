@@ -1,0 +1,21 @@
+@startuml
+start
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+
+if (is start date provided?) then ([yes])
+    :use provided start date;
+else ([no])
+    :find and use start date of earliest workout;
+endif
+
+if (is end date provided?) then ([yes])
+    :use provided end date;
+else ([no])
+    :find and use end date of last latest workout;
+endif
+
+stop
+@enduml

@@ -1,0 +1,72 @@
+@startuml
+!include ../style.puml
+
+participant ":MainWindow" as MainWindow MAIN_COLOR
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":Statistics" as Statistics LOGIC_COLOR
+participant "{abstract}:DataPoint" as DataPoint LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant ":StatisticsData" as StatisticsData MODEL_COLOR
+end box
+
+box UI UI_COLOR_T1
+participant ":StatisticsWindow" as StatisticsWindow UI_COLOR
+end box
+
+activate MainWindow
+MainWindow -> LogicManager : generateStatistics()
+activate LogicManager
+
+LogicManager -> Model : getLogListCopyAsArrayList()
+activate Model
+Model --> LogicManager : logList
+deactivate Model
+
+LogicManager -> Model : getStatisticsStartDateRange()
+activate Model
+Model --> LogicManager : startDateRange
+deactivate Model
+
+LogicManager -> Model : getStatisticsEndDateRange()
+activate Model
+Model --> LogicManager : endDateRange
+deactivate Model
+
+LogicManager -> Statistics : generate(logList, start, end)
+activate Statistics
+
+
+
+loop dataPoint : dataPoints
+    Statistics -> DataPoint : calculate()
+    activate DataPoint
+    Statistics <-- DataPoint
+    deactivate DataPoint
+end
+
+create StatisticsData
+
+Statistics -> StatisticsData
+activate StatisticsData
+StatisticsData --> Statistics : data
+deactivate StatisticsData
+
+Statistics ---> LogicManager : data
+
+deactivate Statistics
+
+MainWindow <-- LogicManager : data
+deactivate LogicManager
+
+MainWindow -> StatisticsWindow : show(data)
+activate StatisticsWindow
+StatisticsWindow --> MainWindow
+deactivate StatisticsWindow
+
+
+@enduml

@@ -844,8 +844,8 @@ Here is a list and explanation of the metrics provided:
 | Total Time Spend
 | The total sum of time spend in all the workouts
 
-| Average Time Per Session
-| The amount of time spent on average per workout session
+| Average Time Per Day
+| The amount of time spent on average per day
 
 |======
 == Troubleshooting

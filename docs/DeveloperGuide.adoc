@@ -569,17 +569,112 @@ On the other hand, implementing option 2 makes it easier to handle these problem
 
 
 // tag::log[]
-=== Log
-For logging, we propose saving the completedExercise data in the following class architecture.
+=== Log Statistics
+The log statistics feature in ZeroToOne allows users to view their completed workouts visually with meaningful aggregated information so they can see how much progress made.
+
+==== Overview
+The ZeroToOne user can generate and view these statistics via the `log display` command which takes in two optional parameters `startRange` and `endRange`. Workouts will only be considered if they fall within the `startTime` and `endTime` range.
+
+===== Architecture
+The log statistics feature was built from the ground up with modularity and extensibility in mind which is inline with SLAP and SOLID principles. This is exemplified in the decision to have a `DataPoint` abstract class. The class diagram is shown below.
+
+.DataPoint Abstract Class
+image::developer-guide/log/DataPointAbstractClass.png[]
+
+This abstract class is then extended by concrete class as shown below.
+
+.Example Concrete Data Points
+image::developer-guide/log/StatisticsDataPointsClassDiagram.png[]
+
+Through this abstraction we make it easy to extend and include new metrics to track in the future. All that needs to be done is to create a new class that extends `DataPoint` and implements the `calculate` function that takes as input a list of `CompletedWorkout` and does the necessary calculations and sets the results.
 
 ==== Implementation
+To help explain the implementation of this feature, this portion of the developer guide will examine the command execution of the `log display` command.
 
-image::developer-guide/log/WorkoutSessionDiagram.png[]
+For the sake of clarity, this portion of implementation has been broken down into two phases.
+
+Phase 1 will primarily deal with the actual command parsing, execution and the storing of the `startRange` and `endRage` in the model while Phase 2 will then go on to generate statistics based on the `startRange` and `endRange` provided in phase 1.
+
+===== Execution Phase 1
+The sequence diagram below describes the flow when the `log display` command is invoked by the user.
+
+.Display Command Invocation Phase 1
+image::developer-guide/log/DisplayCommandSequenceDiagramPart1.png[]
+
+This next section goes over in a little more detail how the program unfolds.
+
+Step 1: When the user enters the `log display` command, the `MainWindow#executeCommand()` is executed and in turn calls on the `LogicManager` to help with this.
+
+Step 2: The `LogicManager` then goes through with the normal flow of parsing the command and its parameters and then returning a valid  `DisplayCommand`. This section will not go into details and specifics of this process as it has already been covered above.
+
+Step 3: Once the `Logic Manager` receives the `DisplayCommand`, it will call the concrete implementation of the `DisplayCommand#execute(Model model)` to run the command with the current model.
+
+Step 4: The `execute` function will then go ahead and store the `startRange` and `endRange` in the model via the `Model#setStatisticsDataRange` function.
+
+Step 5: This is where the display command differs from all the other commands. When constructing the `CommandResult` to be returned, the `showReport` flag in `CommandResult` is set to `True`.
+
+Summary:
+`startRange` and `endRange` are updated in the current `Model`
+The `showReport` flag in `CommandResult` being returned is set to `True`
+
+===== ExecutionPhase 2
+Following immediately from phase 1, phase 2 will commence with the return of `CommandResult` to the `MainWindow#executeCommand` function. The sequence diagram below documents the execution flow.
+
+.Example Display Command Invocation Phase 2
+image::developer-guide/log/DisplayCommandSequenceDiagramPart2.png[]
+
+Similar to phase 1, this next section will detail the steps taken in a little more detail.
+
+Step 1: When `CommandResult` is returned to the main window, it is checked for the `showReport` to decide if the report page should be shown.
+
+Step 2: Since the `showResult` flag will be set to `True`, the `MainWindow` will call `LogicManager#generateStatistics` to help with the generating of the statistics.
+
+Step 3: The `LogicManager` will then query all the information it requires from the model including the `startRange` and `endRange` described in phase 1.
+
+Step 4: Next, the static function `Statistics#generate` will be invoked. This function will then instantiate new instances of all the `DataPoints` configured.
+
+Step 5: Once instantiated, the `DataPoint#calculate` function will be invoked on all the `DataPoint` objects. This used to calculate and populate each data point with valid data from the list of workouts.
+
+Step 6: Once this is done, a new `StatisticsData` object is created with the data points and the list of workouts and returned.
+
+Step 7: Lastly, the view `StatisticsWindow#show` function is called with the `StatisticsData` previously returned. This renders the new window with the computed statistics.
+
 
 ==== Design Considerations
-Immutability was a huge consideration for us and hence we came up with the `ReadOnly` interface.
+The following section will detail some of the design consideration and design choices we made while implementing the log statics feature.
 
-Also, due to the lack of a database backing our application, we have no choice but to nest our object.
+==== Flexibility and Sensible Defaults
+We wanted to build the statistics feature to be flexible. This is why we decided to include a `startRange` and `endRange` to the `log display` command. This allows users to generate reports for custom datetime ranges.
+
+Due to this flexibility we had to think hard of sensible defaults for this date range if they were not specified. We eventually decided on the flow specified by the activity diagram below.
+
+.Log sensible date range defaults
+image::developer-guide/glog/LogDateRangeSensibleDefaults.png[]
+
+* **Alternative 1:** Do not support date range in log command
+** Pros: Easy to implement.
+** Cons: Less flexible and metrics used will be limited.
+
+* **Alternative 2 :** Require `startRange` and `endRange` in all display commands
+** Pros: Would have to consider sensible defaults
+** Cons: More for the user to type if he/she wants to view statistics over all workouts.
+
+* **Alternative 3 :** Allow optional `startRange` and `endRange` use start of epoch for start time and current datetime for end date.
+** Pros: Easy to implement
+** Cons: Statistics generated using the number of days might not make sense.
+[Note] For example, the average workout time per day would not make sense since the number of days since epoch will be huge.
+
+* **Alternative 4 (current choice):** Allow optional `startRange` and `endRange` and if not given take earliest start date time and latest end datetime
+** Pros: More meaningful metrics and statistics
+** Cons: More complicated model and defaults might not seem intuitive at first
+
+===== Defensive Programming
+We decided to build these features with security at the forefront. This can be seen in
+
+* The use of optionals and `ifPresent()` functions guards against `NullPointerExceptions` when the user does not provide optional fields.
+* `requireNonNull` are frequently used to check for `null` values.
+* Strong exception handling when parsing `startRange` and `endRange` in the display command and throwing a `ParseCommandException` if date times provided are not valid in the specified format.
+
 // end::log[]
 
 === Configuration

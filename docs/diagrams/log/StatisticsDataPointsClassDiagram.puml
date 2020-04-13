@@ -1,0 +1,19 @@
+@startuml
+!include ../style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR
+skinparam classBackgroundColor LOGIC_COLOR
+
+Package "Statistics Data Points" <<Rectangle>> {
+    Class "{abstract}\DataPoint" as DataPoint
+
+    Class TotalWorkoutCountDataPoint
+    Class TotalWorkoutTimeDataPoint
+    Class AverageWorkoutTimePerDay
+}
+
+TotalWorkoutCountDataPoint --up-|> DataPoint
+TotalWorkoutTimeDataPoint --up-|> DataPoint
+AverageWorkoutTimePerDay --up-|> DataPoint
+
+@enduml

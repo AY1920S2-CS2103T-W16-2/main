@@ -37,7 +37,7 @@ public class Commands {
     public static final String LOG_LIST = "log list";
     public static final String LOG_DELETE = "log delete LOG_ID";
     public static final String LOG_FIND =
-            "log find [st/<datetime>] [et/<datetime>] [e/<exercise_name>] [w/<workout_name>]";
-    public static final String LOG_DISPLAY = "log display";
+            "log find [st/<datetime>] [et/<datetime>] [w/<workout_name>]";
+    public static final String LOG_DISPLAY = "log display [st/<datetime>] [et/<datetime>]";
 
 }

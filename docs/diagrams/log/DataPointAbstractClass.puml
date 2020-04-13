@@ -1,0 +1,14 @@
+@startuml
+
+class DataPoint {
+    -labelName: String
+    -result: String
+
+
+    +DataPoint(String labelName, String defaultResult)
+    +getLabelName(): String
+    +getResult(): String
+    +calculate(List<CompletedWorkouts> workouts): void
+}
+
+@enduml
