@@ -1258,11 +1258,20 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 <div class="paragraph">
 <p>The log statistics feature was built from the ground up with modularity and extensibility in mind which is inline with SLAP and SOLID principles. This is exemplified in the decision to have a <code>DataPoint</code> abstract class. The class diagram is shown below.</p>
 </div>
+<div class="paragraph">
+<p>A <code>DataPoint</code> is metric that takes gives the user some information on his or her performance. Data points are list row by row to the user with the <code>labelName</code> on the left followed by the <code>result</code> on the right in a table format.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/log/LogDisplayScreenshot.png" alt="LogDisplayScreenshot">
+</div>
+<div class="title">Figure 28. Log Display Screenshot</div>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/log/DataPointAbstractClass.png" alt="DataPointAbstractClass">
 </div>
-<div class="title">Figure 28. DataPoint Abstract Class</div>
+<div class="title">Figure 29. DataPoint Abstract Class</div>
 </div>
 <div class="paragraph">
 <p>This abstract class is then extended by concrete class as shown below.</p>
@@ -1271,7 +1280,7 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 <div class="content">
 <img src="images/developer-guide/log/StatisticsDataPointsClassDiagram.png" alt="StatisticsDataPointsClassDiagram">
 </div>
-<div class="title">Figure 29. Example Concrete Data Points</div>
+<div class="title">Figure 30. Example Concrete Data Points</div>
 </div>
 <div class="paragraph">
 <p>Through this abstraction we make it easy to extend and include new metrics to track in the future. All that needs to be done is to create a new class that extends <code>DataPoint</code> and implements the <code>calculate</code> function that takes as input a list of <code>CompletedWorkout</code> and does the necessary calculations and sets the results.</p>
@@ -1298,7 +1307,7 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 <div class="content">
 <img src="images/developer-guide/log/DisplayCommandSequenceDiagramPart1.png" alt="DisplayCommandSequenceDiagramPart1">
 </div>
-<div class="title">Figure 30. Display Command Invocation Phase 1</div>
+<div class="title">Figure 31. Display Command Invocation Phase 1</div>
 </div>
 <div class="paragraph">
 <p>This next section goes over in a little more detail how the program unfolds.</p>
@@ -1333,7 +1342,7 @@ The <code>showReport</code> flag in <code>CommandResult</code> being returned is
 <div class="content">
 <img src="images/developer-guide/log/DisplayCommandSequenceDiagramPart2.png" alt="DisplayCommandSequenceDiagramPart2">
 </div>
-<div class="title">Figure 31. Example Display Command Invocation Phase 2</div>
+<div class="title">Figure 32. Example Display Command Invocation Phase 2</div>
 </div>
 <div class="paragraph">
 <p>Similar to phase 1, this next section will detail the steps taken in a little more detail.</p>
@@ -1379,7 +1388,7 @@ The <code>showReport</code> flag in <code>CommandResult</code> being returned is
 <div class="content">
 <img src="images/developer-guide/glog/LogDateRangeSensibleDefaults.png" alt="LogDateRangeSensibleDefaults">
 </div>
-<div class="title">Figure 32. Log sensible date range defaults</div>
+<div class="title">Figure 33. Log sensible date range defaults</div>
 </div>
 <div class="ulist">
 <ul>
@@ -2078,4 +2087,4 @@ This meant we were later to start coding and making PRs than other teams (as see
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:21:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:47:03 UTC</div></div></div></body></html>
