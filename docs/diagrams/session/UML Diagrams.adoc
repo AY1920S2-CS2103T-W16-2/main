@@ -1,0 +1,36 @@
+= UML Diagrams
+:site-section: DeveloperGuide
+:toc:
+:toc-title:
+:toc-placement: preamble
+:sectnums:
+:imagesDir: ../../images/
+:stylesDir: stylesheets
+:xrefstyle: full
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:warning-caption: :warning:
+endif::[]
+:repoURL: https://github.com/AY1920S2-CS2103T-W16-2/main
+:codeURL: {repoURL}/tree/master/
+
+User: `CS2103T-W16-2` Gabriel Yeo Fang Yan
+
+The activity diagram below demonstrates the actions of a user with the session feature. It was vital in the planning stage for determining the design of the app in a user-facing manner.
+
+.Session Feature Activity Diagram
+image::developer-guide/session/StartStopActivityDiagram.png[]
+
+
+.Session related models
+image::developer-guide/session/SessionModel.png[]
+
+The above class diagram briefly depicts how the session related models (in `OngoingWorkout`) interact with surrounding classes.
+
+.DoneCommand sequence diagram
+image::developer-guide/session/DoneCommandSequenceDiagram.png[]
+
+The sequence diagram above demonstrates the interaction between the Logic and Model of ZeroToOne.
+For brevity, some inner details between `OngoingWorkout#done()` and the return of `cs` are omitted.
+
