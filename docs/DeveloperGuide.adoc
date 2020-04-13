@@ -578,6 +578,11 @@ The ZeroToOne user can generate and view these statistics via the `log display` 
 ===== Architecture
 The log statistics feature was built from the ground up with modularity and extensibility in mind which is inline with SLAP and SOLID principles. This is exemplified in the decision to have a `DataPoint` abstract class. The class diagram is shown below.
 
+A `DataPoint` is metric that takes gives the user some information on his or her performance. Data points are list row by row to the user with the `labelName` on the left followed by the `result` on the right in a table format.
+
+.Log Display Screenshot
+image::developer-guide/log/LogDisplayScreenshot.png[]
+
 .DataPoint Abstract Class
 image::developer-guide/log/DataPointAbstractClass.png[]
 
