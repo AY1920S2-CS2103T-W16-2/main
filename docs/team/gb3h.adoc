@@ -27,22 +27,22 @@ Major design consideration was required to ensure that the timer was not computa
 
 * *Code contributed*:
 
-** *Overview*: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=gb3h&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[Reposense]
-
-** *Functional Code*:
-
-1. https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/commands[github folder] <- Commands (Start, Stop, Skip, Done)
-2. https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/session[github folder] <- Parsers
-3. https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/model/session[github folder] <- Models (All the Ongoing- models and worked in collaboration with @Jiachen247 for some Completed- models)
-4. https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/ui/views/home[github folder] <- UI work
-5. https://github.com/gb3h/main/tree/master/src/main/resources/view/home[github folder] <- FXML
-6. https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/java/seedu/zerotoone/model/ModelManager.java[github file] <- Timer functionality (and major session-related functions)
-
-** *Tests*:
-
-1. https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/commands[github folder] <- Command Tests (Start, Stop, Skip, Done)
-2. https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/session[github folder] <- Parser Tests
-3. https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/model/session[github folder] <- Model Tests
+** *Code*: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=gb3h&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false[Reposense]
+//
+//** *Functional Code*:
+//
+//1. https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/commands[github folder] <- Commands (Start, Stop, Skip, Done)
+//2. https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/session[github folder] <- Parsers
+//3. https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/model/session[github folder] <- Models (All the Ongoing- models and worked in collaboration with @Jiachen247 for some Completed- models)
+//4. https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/ui/views/home[github folder] <- UI work
+//5. https://github.com/gb3h/main/tree/master/src/main/resources/view/home[github folder] <- FXML
+//6. https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/java/seedu/zerotoone/model/ModelManager.java[github file] <- Timer functionality (and major session-related functions)
+//
+//** *Tests*:
+//
+//1. https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/commands[github folder] <- Command Tests (Start, Stop, Skip, Done)
+//2. https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/session[github folder] <- Parser Tests
+//3. https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/model/session[github folder] <- Model Tests
 
 ---
 
