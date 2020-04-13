@@ -686,19 +686,20 @@ workout exercise add 1 3</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Added exercise to workout: Bench Press</code></pre>
+<pre class="CodeRay highlight"><code>Added exercise Bench Press to Arms Workout!</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
+* You cannot add an empty exercise (i.e. exercise that does not contain any sets) to a workout
 * WORKOUT_ID refers to the index of the workout in `workout list`
 * EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-an-exercise-in-a-workout-in-progress"><a class="link" href="#changing-an-exercise-in-a-workout-in-progress">5.9.3. Changing an exercise in a workout (In Progress)</a></h4>
+<h4 id="editing-an-exercise-in-a-workout"><a class="link" href="#editing-an-exercise-in-a-workout">5.9.3. Editing an exercise in a workout</a></h4>
 <div class="paragraph">
 <p>If you add the wrong exercise to a workout by mistake, or want to change a particular exercise to a different one, no worries! You can run this command:</p>
 </div>
@@ -714,24 +715,24 @@ workout exercise edit 1 2 3</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This command allows you to edit an exercise in a workout, by replacing the exercise corresponding to <code>EXERCISE_ID</code> with the exercise corresponding to <code>NEW_EXERCISE_ID</code>. ZeroToOne will automatically update the exercise in the workout on your result display.  If this is successful, the following message will be displayed in the feedback display:</p>
+<p>This command allows you to edit an exercise in a workout, by replacing the exercise corresponding to <code>EXERCISE_ID</code> with the exercise corresponding to <code>NEW_EXERCISE_ID</code>. Hence, the order of exercises within the workout is retained. ZeroToOne will automatically update the exercise in the workout on your result display. If this is successful, the following message will be displayed in the feedback display:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Edited exercise in workout: Overhead Press</code></pre>
+<pre class="CodeRay highlight"><code>Successfully edited Bench Press in Arms Workout to become Bicep Curl</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
 * WORKOUT_ID refers to the index of the workout in `workout list`
-* EXERCISE_ID refers to the index of the exercise in `workout find w/&lt;workout_name&gt;`
+* EXERCISE_ID refers to the index of the exercise in the workout, when `workout find w/&lt;workout_name&gt;` is executed
 * NEW_EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-exercise-in-a-workout"><a class="link" href="#deleting-an-exercise-in-a-workout">5.9.4. Deleting an exercise in a workout</a></h4>
+<h4 id="deleting-an-exercise-from-a-workout"><a class="link" href="#deleting-an-exercise-from-a-workout">5.9.4. Deleting an exercise from a workout</a></h4>
 <div class="paragraph">
 <p>If editing an exercise does not work for your purposes, you can also choose to simply delete any exercise from a workout. You may type the following command:</p>
 </div>
@@ -747,18 +748,18 @@ workout exercise delete 1 3</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>ZeroToOne will delete the set with the specified set ID, from the exercise with the specified exercise ID. If this is successful, the following message will be displayed in the feedback display:</p>
+<p>ZeroToOne will delete the exercise with the specified exercise ID, from the workout with the specified workout ID. If this is successful, the following message will be displayed in the feedback display:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Deleted workout exercise: Strength Training Workout set:</code></pre>
+<pre class="CodeRay highlight"><code>Successfully deleted Bench Press from Arms Workout</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
 * WORKOUT_ID refers to the index of the workout in `workout list`
-* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+* EXERCISE_ID refers to the index of the exercise in the workout, when `workout find w/&lt;workout_name&gt;` is executed</code></pre>
 </div>
 </div>
 </div>
@@ -779,7 +780,7 @@ workout exercise delete 1 3</code></pre>
 <div class="title">Figure 12. Workout List</div>
 </div>
 <div class="paragraph">
-<p>ZeroToOne will show you a list of all the workouts you have created! From this list, you can see the names of all your workouts, as well as their corresponding workout IDs.</p>
+<p>ZeroToOne will show you a list of all the workouts you have created! From this list, you can see the names of all your workouts and their corresponding IDs. Additionally, it shows all the information about the exercises in each workout.</p>
 </div>
 </div>
 <div class="sect3">
@@ -815,9 +816,9 @@ workout find w/Push Day</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-a-workout-s-name"><a class="link" href="#changing-a-workout-s-name">5.9.7. Changing a workout’s name</a></h4>
+<h4 id="editing-the-name-of-a-workout"><a class="link" href="#editing-the-name-of-a-workout">5.9.7. Editing the name of a workout</a></h4>
 <div class="paragraph">
-<p>If you ever want to change the name of a workout, simply type this command:</p>
+<p>If you ever want to edit the name of a workout, simply type this command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -835,7 +836,7 @@ workout edit 1 w/Arms Training</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Edited workout: Arms Training</code></pre>
+<pre class="CodeRay highlight"><code>Successfully edited name from Arms Workout to Arms Training</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -866,7 +867,7 @@ workout delete 1</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Deleted Workout: Arms Training</code></pre>
+<pre class="CodeRay highlight"><code>Successfully deleted workout: Arms Training</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -877,7 +878,7 @@ workout delete 1</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exporting-a-workout-plan-to-a-file-proposed"><a class="link" href="#exporting-a-workout-plan-to-a-file-proposed">5.9.9. Exporting a workout plan to a file (Proposed)</a></h4>
+<h4 id="exporting-a-workout-plan-to-a-file-coming-in-v2-0"><a class="link" href="#exporting-a-workout-plan-to-a-file-coming-in-v2-0">5.9.9. Exporting a workout plan to a file (Coming in v2.0)</a></h4>
 <div class="paragraph">
 <p>Do you enjoy sharing your fitness journey with your friends? Well, this feature allows you to share your workouts with your friends, so you can help each other out in the journey to become fit!</p>
 </div>
@@ -902,19 +903,19 @@ workout export 1 p/data/myWorkout.txt</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="importing-a-workout-plan-from-a-file-proposed"><a class="link" href="#importing-a-workout-plan-from-a-file-proposed">5.9.10. Importing a workout plan from a file (Proposed)</a></h4>
+<h4 id="importing-a-workout-plan-from-a-file-coming-in-v2-0"><a class="link" href="#importing-a-workout-plan-from-a-file-coming-in-v2-0">5.9.10. Importing a workout plan from a file (Coming in v2.0)</a></h4>
 <div class="paragraph">
 <p>ZeroToOne will import a workout from a plain text file stored in the specified file_path in your computer. This feature allows you to get workouts from your friends, so you can help each other out in the journey to become fit.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>workout import p/&lt;file_path&gt;</code></pre>
+<pre class="CodeRay highlight"><code>workout import w/&lt;workout_name&gt; p/&lt;file_path&gt;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>Example use:
-workout import p/data/myFriendsWorkout.txt</code></pre>
+workout import w/My Friend's Workout p/data/myFriendsWorkout.txt</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -922,7 +923,7 @@ workout import p/data/myFriendsWorkout.txt</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Successfully imported /data/myFriendsWorkout.txt into ZeroToOne!</code></pre>
+<pre class="CodeRay highlight"><code>Successfully imported /data/myFriendsWorkout.txt as a new workout: My Friend's Workout!</code></pre>
 </div>
 </div>
 </div>
@@ -1046,7 +1047,7 @@ schedule delete 1</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="scheduling-a-recurring-workout-session-proposed"><a class="link" href="#scheduling-a-recurring-workout-session-proposed">5.10.5. Scheduling a recurring workout session (Proposed)</a></h4>
+<h4 id="scheduling-a-recurring-workout-session-coming-in-v2-0"><a class="link" href="#scheduling-a-recurring-workout-session-coming-in-v2-0">5.10.5. Scheduling a recurring workout session (Coming in v2.0)</a></h4>
 <div class="paragraph">
 <p>Sometimes you will want to schedule a workout session that repeats over time, with a certain frequency. No problem! Simply type the following command:</p>
 </div>
@@ -1457,4 +1458,4 @@ users to interact with electronic devices through graphical means, not textual m
 A workout that has been completed and stored away safely.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:06:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:02:51 UTC</div></div></div></body></html>
