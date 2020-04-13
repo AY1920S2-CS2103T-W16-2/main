@@ -188,7 +188,7 @@ The activity diagram below demonstrates the actions of a user with this feature.
 .Session Feature Activity Diagram
 image::developer-guide/session/StartStopActivityDiagram.png[]
 
-Start depicts the start of a valid (non-zero sets remaining) Workout Session.
+Start depicts the start of a valid (non-zero sets remaining) workout session.
 Upon depletion of all remaining sets, the `OngoingWorkout` automatically stops and produces a `CompletedWorkout` which is saved.
 The only inputs the user is required to give throughout the session are `done` (corresponding to the yes of the conditional branch)
 and `skip` (no of the conditional branch). `Stop` is optional.
@@ -213,7 +213,7 @@ The `OngoingWorkout` class has a dependency on `Workout`, which has been abstrac
 
 In turn, `CompletedWorkout` class has a dependency on `OngoingWorkout`.
 
-`OngoingWorkout` objects are created at the start of a workout session, and can be thought of as 'converted' to `CompletedWorkout` objects at the end of a workout session. `Workout` and `CompletedWorkout` objects are immutable, hence the design choice for using an intermediary, stateuful, `OngoingWorkout` class.
+`OngoingWorkout` objects are created at the start of a workout session, and can be thought of as 'converted' to `CompletedWorkout` objects at the end of a workout session. `Workout` and `CompletedWorkout` objects are immutable, hence the design choice for using an intermediary, stateful `OngoingWorkout` class.
 
 ---
 
@@ -242,7 +242,7 @@ updates the instance of `OngoingWorkout`.
 image::developer-guide/session/DoneCommandSequenceDiagram.png[]
 
 * The sequence diagram above demonstrates the interaction between the Logic and Model of ZeroToOne.
-For brevity, some inner details between `OngoingWorkout.done()` and the return of `cs` are omitted.
+For brevity, some inner details between `OngoingWorkout#done()` and the return of `cs` are omitted.
 
 Step 3. After resting, the user fails the last and final set of `Bench Press` and types `skip`.
 

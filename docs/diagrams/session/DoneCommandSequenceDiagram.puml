@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":ExerciseListParser" as ExerciseListParser LOGIC_COLOR
+participant ":DoneCommandParser" as DoneCommandParser LOGIC_COLOR
 participant "d:DoneCommand" as DoneCommand LOGIC_COLOR
 end box
 
@@ -15,18 +15,18 @@ end box
 [-> LogicManager : execute(done)
 activate LogicManager
 
-LogicManager -> ExerciseListParser : parseCommand(done)
-activate ExerciseListParser
+LogicManager -> DoneCommandParser : parseCommand(done)
+activate DoneCommandParser
 
 create DoneCommand
-ExerciseListParser -> DoneCommand
+DoneCommandParser -> DoneCommand
 activate DoneCommand
 
-DoneCommand --> ExerciseListParser
+DoneCommand --> DoneCommandParser
 deactivate DoneCommand
 
-ExerciseListParser --> LogicManager : d
-deactivate ExerciseListParser
+DoneCommandParser --> LogicManager : d
+deactivate DoneCommandParser
 
 LogicManager -> DoneCommand : execute()
 activate DoneCommand
