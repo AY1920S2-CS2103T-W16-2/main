@@ -12,10 +12,6 @@ ZeroToOne is a desktop application that serves as an all-in-one exercise tracker
 
 == Summary of contributions
 
-
-.Workout Session Feature
-image::user-guide/UgDoneSet.png[]
-
 * *Major enhancement*: added the *Workout Session Feature*
 ** What it does: Allows the user to start a workout session by providing a `WORKOUT_ID`.
 The session keeps track of the user's workout by providing a queue of upcoming sets and the progress of the previous set.
