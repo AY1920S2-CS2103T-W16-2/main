@@ -42,8 +42,8 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-exercise">F.2. Deleting a exercise</a></li>
-<li><a href="#saving-data">F.3. Saving data</a></li>
+<li><a href="#starting-a-workout-session">F.2. Starting a workout session</a></li>
+<li><a href="#saving-a-workout-session">F.3. Saving a workout session</a></li>
 </ul>
 </li>
 <li><a href="#effort">Appendix G: Effort</a></li>
@@ -1915,7 +1915,7 @@ These instructions only provide a starting point for testers to work on; testers
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: Shows the GUI with a set of exercises and workouts. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
@@ -1936,31 +1936,28 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-exercise"><a class="link" href="#deleting-a-exercise">F.2. Deleting a exercise</a></h3>
+<h3 id="starting-a-workout-session"><a class="link" href="#starting-a-workout-session">F.2. Starting a workout session</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a exercise while all exercises are listed</p>
+<p>Starting a workout session with a <code>WORKOUT_ID</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all exercises using the <code>list</code> command. Multiple exercises in the list.</p>
+<p>Prerequisites: At least 1 workout containing valid exercises and sets must exist.</p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Test case: <code>start 1</code><br>
+Expected: Workout session started with the index of the workout shown in the status message. Timer starts counting from 00:00.</p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No exercise is deleted. Error details shown in the status message. Status bar remains the same.</p>
+<p>Test case: <code>start 0</code><br>
+Expected: No workout session is started. Error details shown in the status message. Status bar remains the same. Timer remains at 00:00.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>start</code>, <code>start x</code> (where x is larger than the list size), <code>start y</code> (where y is the ID of an invalid workout)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -1968,28 +1965,34 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
+<h3 id="saving-a-workout-session"><a class="link" href="#saving-a-workout-session">F.3. Saving a workout session</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Workout sessions are saved automatically at the end of a workout session.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites: A workout session must be ongoing.</p>
+</li>
+<li>
+<p>Test case: <code>stop</code><br>
+Expected: Workout session stops and displays in the status message. Timer resets to 00:00. The workout session should appear in the <code>Log</code> tab.</p>
+</li>
+<li>
+<p>Test case: <code>skip</code>, <code>done</code><br>
+Expected: Same as above, if <code>skip</code> or <code>done</code> is given on the last set.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>save</code>, <code>stop 1</code>, <code>skip</code>/<code>done</code> (when there are more sets remaining)<br>
+Expected: Error message displayed in the status bar.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 </div>
@@ -2077,14 +2080,8 @@ Thus, we took more time than usual at the beginning of the project to plan our r
 This meant we were later to start coding and making PRs than other teams (as seen on reposense), which we felt was a more-than-fair trade-off for our team dynamic.</p>
 </div>
 <div class="paragraph">
-<p>We hope you have enjoyed this journey and learnt as much as we have!</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The ZeroToOne Team</p>
-</li>
-</ul>
+<p>We hope you have enjoyed this journey and learnt as much as we have!
+- The ZeroToOne Team</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:02:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:15:21 UTC</div></div></div></body></html>
