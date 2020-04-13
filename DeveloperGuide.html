@@ -379,7 +379,7 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 <div class="title">Figure 10. Session Feature Activity Diagram</div>
 </div>
 <div class="paragraph">
-<p>Start depicts the start of a valid (non-zero sets remaining) Workout Session.
+<p>Start depicts the start of a valid (non-zero sets remaining) workout session.
 Upon depletion of all remaining sets, the <code>OngoingWorkout</code> automatically stops and produces a <code>CompletedWorkout</code> which is saved.
 The only inputs the user is required to give throughout the session are <code>done</code> (corresponding to the yes of the conditional branch)
 and <code>skip</code> (no of the conditional branch). <code>Stop</code> is optional.</p>
@@ -420,7 +420,7 @@ and <code>skip</code> (no of the conditional branch). <code>Stop</code> is optio
 <p>In turn, <code>CompletedWorkout</code> class has a dependency on <code>OngoingWorkout</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>OngoingWorkout</code> objects are created at the start of a workout session, and can be thought of as 'converted' to <code>CompletedWorkout</code> objects at the end of a workout session. <code>Workout</code> and <code>CompletedWorkout</code> objects are immutable, hence the design choice for using an intermediary, stateuful, <code>OngoingWorkout</code> class.</p>
+<p><code>OngoingWorkout</code> objects are created at the start of a workout session, and can be thought of as 'converted' to <code>CompletedWorkout</code> objects at the end of a workout session. <code>Workout</code> and <code>CompletedWorkout</code> objects are immutable, hence the design choice for using an intermediary, stateful <code>OngoingWorkout</code> class.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -471,7 +471,7 @@ updates the instance of <code>OngoingWorkout</code>.</p>
 <ul>
 <li>
 <p>The sequence diagram above demonstrates the interaction between the Logic and Model of ZeroToOne.
-For brevity, some inner details between <code>OngoingWorkout.done()</code> and the return of <code>cs</code> are omitted.</p>
+For brevity, some inner details between <code>OngoingWorkout#done()</code> and the return of <code>cs</code> are omitted.</p>
 </li>
 </ul>
 </div>
@@ -1885,4 +1885,4 @@ This meant we were later to start coding and making PRs than other teams (as see
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:05:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:15:34 UTC</div></div></div></body></html>
