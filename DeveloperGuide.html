@@ -756,7 +756,16 @@ workout session, where all remaining sets are marked as incomplete.</p>
 <div class="sect3">
 <h4 id="overview-2"><a class="link" href="#overview-2">3.3.1. Overview</a></h4>
 <div class="paragraph">
-<p>The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises.</p>
+<p>The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises, and more.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/workout/WorkoutActivityDiagram.png" alt="WorkoutActivityDiagram">
+</div>
+<div class="title">Figure 20. Activity Diagram for Creating a Workout</div>
+</div>
+<div class="paragraph">
+<p>This is an activity diagram for the user to create a new workout. Essentially, the user will first create a workout with a name that does not contain any exercises yet. The user will then try to find exercises to add, and if their desired exercises cannot be found, the user will create them and add them into the workout.</p>
 </div>
 </div>
 <div class="sect3">
@@ -766,13 +775,57 @@ workout session, where all remaining sets are marked as incomplete.</p>
 Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> and finally, an <code>WorkoutExerciseList</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following class diagram shows the overview of the Workout Manager:</p>
+<p>The following class diagram shows the overview of the Workout feature:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/workout/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
 </div>
-<div class="title">Figure 20. Workout Class Diagram</div>
+<div class="title">Figure 21. Class Diagram for Workout</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WorkoutList</code> implements the interface <code>ReadOnlyWorkoutList</code></p>
+</li>
+<li>
+<p>The <code>WorkoutList</code> is managed by the <code>ModelManager</code></p>
+</li>
+<li>
+<p><code>FilteredWorkoutList</code> is an aggregation of one <code>WorkoutList</code>, to filter the view of the workout list shown to the user</p>
+</li>
+<li>
+<p><code>WorkoutList</code> composes of a <code>UniqueWorkoutList</code></p>
+</li>
+<li>
+<p>In turn, a <code>UniqueWorkoutList</code> contains any number of <code>Workout</code> objects</p>
+</li>
+<li>
+<p>Each <code>Workout</code> is comprised of two things: a <code>WorkoutName</code> and any number of <code>Exercise</code> objects</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WorkoutName</code> contains the name of the <code>Workout</code></p>
+</li>
+<li>
+<p><code>Exercise</code> is an exercise that belongs in a <code>Workout</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each <code>Workout</code> can contain any number of <code>Exercise</code> objects, including zero. However, a <code>Workout</code> must not be empty i.e. have at least one <code>Exercise</code>, in order to be scheduled. This is implemented in the Schedule feature as referenced in <a href="#schedule">Section 3.4, &#8220;Schedule&#8221;</a>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -807,19 +860,72 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <p><code>Model#setWorkout(Workout target, Workout editedWorkout)</code> - Replaces a particular workout with an edited workout</p>
 </li>
 <li>
+<p><code>Model#setExerciseInWorkout(Exercise target, Exercise editedExericse</code> - Replaces a target exercise in any workout with the edited exercise</p>
+</li>
+<li>
 <p><code>Model#deleteExerciseFromWorkout(Exercise exercise)</code> - Deletes any instance of an exercise from all workouts</p>
 </li>
 <li>
 <p><code>Model#getFilteredWorkoutList()</code> - Returns an unmodifiable view of <code>ObservableList&lt;Workout&gt;</code></p>
 </li>
 <li>
-<p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> - Updates the filter of <code>FilteredWorkoutList</code></p>
+<p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> - Updates the filter of <code>FilteredWorkoutList</code> to show filtered views of the list to the user</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="command-execution"><a class="link" href="#command-execution">3.3.4. Command Execution</a></h4>
+<h4 id="storage-of-workouts"><a class="link" href="#storage-of-workouts">3.3.4. Storage of Workouts</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/workout/WorkoutStorageClassDiagram.png" alt="WorkoutStorageClassDiagram">
+</div>
+<div class="title">Figure 22. Class Diagram for Workout Storage</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>WorkoutListStorageManager</code> implements the interface <code>WorkoutListStorage</code>. It also creates a <code>JacksonWorkoutList</code>.</p>
+</li>
+<li>
+<p>The <code>JacksonWorkoutList</code> composes of any number of <code>JacksonWorkout</code> objects.</p>
+</li>
+<li>
+<p>In turn, each <code>JacksonWorkout</code> composes of a <code>String</code> which is the workout name, and any number of <code>JacksonExercise</code> objects which are the exercises in each workout.</p>
+</li>
+<li>
+<p>The relationship of the Storage component to the Model component is also shown.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="parser-for-workouts"><a class="link" href="#parser-for-workouts">3.3.5. Parser for Workouts</a></h4>
+<div class="paragraph">
+<p>I will go on to explain the Parser structure for the workout commands.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/workout/WorkoutParserClassDiagram.png" alt="WorkoutParserClassDiagram">
+</div>
+<div class="title">Figure 23. Class Diagram of the Parser for Workouts</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>WorkoutCommandParser</code> creates all <code>Workout</code> related Parsers. These parsers allow the user to create, edit, delete and find workouts, as can be seen in the left hand side of the above diagram.</p>
+</li>
+<li>
+<p>In addition, the <code>WorkoutCommandParser</code> creates the <code>WorkoutExerciseCommandParser</code>.</p>
+</li>
+<li>
+<p>In turn, <code>WorkoutExerciseCommandParser</code> creates all workout <code>Exercise</code> related Parsers. These parsers allow the user to add, edit and delete said <code>Exercise</code> objects.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sample-command-execution-2"><a class="link" href="#sample-command-execution-2">3.3.6. Sample Command Execution</a></h4>
 <div class="paragraph">
 <p>To illustrate an example of a command from the Workout Manager, the following sequence diagram
 depicts flow of the program when the command <code>workout find w/Arms Workout</code> is run.</p>
@@ -828,7 +934,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 <div class="content">
 <img src="images/developer-guide/workout/WorkoutSequenceDiagram.png" alt="WorkoutSequenceDiagram">
 </div>
-<div class="title">Figure 21. Sequence Diagram for Finding a Workout</div>
+<div class="title">Figure 24. Sequence Diagram for Finding a Workout</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -842,16 +948,16 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 <p>Next, the <code>WorkoutCommandParser</code> has to <code>parse("find w/Arms Workout")</code> for the command.</p>
 </li>
 <li>
-<p>Once the command has been parsed as a <code>FindCommand</code>, it will be passed on to the <code>FindCommandParser</code>, which will then create a new <code>WorkoutName</code>.</p>
+<p>Once the command has been parsed as a <code>FindCommand</code>, it will be passed on to the <code>FindCommandParser</code>.</p>
 </li>
 <li>
-<p>The <code>FindCommandParser</code> can then create a <code>FindCommand</code>, which in turn creates a <code>PredicateFilterWorkoutName</code>.</p>
+<p>The <code>FindCommandParser</code> can then create a <code>FindCommand</code>. This is constructed with the <code>WorkoutName</code> for "Arms Workout" (a low-level detail that has been abstracted from the diagram).</p>
 </li>
 <li>
 <p>The <code>FindCommand</code> can be returned to the <code>LogicManager</code>, where it will <code>execute()</code> the <code>FindCommand</code>.</p>
 </li>
 <li>
-<p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> is used to update the view of the workout list to show the requested Workout(s).</p>
+<p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> is used to update the view of the workout list to show the requested Workout(s), using the <code>PredicateFilterWorkoutName</code> that is returned by the <code>FindCommand</code> (a low-level detail that has been abstracted from the diagram).</p>
 </li>
 <li>
 <p>Finally, the resulting output message will be returned as the <code>CommandResult</code>.</p>
@@ -860,7 +966,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.5. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.7. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-exercises-in-workout"><a class="link" href="#aspect-exercises-in-workout">Aspect: Exercises in workout</a></h5>
 <div class="ulist">
@@ -894,9 +1000,9 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 </ul>
 </div>
 <div class="paragraph">
-<p>In the end, I decided to stick with Option 1. This is because creating a new WorkoutExercise class
-is redundant and unnecessary, when there is no functional difference between an Exercise and a WorkoutExercise,
-other than the context that they are referenced in. In addition, this would make the deletion of any instance of a particular Exercise from a Workout easier, when an Exercise is deleted from the ExerciseList. Hence, to simplify matters, using the existing Exercise class to construct workouts was better.</p>
+<p>In the end, I decided to stick with Option 1. This is because creating a new <code>WorkoutExercise</code> class
+is redundant and unnecessary, when there is no functional difference between an <code>Exercise</code> and a <code>WorkoutExercise</code>,
+other than the context that they are referenced in. In addition, this would make the deletion of any instance of a particular <code>Exercise</code> from a Workout easier, when an <code>Exercise</code> is deleted from the <code>ExerciseList</code>. Hence, to simplify matters, using the existing <code>Exercise</code> class to construct workouts was better.</p>
 </div>
 </div>
 </div>
@@ -918,7 +1024,7 @@ other than the context that they are referenced in. In addition, this would make
 <div class="content">
 <img src="images/developer-guide/schedule/ModelScheduleClassDiagram.png" alt="ModelScheduleClassDiagram">
 </div>
-<div class="title">Figure 22. Scheduler Class Diagram</div>
+<div class="title">Figure 25. Scheduler Class Diagram</div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, The <code>Scheduler</code> consists two lists, <code>ScheduleList</code> and <code>ScheduledWorkoutList</code>.</p>
@@ -977,7 +1083,7 @@ The decision to have both <code>ScheduleList</code> and <code>ScheduledWorkoutLi
 </div>
 </div>
 <div class="sect3">
-<h4 id="command-execution-2"><a class="link" href="#command-execution-2">3.4.4. Command Execution</a></h4>
+<h4 id="command-execution"><a class="link" href="#command-execution">3.4.4. Command Execution</a></h4>
 <div class="sect4">
 <h5 id="creating-a-schedule"><a class="link" href="#creating-a-schedule">Creating a Schedule</a></h5>
 <div class="paragraph">
@@ -987,7 +1093,7 @@ The decision to have both <code>ScheduleList</code> and <code>ScheduledWorkoutLi
 <div class="content">
 <img src="images/developer-guide/schedule/ScheduleCreateSequenceDiagram.png" alt="ScheduleCreateSequenceDiagram">
 </div>
-<div class="title">Figure 23. Sequence Diagram for Creating a Schedule</div>
+<div class="title">Figure 26. Sequence Diagram for Creating a Schedule</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1039,7 +1145,7 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 <div class="content">
 <img src="images/developer-guide/schedule/PopulateSortedScheduledWorkoutList.png" alt="PopulateSortedScheduledWorkoutList">
 </div>
-<div class="title">Figure 24. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
+<div class="title">Figure 27. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1684,4 +1790,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:20:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:25:21 UTC</div></div></div></body></html>

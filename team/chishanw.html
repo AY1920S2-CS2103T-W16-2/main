@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ZeroToOne is a desktop application that serves as an all-in-one exercise tracker and personal aide. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ZeroToOne is a desktop application that serves as an all-in-one exercise tracker and personal aide. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 70 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,29 +20,29 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Added exercise related functionality.</p>
+<p><strong>Major enhancement</strong>: Added Workout functionality.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p><strong>What it does</strong>: Allows users to manage their workouts and the corresponding exercises in each of their workouts. Users can create workouts, edit their workout names, and delete workouts. Users can add existing exercises to existing workouts, edit these exercises, and delete these exercises from their workouts. This whole set of functionality can be viewed from the Workout tab in the app.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p><strong>Justification</strong>: This feature improves the product significantly because a user will want to group and organise different exercises into a workout. This allows the user to have different workouts for different fitness purposes.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p><strong>Highlights</strong>: This enhancement affects the existing Exercise, Schedule and Log features. Future expansions will likely utilise Workouts because it has significant practical usage in order to work out. Hence, this feature required an in-depth analysis of design alternatives.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p><strong>Credits</strong>: The base for the Workout code was the AB3 code. I morphed the AB3 code to support Workouts instead of Persons. However, it ended up significantly different from Persons, as the Workout object was different from a Person object. Hence, an additional layer of code was added to support Workout objects that in turn managed Exercise objects.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: Added an About tab to allow users to easily access information about ZeroToOne in-app, without needing to refer to a User Guide. The tab displays some basic information about the app, and also a full list of all commands that can be executed.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=chishanw">tP Code Dashboard</a>] [<a href="https://github.com/chishanw/main/tree/master/src/main">Functional Code</a>] [<a href="https://github.com/chishanw/main/tree/master/src/test">Test Code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +53,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.3</code> (1 release) on GitHub. Generated the jar file and updated the User Guide to reflect the details of this particular release.</p>
 </li>
 </ul>
 </div>
@@ -63,10 +63,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Enhanced the GUI overall style and colour scheme. (Pull request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/173">#173</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Implemented switching of UI views via commands on the CLI. (Pull requests <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/175">#175</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/176">#176</a>)</p>
+</li>
+<li>
+<p>Helped implement the initial Exercise model. (Pull request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/54">#54</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for my existing Workout feature to increase coverage by 8.8%. (Pull requests <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/182">#182</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/198">#198</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for the Exercise feature to increase coverage by 4.2%. (Pull request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/62">#62</a>)</p>
 </li>
 </ul>
 </div>
@@ -76,7 +85,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Moved User Guide from our shared Google Docs over into the adoc file, for both our initial version of the User Guide and for the v1.3 release. (Pull requests <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/11">#11</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/115">#115</a>)</p>
+</li>
+<li>
+<p>Created the initial set of user stories and use cases in the Developer Guide, so that the team could help to build upon it. (Pull request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/8">#8</a>)</p>
+</li>
+<li>
+<p>Helped the team define sections in the Developer Guide to fill in for better organisation. (Pull request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/108">#108</a>)</p>
 </li>
 </ul>
 </div>
@@ -86,29 +101,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>I reviewed a total of 28 of 69 PRs made by other team members.</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
+<p>Regularly collated and updated a list of deadlines and deliverables in our group chat, to help everyone keep track of deadlines.</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Created a full set of app mockups while the project was still in its early planning stages, including the key user flows and UI design. This acted as a concrete goal for us to work towards as we developed the app.</p>
 </li>
 </ul>
 </div>
@@ -136,8 +135,368 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="user-interface-basics"><a class="link" href="#user-interface-basics">User Interface Basics</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Before we delve into the commands that you can use, let us first explain the components of the User Interface, and how we can navigate through them.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgUiComponents.png" alt="UgUiComponents">
+</div>
+<div class="title">Figure 1. Components of the User Interface</div>
+</div>
+<div class="sect2">
+<h3 id="navigation-tabs"><a class="link" href="#navigation-tabs">Navigation Tabs</a></h3>
+<div class="paragraph">
+<p>The navigation tabs allow you to easily access different parts of our application. Simply click on each tab to bring you to your desired feature! The coloured underline indicates which tab is currently activated and hence which feature you are currently accessing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="result-display"><a class="link" href="#result-display">Result Display</a></h3>
+<div class="paragraph">
+<p>This is where the results of your executed command will be displayed. The display will change according to the feature that you are currently using.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback-display"><a class="link" href="#feedback-display">Feedback Display</a></h3>
+<div class="paragraph">
+<p>Whenever you enter a command into the Command Box, the application will output a feedback message to you through this display!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="command-box"><a class="link" href="#command-box">Command Box</a></h3>
+<div class="paragraph">
+<p>You type all of your commands in here. To execute the command, simply press the "Enter" button on your keyboard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-app-information"><a class="link" href="#viewing-app-information">Viewing App Information</a></h3>
+<div class="paragraph">
+<p>Can’t remember the commands off the top of your head? Fret not. ZeroToOne provides you with a convenient way to view a list of all available commands that you can try. Simply enter the following command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>about</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+.About Window
+image::UgAbout.png[]</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgHelp.png" alt="UgHelp">
+</div>
+<div class="title">Figure 2. Help Window</div>
+</div>
+<div class="paragraph">
+<p>A pop-up window will appear, showing you a list of all available commands that you can try.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</p>
+</div>
+<div class="paragraph">
+<p>The app view will switch tabs to show the About tab.</p>
+</div>
+<div class="paragraph">
+<p>=== Managing Your Workouts</p>
+</div>
+<div class="paragraph">
+<p>After creating and modifying your exercises however you desire, it’s time to use those exercises to create workouts! In this section, we will walk you through how to manage all your workouts.</p>
+</div>
+<div class="paragraph">
+<p>==== Creating a new workout</p>
+</div>
+<div class="paragraph">
+<p>To create a new workout, simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout create w/&lt;workout_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout create w/Abs Workout</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgCreateWorkout.png" alt="UgCreateWorkout">
+</div>
+<div class="title">Figure 3. Creating A Workout</div>
+</div>
+<div class="paragraph">
+<p>The feedback display will let you know if the creation of your workout was successful. The application view will also update to display your new workout!</p>
+</div>
+<div class="paragraph">
+<p>==== Adding an exercise to a workout</p>
+</div>
+<div class="paragraph">
+<p>After creating your workout, the next step is to add an exercise to it! To do so, simply enter the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout exercise add WORKOUT_ID EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout exercise add 1 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Added exercise to workout: Bench Press</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Changing an exercise in a workout (In Progress)</p>
+</div>
+<div class="paragraph">
+<p>If you add the wrong exercise to a workout by mistake, or want to change a particular exercise to a different one, no worries! You can run this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout exercise edit WORKOUT_ID EXERCISE_ID NEW_EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout exercise edit 1 2 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command allows you to edit an exercise in a workout, by replacing the exercise corresponding to <code>EXERCISE_ID</code> with the exercise corresponding to <code>NEW_EXERCISE_ID</code>. ZeroToOne will automatically update the exercise in the workout on your result display.  If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited exercise in workout: Overhead Press</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* EXERCISE_ID refers to the index of the exercise in `workout find w/&lt;workout_name&gt;`
+* NEW_EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Deleting an exercise in a workout</p>
+</div>
+<div class="paragraph">
+<p>If editing an exercise does not work for your purposes, you can also choose to simply delete any exercise from a workout. You may type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout exercise delete WORKOUT_ID EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout exercise delete 1 3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will delete the set with the specified set ID, from the exercise with the specified exercise ID. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted workout exercise: Strength Training Workout set:</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Listing all workouts</p>
+</div>
+<div class="paragraph">
+<p>Now that we have covered how to manage individual workouts, how about viewing all your workouts in one place? Simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgWorkoutList.png" alt="UgWorkoutList">
+</div>
+<div class="title">Figure 4. Workout List</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will show you a list of all the workouts you have created! From this list, you can see the names of all your workouts, as well as their corresponding workout IDs.</p>
+</div>
+<div class="paragraph">
+<p>==== Finding a workout by name (In Progress)</p>
+</div>
+<div class="paragraph">
+<p>You may find that you need to know a workout’s ID for some commands, or that you need to retrieve the details of a specific workout. Fret not! Simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout find w/&lt;workout_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout find w/Strength Training</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgFindWorkout.png" alt="UgFindWorkout">
+</div>
+<div class="title">Figure 5. Find Workout</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will return a list of all the workouts whose name matches the workout name you have typed into the command. From this command, you can find out the workout ID number of the workout you are looking for, as well as see the details of each exercise in the workout.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* &lt;workout_name&gt; is not case sensitive
+* &lt;workout_name&gt; can be a partial substring of the actual workout name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Changing a workout’s name</p>
+</div>
+<div class="paragraph">
+<p>If you ever want to change the name of a workout, simply type this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout edit WORKOUT_ID w/&lt;new_workout_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout edit 1 w/Arms Training</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will update its display to show you the new workout name.  If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited workout: Arms Training</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Deleting a workout</p>
+</div>
+<div class="paragraph">
+<p>To delete a workout from ZeroToOne, simply type this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout delete WORKOUT_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will update its display to show you the updated list of workouts. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Workout: Arms Training</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Exporting a workout plan to a file (Proposed)</p>
+</div>
+<div class="paragraph">
+<p>Do you enjoy sharing your fitness journey with your friends? Well, this feature allows you to share your workouts with your friends, so you can help each other out in the journey to become fit!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout export WORKOUT_ID p/&lt;file_path&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout export 1 p/data/myWorkout.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully exported workout 1 to /data/myWorkout.txt!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>==== Importing a workout plan from a file (Proposed)</p>
+</div>
+<div class="paragraph">
+<p>ZeroToOne will import a workout from a plain text file stored in the specified file_path in your computer. This feature allows you to get workouts from your friends, so you can help each other out in the journey to become fit.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>workout import p/&lt;file_path&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+workout import p/data/myFriendsWorkout.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully imported /data/myFriendsWorkout.txt into ZeroToOne!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>== Contributions to the Developer Guide</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -148,14 +507,250 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>=== Workout
+==== Overview
+The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises, and more.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/workout/WorkoutActivityDiagram.png" alt="WorkoutActivityDiagram">
+</div>
+<div class="title">Figure 6. Activity Diagram for Creating a Workout</div>
+</div>
+<div class="paragraph">
+<p>This is an activity diagram for the user to create a new workout. Essentially, the user will first create a workout with a name that does not contain any exercises yet. The user will then try to find exercises to add, and if their desired exercises cannot be found, the user will create them and add them into the workout.</p>
+</div>
+<div class="paragraph">
+<p>==== Components
+The Workout Manager consists of a <code>WorkoutList</code>, which contains a number of workouts that the user has created.
+Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> and finally, an <code>WorkoutExerciseList</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following class diagram shows the overview of the Workout feature:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/workout/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
+</div>
+<div class="title">Figure 7. Class Diagram for Workout</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WorkoutList</code> implements the interface <code>ReadOnlyWorkoutList</code></p>
+</li>
+<li>
+<p>The <code>WorkoutList</code> is managed by the <code>ModelManager</code></p>
+</li>
+<li>
+<p><code>FilteredWorkoutList</code> is an aggregation of one <code>WorkoutList</code>, to filter the view of the workout list shown to the user</p>
+</li>
+<li>
+<p><code>WorkoutList</code> composes of a <code>UniqueWorkoutList</code></p>
+</li>
+<li>
+<p>In turn, a <code>UniqueWorkoutList</code> contains any number of <code>Workout</code> objects</p>
+</li>
+<li>
+<p>Each <code>Workout</code> is comprised of two things: a <code>WorkoutName</code> and any number of <code>Exercise</code> objects</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WorkoutName</code> contains the name of the <code>Workout</code></p>
+</li>
+<li>
+<p><code>Exercise</code> is an exercise that belongs in a <code>Workout</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each <code>Workout</code> can contain any number of <code>Exercise</code> objects, including zero. However, a <code>Workout</code> must not be empty i.e. have at least one <code>Exercise</code>, in order to be scheduled. This is implemented in the Schedule feature as referenced in <a href="#Schedule">[Schedule]</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>==== Workout Model
+ZeroToOne&#8217;s <code>Model</code> extends the <code>WorkoutModel</code>. Here are all the functions to carry out workout-related activities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#getWorkoutListFilePath()</code> - Retrieves the <code>Path</code> of the <code>WorkoutList</code></p>
+</li>
+<li>
+<p><code>Model#setWorkoutListFilePath(Path workoutListFilePath)</code> - Sets the <code>Path</code> of the <code>WorkoutList</code></p>
+</li>
+<li>
+<p><code>Model#setWorkoutList(ReadOnlyWorkoutList workoutList)</code> - Sets the <code>WorkoutList</code> to be a <code>ReadOnlyWorkoutList</code></p>
+</li>
+<li>
+<p><code>Model#getWorkoutList()</code> - Returns an unmodifiable <code>ReadOnlyWorkoutList</code></p>
+</li>
+<li>
+<p><code>Model#hasWorkout(Workout workout)</code> - Returns true if a workout exists in the workout list</p>
+</li>
+<li>
+<p><code>Model#deleteWorkout(Workout target)</code> - Deletes a specified workout from the workout list</p>
+</li>
+<li>
+<p><code>Model#addWorkout(Workout target)</code> - Adds a new workout to the workout list</p>
+</li>
+<li>
+<p><code>Model#setWorkout(Workout target, Workout editedWorkout)</code> - Replaces a particular workout with an edited workout</p>
+</li>
+<li>
+<p><code>Model#setExerciseInWorkout(Exercise target, Exercise editedExericse</code> - Replaces a target exercise in any workout with the edited exercise</p>
+</li>
+<li>
+<p><code>Model#deleteExerciseFromWorkout(Exercise exercise)</code> - Deletes any instance of an exercise from all workouts</p>
+</li>
+<li>
+<p><code>Model#getFilteredWorkoutList()</code> - Returns an unmodifiable view of <code>ObservableList&lt;Workout&gt;</code></p>
+</li>
+<li>
+<p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> - Updates the filter of <code>FilteredWorkoutList</code> to show filtered views of the list to the user</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>==== Storage of Workouts
+.Class Diagram for Workout Storage
+image::developer-guide/workout/WorkoutStorageClassDiagram.png[]</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>WorkoutListStorageManager</code> implements the interface <code>WorkoutListStorage</code>. It also creates a <code>JacksonWorkoutList</code>.</p>
+</li>
+<li>
+<p>The <code>JacksonWorkoutList</code> composes of any number of <code>JacksonWorkout</code> objects.</p>
+</li>
+<li>
+<p>In turn, each <code>JacksonWorkout</code> composes of a <code>String</code> which is the workout name, and any number of <code>JacksonExercise</code> objects which are the exercises in each workout.</p>
+</li>
+<li>
+<p>The relationship of the Storage component to the Model component is also shown.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>==== Parser for Workouts
+I will go on to explain the Parser structure for the workout commands.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/workout/WorkoutParserClassDiagram.png" alt="WorkoutParserClassDiagram">
+</div>
+<div class="title">Figure 8. Class Diagram of the Parser for Workouts</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>WorkoutCommandParser</code> creates all <code>Workout</code> related Parsers. These parsers allow the user to create, edit, delete and find workouts, as can be seen in the left hand side of the above diagram.</p>
+</li>
+<li>
+<p>In addition, the <code>WorkoutCommandParser</code> creates the <code>WorkoutExerciseCommandParser</code>.</p>
+</li>
+<li>
+<p>In turn, <code>WorkoutExerciseCommandParser</code> creates all workout <code>Exercise</code> related Parsers. These parsers allow the user to add, edit and delete said <code>Exercise</code> objects.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>==== Sample Command Execution</p>
+</div>
+<div class="paragraph">
+<p>To illustrate an example of a command from the Workout Manager, the following sequence diagram
+depicts flow of the program when the command <code>workout find w/Arms Workout</code> is run.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/workout/WorkoutSequenceDiagram.png" alt="WorkoutSequenceDiagram">
+</div>
+<div class="title">Figure 9. Sequence Diagram for Finding a Workout</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the user runs the command <code>workout find w/Arms Workout</code>, the <code>LogicManager</code> will first take in the command, by calling the <code>execute()</code> function on it.</p>
+</li>
+<li>
+<p>The <code>ParserManager</code> then has to <code>parse("workout find w/Arms Workout")</code>.</p>
+</li>
+<li>
+<p>Next, the <code>WorkoutCommandParser</code> has to <code>parse("find w/Arms Workout")</code> for the command.</p>
+</li>
+<li>
+<p>Once the command has been parsed as a <code>FindCommand</code>, it will be passed on to the <code>FindCommandParser</code>.</p>
+</li>
+<li>
+<p>The <code>FindCommandParser</code> can then create a <code>FindCommand</code>. This is constructed with the <code>WorkoutName</code> for "Arms Workout" (a low-level detail that has been abstracted from the diagram).</p>
+</li>
+<li>
+<p>The <code>FindCommand</code> can be returned to the <code>LogicManager</code>, where it will <code>execute()</code> the <code>FindCommand</code>.</p>
+</li>
+<li>
+<p><code>Model#updateFilteredWorkoutList(Predicate&lt;Workout&gt; predicate)</code> is used to update the view of the workout list to show the requested Workout(s), using the <code>PredicateFilterWorkoutName</code> that is returned by the <code>FindCommand</code> (a low-level detail that has been abstracted from the diagram).</p>
+</li>
+<li>
+<p>Finally, the resulting output message will be returned as the <code>CommandResult</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>==== Design Considerations</p>
+</div>
+<div class="paragraph">
+<p>===== Aspect: Exercises in workout</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Option 1: Use existing <code>Exercise</code> class in <code>Workout</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Advantage: Building on an existing class is simpler and more intuitive.</p>
+</li>
+<li>
+<p>Disadvantage: Introduces a dependency on the <code>Exercise</code> class</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Option 2: Create a new <code>WorkoutExercise</code> class for the <code>Workout</code> class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Advantage: Creates an extra layer of abstraction and removes the dependency on <code>Exercise</code>.</p>
+</li>
+<li>
+<p>Disadvantage: More code needed which may be redundant.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the end, I decided to stick with Option 1. This is because creating a new <code>WorkoutExercise</code> class
+is redundant and unnecessary, when there is no functional difference between an <code>Exercise</code> and a <code>WorkoutExercise</code>,
+other than the context that they are referenced in. In addition, this would make the deletion of any instance of a particular <code>Exercise</code> from a Workout easier, when an <code>Exercise</code> is deleted from the <code>ExerciseList</code>. Hence, to simplify matters, using the existing <code>Exercise</code> class to construct workouts was better.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:20:47 UTC</div></div></div></body></html>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:25:21 UTC</div></div></div></body></html>
