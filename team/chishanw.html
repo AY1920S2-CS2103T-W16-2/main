@@ -180,35 +180,23 @@
 <pre class="CodeRay highlight"><code>about</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-.About Window
-image::UgAbout.png[]</p>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="imageblock">
 <div class="content">
 <img src="../images/user-guide/UgHelp.png" alt="UgHelp">
 </div>
-<div class="title">Figure 2. Help Window</div>
-</div>
-<div class="paragraph">
-<p>A pop-up window will appear, showing you a list of all available commands that you can try.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</p>
+<div class="title">Figure 2. About Tab</div>
 </div>
 <div class="paragraph">
 <p>The app view will switch tabs to show the About tab.</p>
 </div>
-<div class="paragraph">
-<p>=== Managing Your Workouts</p>
 </div>
+<div class="sect2">
+<h3 id="managing-your-workouts"><a class="link" href="#managing-your-workouts">Managing Your Workouts</a></h3>
 <div class="paragraph">
 <p>After creating and modifying your exercises however you desire, it’s time to use those exercises to create workouts! In this section, we will walk you through how to manage all your workouts.</p>
 </div>
-<div class="paragraph">
-<p>==== Creating a new workout</p>
-</div>
+<div class="sect3">
+<h4 id="creating-a-new-workout"><a class="link" href="#creating-a-new-workout">Creating a new workout</a></h4>
 <div class="paragraph">
 <p>To create a new workout, simply type the following command:</p>
 </div>
@@ -232,9 +220,9 @@ workout create w/Abs Workout</code></pre>
 <div class="paragraph">
 <p>The feedback display will let you know if the creation of your workout was successful. The application view will also update to display your new workout!</p>
 </div>
-<div class="paragraph">
-<p>==== Adding an exercise to a workout</p>
 </div>
+<div class="sect3">
+<h4 id="adding-an-exercise-to-a-workout"><a class="link" href="#adding-an-exercise-to-a-workout">Adding an exercise to a workout</a></h4>
 <div class="paragraph">
 <p>After creating your workout, the next step is to add an exercise to it! To do so, simply enter the following command:</p>
 </div>
@@ -264,9 +252,9 @@ workout exercise add 1 3</code></pre>
 * EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Changing an exercise in a workout (In Progress)</p>
 </div>
+<div class="sect3">
+<h4 id="changing-an-exercise-in-a-workout-in-progress"><a class="link" href="#changing-an-exercise-in-a-workout-in-progress">Changing an exercise in a workout (In Progress)</a></h4>
 <div class="paragraph">
 <p>If you add the wrong exercise to a workout by mistake, or want to change a particular exercise to a different one, no worries! You can run this command:</p>
 </div>
@@ -297,9 +285,9 @@ workout exercise edit 1 2 3</code></pre>
 * NEW_EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Deleting an exercise in a workout</p>
 </div>
+<div class="sect3">
+<h4 id="deleting-an-exercise-in-a-workout"><a class="link" href="#deleting-an-exercise-in-a-workout">Deleting an exercise in a workout</a></h4>
 <div class="paragraph">
 <p>If editing an exercise does not work for your purposes, you can also choose to simply delete any exercise from a workout. You may type the following command:</p>
 </div>
@@ -329,9 +317,9 @@ workout exercise delete 1 3</code></pre>
 * EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Listing all workouts</p>
 </div>
+<div class="sect3">
+<h4 id="listing-all-workouts"><a class="link" href="#listing-all-workouts">Listing all workouts</a></h4>
 <div class="paragraph">
 <p>Now that we have covered how to manage individual workouts, how about viewing all your workouts in one place? Simply type the following command:</p>
 </div>
@@ -349,9 +337,9 @@ workout exercise delete 1 3</code></pre>
 <div class="paragraph">
 <p>ZeroToOne will show you a list of all the workouts you have created! From this list, you can see the names of all your workouts, as well as their corresponding workout IDs.</p>
 </div>
-<div class="paragraph">
-<p>==== Finding a workout by name (In Progress)</p>
 </div>
+<div class="sect3">
+<h4 id="finding-a-workout-by-name"><a class="link" href="#finding-a-workout-by-name">Finding a workout by name</a></h4>
 <div class="paragraph">
 <p>You may find that you need to know a workout’s ID for some commands, or that you need to retrieve the details of a specific workout. Fret not! Simply type the following command:</p>
 </div>
@@ -363,14 +351,13 @@ workout exercise delete 1 3</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>Example use:
-workout find w/Strength Training</code></pre>
+workout find w/Push Day</code></pre>
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/user-guide/UgFindWorkout.png" alt="UgFindWorkout">
 </div>
-<div class="title">Figure 5. Find Workout</div>
 </div>
 <div class="paragraph">
 <p>ZeroToOne will return a list of all the workouts whose name matches the workout name you have typed into the command. From this command, you can find out the workout ID number of the workout you are looking for, as well as see the details of each exercise in the workout.</p>
@@ -382,9 +369,9 @@ workout find w/Strength Training</code></pre>
 * &lt;workout_name&gt; can be a partial substring of the actual workout name</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Changing a workout’s name</p>
 </div>
+<div class="sect3">
+<h4 id="changing-a-workout-s-name"><a class="link" href="#changing-a-workout-s-name">Changing a workout’s name</a></h4>
 <div class="paragraph">
 <p>If you ever want to change the name of a workout, simply type this command:</p>
 </div>
@@ -413,9 +400,9 @@ workout edit 1 w/Arms Training</code></pre>
 * WORKOUT_ID refers to the index of the workout in `workout list`</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Deleting a workout</p>
 </div>
+<div class="sect3">
+<h4 id="deleting-a-workout"><a class="link" href="#deleting-a-workout">Deleting a workout</a></h4>
 <div class="paragraph">
 <p>To delete a workout from ZeroToOne, simply type this command:</p>
 </div>
@@ -444,9 +431,9 @@ workout delete 1</code></pre>
 * WORKOUT_ID refers to the index of the workout in `workout list`</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Exporting a workout plan to a file (Proposed)</p>
 </div>
+<div class="sect3">
+<h4 id="exporting-a-workout-plan-to-a-file-proposed"><a class="link" href="#exporting-a-workout-plan-to-a-file-proposed">Exporting a workout plan to a file (Proposed)</a></h4>
 <div class="paragraph">
 <p>Do you enjoy sharing your fitness journey with your friends? Well, this feature allows you to share your workouts with your friends, so you can help each other out in the journey to become fit!</p>
 </div>
@@ -469,9 +456,9 @@ workout export 1 p/data/myWorkout.txt</code></pre>
 <pre class="CodeRay highlight"><code>Successfully exported workout 1 to /data/myWorkout.txt!</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Importing a workout plan from a file (Proposed)</p>
 </div>
+<div class="sect3">
+<h4 id="importing-a-workout-plan-from-a-file-proposed"><a class="link" href="#importing-a-workout-plan-from-a-file-proposed">Importing a workout plan from a file (Proposed)</a></h4>
 <div class="paragraph">
 <p>ZeroToOne will import a workout from a plain text file stored in the specified file_path in your computer. This feature allows you to get workouts from your friends, so you can help each other out in the journey to become fit.</p>
 </div>
@@ -494,9 +481,13 @@ workout import p/data/myFriendsWorkout.txt</code></pre>
 <pre class="CodeRay highlight"><code>Successfully imported /data/myFriendsWorkout.txt into ZeroToOne!</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>== Contributions to the Developer Guide</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -507,23 +498,27 @@ workout import p/data/myFriendsWorkout.txt</code></pre>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="workout"><a class="link" href="#workout">Workout</a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">Overview</a></h4>
 <div class="paragraph">
-<p>=== Workout
-==== Overview
-The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises, and more.</p>
+<p>The workout feature in ZeroToOne allows users to manage their workouts! Users will be able to create a workout, add exercises to it, as well as edit the workout and its exercises, and more.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutActivityDiagram.png" alt="WorkoutActivityDiagram">
 </div>
-<div class="title">Figure 6. Activity Diagram for Creating a Workout</div>
+<div class="title">Figure 5. Activity Diagram for Creating a Workout</div>
 </div>
 <div class="paragraph">
 <p>This is an activity diagram for the user to create a new workout. Essentially, the user will first create a workout with a name that does not contain any exercises yet. The user will then try to find exercises to add, and if their desired exercises cannot be found, the user will create them and add them into the workout.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="components"><a class="link" href="#components">Components</a></h4>
 <div class="paragraph">
-<p>==== Components
-The Workout Manager consists of a <code>WorkoutList</code>, which contains a number of workouts that the user has created.
+<p>The Workout Manager consists of a <code>WorkoutList</code>, which contains a number of workouts that the user has created.
 Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> and finally, an <code>WorkoutExerciseList</code>.</p>
 </div>
 <div class="paragraph">
@@ -533,7 +528,7 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
 </div>
-<div class="title">Figure 7. Class Diagram for Workout</div>
+<div class="title">Figure 6. Class Diagram for Workout</div>
 </div>
 <div class="ulist">
 <ul>
@@ -579,9 +574,11 @@ Each <code>Workout</code> can contain any number of <code>Exercise</code> object
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="workout-model"><a class="link" href="#workout-model">Workout Model</a></h4>
 <div class="paragraph">
-<p>==== Workout Model
-ZeroToOne&#8217;s <code>Model</code> extends the <code>WorkoutModel</code>. Here are all the functions to carry out workout-related activities:</p>
+<p>ZeroToOne&#8217;s <code>Model</code> extends the <code>WorkoutModel</code>. Here are all the functions to carry out workout-related activities:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -623,10 +620,14 @@ ZeroToOne&#8217;s <code>Model</code> extends the <code>WorkoutModel</code>. Here
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>==== Storage of Workouts
-.Class Diagram for Workout Storage
-image::developer-guide/workout/WorkoutStorageClassDiagram.png[]</p>
+</div>
+<div class="sect3">
+<h4 id="storage-of-workouts"><a class="link" href="#storage-of-workouts">Storage of Workouts</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/workout/WorkoutStorageClassDiagram.png" alt="WorkoutStorageClassDiagram">
+</div>
+<div class="title">Figure 7. Class Diagram for Workout Storage</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -644,9 +645,11 @@ image::developer-guide/workout/WorkoutStorageClassDiagram.png[]</p>
 </li>
 </ol>
 </div>
+</div>
+<div class="sect3">
+<h4 id="parser-for-workouts"><a class="link" href="#parser-for-workouts">Parser for Workouts</a></h4>
 <div class="paragraph">
-<p>==== Parser for Workouts
-I will go on to explain the Parser structure for the workout commands.</p>
+<p>I will go on to explain the Parser structure for the workout commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -667,9 +670,9 @@ I will go on to explain the Parser structure for the workout commands.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>==== Sample Command Execution</p>
 </div>
+<div class="sect3">
+<h4 id="sample-command-execution"><a class="link" href="#sample-command-execution">Sample Command Execution</a></h4>
 <div class="paragraph">
 <p>To illustrate an example of a command from the Workout Manager, the following sequence diagram
 depicts flow of the program when the command <code>workout find w/Arms Workout</code> is run.</p>
@@ -708,12 +711,11 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>==== Design Considerations</p>
 </div>
-<div class="paragraph">
-<p>===== Aspect: Exercises in workout</p>
-</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-exercises-in-workout"><a class="link" href="#aspect-exercises-in-workout">Aspect: Exercises in workout</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -753,4 +755,4 @@ other than the context that they are referenced in. In addition, this would make
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:25:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:30:44 UTC</div></div></div></body></html>
