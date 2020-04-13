@@ -3,14 +3,19 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/icon.png" alt="ZeroToOne"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ZeroToOne</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-W16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Chi Shan - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-zerotoone"><a class="link" href="#project-zerotoone">PROJECT: ZeroToOne</a></h2>
 <div class="sectionbody">
-<hr>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgWorkoutList.png" alt="UgWorkoutList">
+</div>
+<div class="title">Figure 1. Screenshot</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ZeroToOne is a desktop application that serves as an all-in-one exercise tracker and personal aide. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 70 kLoC.</p>
+<p>ZeroToOne is a desktop application that serves as an all-in-one exercise tracker and personal aide. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 26 kLoC.</p>
 </div>
 </div>
 </div>
@@ -144,7 +149,7 @@
 <div class="content">
 <img src="../images/user-guide/UgUiComponents.png" alt="UgUiComponents">
 </div>
-<div class="title">Figure 1. Components of the User Interface</div>
+<div class="title">Figure 2. Components of the User Interface</div>
 </div>
 <div class="sect2">
 <h3 id="navigation-tabs"><a class="link" href="#navigation-tabs">Navigation Tabs</a></h3>
@@ -184,7 +189,7 @@
 <div class="content">
 <img src="../images/user-guide/UgHelp.png" alt="UgHelp">
 </div>
-<div class="title">Figure 2. About Tab</div>
+<div class="title">Figure 3. About Tab</div>
 </div>
 <div class="paragraph">
 <p>The app view will switch tabs to show the About tab.</p>
@@ -215,7 +220,7 @@ workout create w/Abs Workout</code></pre>
 <div class="content">
 <img src="../images/user-guide/UgCreateWorkout.png" alt="UgCreateWorkout">
 </div>
-<div class="title">Figure 3. Creating A Workout</div>
+<div class="title">Figure 4. Creating A Workout</div>
 </div>
 <div class="paragraph">
 <p>The feedback display will let you know if the creation of your workout was successful. The application view will also update to display your new workout!</p>
@@ -332,7 +337,7 @@ workout exercise delete 1 3</code></pre>
 <div class="content">
 <img src="../images/user-guide/UgWorkoutList.png" alt="UgWorkoutList">
 </div>
-<div class="title">Figure 4. Workout List</div>
+<div class="title">Figure 5. Workout List</div>
 </div>
 <div class="paragraph">
 <p>ZeroToOne will show you a list of all the workouts you have created! From this list, you can see the names of all your workouts, as well as their corresponding workout IDs.</p>
@@ -509,7 +514,7 @@ workout import p/data/myFriendsWorkout.txt</code></pre>
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutActivityDiagram.png" alt="WorkoutActivityDiagram">
 </div>
-<div class="title">Figure 5. Activity Diagram for Creating a Workout</div>
+<div class="title">Figure 6. Activity Diagram for Creating a Workout</div>
 </div>
 <div class="paragraph">
 <p>This is an activity diagram for the user to create a new workout. Essentially, the user will first create a workout with a name that does not contain any exercises yet. The user will then try to find exercises to add, and if their desired exercises cannot be found, the user will create them and add them into the workout.</p>
@@ -528,7 +533,7 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
 </div>
-<div class="title">Figure 6. Class Diagram for Workout</div>
+<div class="title">Figure 7. Class Diagram for Workout</div>
 </div>
 <div class="ulist">
 <ul>
@@ -627,7 +632,7 @@ Each <code>Workout</code> can contain any number of <code>Exercise</code> object
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutStorageClassDiagram.png" alt="WorkoutStorageClassDiagram">
 </div>
-<div class="title">Figure 7. Class Diagram for Workout Storage</div>
+<div class="title">Figure 8. Class Diagram for Workout Storage</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -655,7 +660,7 @@ Each <code>Workout</code> can contain any number of <code>Exercise</code> object
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutParserClassDiagram.png" alt="WorkoutParserClassDiagram">
 </div>
-<div class="title">Figure 8. Class Diagram of the Parser for Workouts</div>
+<div class="title">Figure 9. Class Diagram of the Parser for Workouts</div>
 </div>
 <div class="ulist">
 <ul>
@@ -681,7 +686,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 <div class="content">
 <img src="../images/developer-guide/workout/WorkoutSequenceDiagram.png" alt="WorkoutSequenceDiagram">
 </div>
-<div class="title">Figure 9. Sequence Diagram for Finding a Workout</div>
+<div class="title">Figure 10. Sequence Diagram for Finding a Workout</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -755,4 +760,4 @@ other than the context that they are referenced in. In addition, this would make
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:30:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:06:00 UTC</div></div></div></body></html>

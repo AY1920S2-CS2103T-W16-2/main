@@ -1,16 +1,21 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Aloysius - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Aloysius Chan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/icon.png" alt="ZeroToOne"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ZeroToOne</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-W16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Aloysius - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/icon.png" alt="ZeroToOne"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">ZeroToOne</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-W16-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Aloysius Chan - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-zerotoone"><a class="link" href="#project-zerotoone">PROJECT: ZeroToOne</a></h2>
 <div class="sectionbody">
-<hr>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgExerciseList.png" alt="UgExerciseList">
+</div>
+<div class="title">Figure 1. Screenshot</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ZeroToOne is a desktop application that serves as an all-in-one exercise tracker and personal aide. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>ZeroToOne is a desktop application that serves as an all-in-one exercise tracker and personal aide. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 26 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,7 +25,199 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Created the Workout model</p>
+<p><strong>Major enhancement</strong>: added <strong>the Exercise Feature</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This feature allows users to create, read, update and delete exercises and exercise sets.</p>
+</li>
+<li>
+<p>Justification: The feature formed the base for all the other features to build upon. For example, the Workout feature required exercises to have been created first.</p>
+</li>
+<li>
+<p>Highlights: Since this feature forms the base for all other features, the design of this feature will inevitably affect them, as well as features that will be implemented in the future. As such, I ensured that the feature is compliant with the SOLID priciples. All relevant classes are abstracted and well documented, such that each class only has one single responsibility. As such, this allows the Exercise feature to be extensible by any other developers.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the Splash Screen</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The splash screen will load up first while the application runs through its initialisation process.</p>
+</li>
+<li>
+<p>Justification: This enables users to feel that the application is more responsive, enhancing the user experience of the application.</p>
+</li>
+<li>
+<p>Highlights: While the application runs locally and the loading process is relatively fast right now, the aim of this enhancement is for future-proofing purposes. It allows developers to further extend the application using other external sources such as an external DBMS, while retaining the "responsiveness" of the application.</p>
+</li>
+<li>
+<p>Credits: Some ideas to implement this feature were taken from this <a href="https://docs.oracle.com/javafx/2/deployment/preloaders.htm">tutorial</a> created by Oracle.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=alloystory&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Reposense</a></p>
+</li>
+<li>
+<p><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+author%3Aalloystory">Github - Pull Requests</a></p>
+</li>
+<li>
+<p>Exercise Feature</p>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Functional Code</th>
+<th class="tableblock halign-left valign-top">Test Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Command Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/commands/exercise">link</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/test/java/seedu/zerotoone/logic/commands/exercise">link</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parser Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/exercise">link</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/exercise">link</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/model/exercise">link</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/test/java/seedu/zerotoone/model/exercise">link</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/storage/exercise">link</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/test/java/seedu/zerotoone/storage/exercise">link</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ui Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/ui/views/exercise">link</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FXML Files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/resources/view/exercise">link</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Splash Screen Feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/resources/view/SplashScreen.fxml">Splash Screen FXML File</a></p>
+</li>
+<li>
+<p><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/java/seedu/zerotoone/ui/SplashScreen.java">Splash Screen Controller</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Lead release <code>v1.2</code> on GitHub</p>
+</li>
+<li>
+<p>Explained the original codebase to developers</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Headed the initial code refactorisation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Replaced all references to AddressBook to ZeroToOne</p>
+</li>
+<li>
+<p>Modularised the inital AddressBook-Level3 codebase that allowed developers to easily extend the project</p>
+</li>
+<li>
+<p>Pull Request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66">#66</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Helped Chi Shan with the editing of the User Guide and Developer Guide to ensure that the English used is friendly and simpler to understand.</p>
+</li>
+<li>
+<p>Edited high-level UML Diagrams of the application to fit the latest update. Pull Request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/228">#228</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/192">#192</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/231">#231</a></p>
+</li>
+<li>
+<p>Number of PRs reviewed: 25</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/AY1920S2-CS2103-W15-3/main/issues/165">#165</a>, <a href="https://github.com/AY1920S2-CS2103-W15-3/main/issues/166">#166</a>, <a href="https://github.com/AY1920S2-CS2103-W15-3/main/issues/169">#169</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added Appveyor and Coveralls Support. Pull Request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/12">#12</a></p>
+</li>
+<li>
+<p>Added githooks support to prevent developers from pushing errorneous code. <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/193">#193</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -39,6 +236,262 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="managing-your-exercises"><a class="link" href="#managing-your-exercises">Managing Your Exercises</a></h3>
+<div class="paragraph">
+<p>The commands in this section allows you to manage your customised exercises in ZeroToOne. These exercises will eventually be the building blocks of a workout.</p>
+</div>
+<div class="sect3">
+<h4 id="creating-a-new-exercise"><a class="link" href="#creating-a-new-exercise">Creating a new exercise</a></h4>
+<div class="paragraph">
+<p>To create a new exercise in ZeroToOne, simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise create e/&lt;exercise_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise create e/squat</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgCreatedExercise.png" alt="UgCreatedExercise">
+</div>
+<div class="title">Figure 2. Created Exercise</div>
+</div>
+<div class="paragraph">
+<p>The newly created exercise will be automatically added to the bottom of the exercise list. This exercise will not contain any sets at this point.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+&lt;exercise_name&gt; has to be a string, consisting of only alphanumeric characters</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-set-to-an-exercise"><a class="link" href="#adding-a-set-to-an-exercise">Adding a set to an exercise</a></h4>
+<div class="paragraph">
+<p>After you have created a new exercise in ZeroToOne, the next step is to add a set to the exercise! To add a set, simply enter this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise set add EXERCISE_ID r/&lt;num_of_reps&gt; m/&lt;weight&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set add 2 r/2 m/30</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgAddedExerciseSet.png" alt="UgAddedExerciseSet">
+</div>
+<div class="title">Figure 3. Added Exercise Set</div>
+</div>
+<div class="paragraph">
+<p>The exercise set will be automatically appended to the current list of sets in the exercise. The user interface will be updated to show the edited exercise.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* This command assumes that you have already created an exercise under EXERCISE_ID. If you have not created the exercise, refer to the section on “Creating a new exercise” first.
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* &lt;num_of_reps&gt; should be a positive integer
+* &lt;weight&gt; should be a positive integer between 1 and 1000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-set-in-an-exercise"><a class="link" href="#editing-a-set-in-an-exercise">Editing a set in an exercise</a></h4>
+<div class="paragraph">
+<p>Changed your mind on the details of an exercise set? No worries, you can edit the information in an exercise set by simply entering this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise set edit EXERCISE_ID SET_ID r/&lt;num_of_reps&gt; m/&lt;weight&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set edit 1 1 r/20 m/30</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise set will be automatically updated in the exercise list. If so, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited exercise set: Deadlift</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* SET_ID refers to the index of the set in the exercise
+* &lt;num_of_reps&gt; has to be a positive integer
+* &lt;weight&gt; has to be a positive integer between 1 and 1000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-set-in-an-exercise"><a class="link" href="#deleting-a-set-in-an-exercise">Deleting a set in an exercise</a></h4>
+<div class="paragraph">
+<p>Want to delete an exercise set from the exercise? You can do so by simply entering this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise set delete EXERCISE_ID SET_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise set delete 1 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise set will be removed from the exercise, and the view will automatically update to show that the exercise no longer contains that set. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Exercise Set: Deadlift</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* SET_ID refers to the index of the set in the exercise</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-exercises"><a class="link" href="#listing-all-exercises">Listing all exercises</a></h4>
+<div class="paragraph">
+<p>To show a list of exercises that you have created in ZeroToOne, simply enter this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgExerciseList.png" alt="UgExerciseList">
+</div>
+<div class="title">Figure 4. Exercise List</div>
+</div>
+<div class="paragraph">
+<p>The User Interface will automatically switch to the “Exercise” tab, and the result display will automatically update with the list of exercises.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-an-exercise-by-name"><a class="link" href="#finding-an-exercise-by-name">Finding an exercise by name</a></h4>
+<div class="paragraph">
+<p>To find and view the information of a particular exercise that you have previously created, you can simply enter this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise find e/&lt;exercise_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise find e/Bench Press</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Result Display will automatically update to only show exercises that match the search keyword.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/user-guide/UgFindExercise.png" alt="UgFindExercise">
+</div>
+<div class="title">Figure 5. Find Exercise</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* &lt;exercise_name&gt; has to be a String, consisting of only Alphanumeric characters
+* &lt;exercise_name&gt; can be a partial substring of the full exercise name
+* &lt;exercise_name&gt; is not case-sensitive</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-an-exercise-s-name"><a class="link" href="#changing-an-exercise-s-name">Changing an exercise’s name</a></h4>
+<div class="paragraph">
+<p>Made a mistake while creating the exercise’s name? You can change the exercise name by simply running this command in the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise edit EXERCISE_ID e/&lt;exercise_name&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise edit 1 e/Squat</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise in ZeroToOne will be automatically updated to show its new name. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited exercise: Squat</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`
+* &lt;exercise_name&gt; has to be a String, consisting of only Alphanumeric characters</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-exercise-in-progress"><a class="link" href="#deleting-an-exercise-in-progress">Deleting an exercise (In Progress)</a></h4>
+<div class="paragraph">
+<p>Want to remove an exercise from ZeroToOne? You can do so by entering this command into the command box:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>exercise delete EXERCISE_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+exercise delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exercise will be removed from ZeroToOne. At the same time, all current workouts that contain this exercise will also have this exercise removed. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Exercise: Deadlift</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* EXERCISE_ID refers to the index of the exercise in `exercise list`</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -54,5 +507,212 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="exercise"><a class="link" href="#exercise">Exercise</a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">Overview</a></h4>
+<div class="paragraph">
+<p>The Exercise feature forms the basic building block for the application. It allows users to CRUD exercises, which will then be used for the creation of workouts. The command is prefixed by the keyword <code>exercise</code>. Available commands are <code>create</code>, <code>edit</code>, <code>list</code>, <code>delete</code> and many more.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:30:44 UTC</div></div></div></body></html>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>The following portion will explain in-detail each component of the Exercise feature.</p>
+</div>
+<div class="sect4">
+<h5 id="model"><a class="link" href="#model">Model</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/exercise/ExerciseModelClassDiagram.png" alt="ExerciseModelClassDiagram">
+</div>
+<div class="title">Figure 6. Exercise Model Structure</div>
+</div>
+<div class="paragraph">
+<p>The figure above depicts the Model of the Exercise feature. Starting from the most primitive type:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>NumReps</code> stores the number of repetitions a person has to complete for a particular exercise set</p>
+</li>
+<li>
+<p><code>Weight</code> stores the weight in kg that a person has to complete for a particular exercise set</p>
+</li>
+<li>
+<p><code>ExerciseSet</code> represents an exercise set that a person has to complete. Each <code>ExerciseSet</code> comprises of exactly 1 <code>NumReps</code> object and 1 <code>Weight</code> object</p>
+</li>
+<li>
+<p><code>ExerciseName</code> stores the name of a particular exercise</p>
+</li>
+<li>
+<p><code>Exercise</code> represents a collection of exercise sets that a person has to complete. Each <code>Exercise</code> will consists of exactly 1 <code>ExerciseName</code> object and any number of <code>ExerciseSet</code> (including zero)</p>
+</li>
+<li>
+<p><code>UniqueExerciseList</code> represents a collection of <code>Exercise</code> objects. There can be any number of <code>Exercise</code> objects in <code>UniqueExerciseList</code>, but they must be unique.</p>
+</li>
+<li>
+<p><code>ExerciseList</code> implements the interface <code>ReadOnlyExerciseList</code> that ensures that the outward-facing exercise list is unmodifiable by other modules. The <code>ExerciseList</code> object has exactly 1 <code>UniqueExerciseList</code> for storage purposes.</p>
+</li>
+<li>
+<p><code>ExerciseList</code> is controlled by the <code>ModelManager</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Do note that some of the <code>Exercise</code> objects in the <code>ExerciseList</code> are also referenced in the <code>WorkoutList</code>. For more information, refer to the <code>Workout</code> implementation.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="storage"><a class="link" href="#storage">Storage</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/exercise/ExerciseStorageClassDiagram.png" alt="ExerciseStorageClassDiagram">
+</div>
+<div class="title">Figure 7. Exercise Storage Structure</div>
+</div>
+<div class="paragraph">
+<p>The Storage component provides the functionalities that enable the persistent storage of the model. Starting from the most primitive type:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>JacksonExerciseSet</code> contains exactly two <code>String</code> objects, one for the number of repetitions and one for the weight. This class has a dependency to the <code>NumReps</code> and <code>Weight</code> model due to the <code>toModelType()</code> function. This function converts <code>JacksonExerciseSet</code> into the model&#8217;s <code>ExerciseSet</code> so that it can be used in other parts of the application.</p>
+</li>
+<li>
+<p><code>JacksonExercise</code> contains exactly one <code>String</code> object that represents the exercise name, and any number of <code>JacksonExerciseSet</code> objects. Similarly, it has a dependency to <code>ExerciseName</code>, <code>ExerciseSet</code> and <code>Exercise</code> object due to the <code>toModelType()</code> function.</p>
+</li>
+<li>
+<p><code>JacksonExerciseList</code> is the persistent storage for the <code>ExerciseList</code> model, and it contains any number of <code>JacksonExercise</code> objects.</p>
+</li>
+<li>
+<p><code>ExerciseListStorageManager</code> implements the <code>ExerciseListStorage</code> which provides certain functionalities required for the storage to work properly. The <code>ExerciseListStorageManager</code> is controlled by the <code>StorageManager</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="logic-commands"><a class="link" href="#logic-commands">Logic - Commands</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/exercise/ExerciseCommandClassDiagram.png" alt="ExerciseCommandClassDiagram">
+</div>
+<div class="title">Figure 8. Exercise Commands Structure</div>
+</div>
+<div class="paragraph">
+<p>The Exercise Commands package stores the business logic of the exercise feature. The commands are organised in a hierarchical fashion, in the order of precedence in a valid input. For example, <code>SetCommand</code> inherits from <code>ExerciseCommand</code> as the <code>set</code> comes after <code>exercise</code> in the input <code>exercise set</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each command contains a <code>COMMAND_WORD</code> which is a single word that is unique to the command. Each command also implements an <code>execute</code> method that represents the logic of the command. Instructions to control the model, storage and view are stored inside this method.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="logic-parsers"><a class="link" href="#logic-parsers">Logic - Parsers</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/exercise/ExerciseParserClassDiagram.png" alt="ExerciseParserClassDiagram">
+</div>
+<div class="title">Figure 9. Exercise Parser Structure</div>
+</div>
+<div class="paragraph">
+<p>The parsers are responsible for parsing a user input into a <code>Command</code> object. For the Exercise component, there are parsers for every command that accepts user arguments. For example, since <code>exercise list</code> does not take in any argument, there is no parser for the <code>ListCommand</code>. After parsing the user input, the parser will return <code>Command</code> object to the caller, which will execute the command via the <code>execute</code> method.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="sample-command-execution"><a class="link" href="#sample-command-execution">Sample Command Execution</a></h5>
+<div class="paragraph">
+<p>This section will illustrate an example of an exercise command execution using the input <code>exercise create e/Bench Press</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/exercise/CreateCommandSequenceDiagram.png" alt="CreateCommandSequenceDiagram">
+</div>
+<div class="title">Figure 10. Exercise&#8217;s CreateCommand Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>In this portion, we will trace the sequence diagram of the <code>exercise create</code> command to better understand the internals of the Exercise feature.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user enters the command <code>exercise create e/Bench Press</code></p>
+</li>
+<li>
+<p><code>LogicManager</code> will pass the command to the <code>ParserManager</code> for parsing</p>
+</li>
+<li>
+<p><code>ParserManager</code> upon seeing that the command is prefixed by <code>exercise</code> creates a <code>ExerciseCommandParser</code></p>
+</li>
+<li>
+<p><code>ParserManager</code> then pass <code>create e/Bench Press</code> to <code>ExerciseCommandParser</code></p>
+</li>
+<li>
+<p><code>ExerciseCommandParser</code> upon seeing that the command is prefixed by <code>create</code> creates a <code>CreateCommandParser</code></p>
+</li>
+<li>
+<p><code>ExerciseCommandParser</code> then pass the argument <code>e/Bench Press</code> to <code>CreateCommandParser</code></p>
+</li>
+<li>
+<p><code>CreateCommandParser</code> then attempts to create an <code>ExerciseName</code> object using the <code>String</code> in the argument</p>
+</li>
+<li>
+<p>Using the <code>ExerciseName</code>, <code>CreateCommandParser</code> then create a <code>CreateCommand</code> object with the exercise name</p>
+</li>
+<li>
+<p>The <code>CreateCommand</code> is then passed back to the <code>LogicManager</code></p>
+</li>
+<li>
+<p><code>LogicManager</code> calls <code>c.execute()</code></p>
+</li>
+<li>
+<p><code>CreateCommand</code> will attempt to create an <code>Exercise</code> using the exercise name</p>
+</li>
+<li>
+<p>After creating the <code>Exercise</code> object, the <code>CreateCommand</code> will attempt to store the new exercise by calling the <code>addExercise</code> method of <code>Model</code></p>
+</li>
+<li>
+<p>After the exercise is successfully added, a <code>CommandResult</code> object is created</p>
+</li>
+<li>
+<p>This result is then passed back to the <code>LogicManager</code> which will display the output on the GUI</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="summary"><a class="link" href="#summary">Summary</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/exercise/EditSetActivityDiagram.png" alt="EditSetActivityDiagram">
+</div>
+<div class="title">Figure 11. Editing Exercise Set Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>At this point, you should have gather enough information to start developing the Exercise feature. As a summary, this is a sample Activity Diagram that depicts a user flow when they want to edit an exercise set.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="parser-component"><a class="link" href="#parser-component">Parser Component</a></h5>
+<div class="paragraph">
+<p>One of the consideration while designing was that the commands in exercise are extremely nested. We have commands such as <code>exercise set create r/1 m/10</code>. While we could have chucked all the parsing in <code>ExerciseSetCreateParser</code> class, we realised that it will be better if we were to abstract the parser into separate classes. This allows us to group the functionalities of the parser in a single file. For example, <code>ExerciseCommandParser</code> will parse any string that has the word <code>exercise</code> as the prefix. <code>SetCommandParser</code> will do so for a prefix of <code>set</code>. This means that for the above command, while we have to go through multiple parsers which can make the performance of the application suffer, each of the parsers have a single responsibility which makes it a better design choice.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="model-component"><a class="link" href="#model-component">Model Component</a></h5>
+<div class="paragraph">
+<p>For the Model component, note that <code>Exercise</code> objects are supposed to be unique whereas <code>ExerciseSet</code> objects are not. This is created due to our observations of the workout regimes in the real world.</p>
+</div>
+<div class="paragraph">
+<p>For <code>ExerciseSet</code>, while set weights and number of repetitions tend to vary during an exercise, users may want to have the freedom to do multiple sets with the same configuration during the course of the exercise. Hence, it is unwise to make it unique.</p>
+</div>
+<div class="paragraph">
+<p>However, for exercises, we noted that users tend to reuse the same exercise throughout different workout plans. At the same time, there is a high chance of users creating duplicate exercises when the number of exercises in the application increases significantly. Therefore, we chose to make <code>Exercise</code> a unique object instead.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:06:00 UTC</div></div></div></body></html>
