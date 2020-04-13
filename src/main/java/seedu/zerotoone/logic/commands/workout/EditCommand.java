@@ -23,7 +23,7 @@ import seedu.zerotoone.model.workout.WorkoutName;
 public class EditCommand extends WorkoutCommand {
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = "Usage: " + Commands.WORKOUT_EDIT;
-    public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Successfully edited workout: %1$s";
+    public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Successfully edited name from %s to %s";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "Sorry, this workout already exists. Try again!";
 
     private final Index workoutId;
@@ -78,7 +78,8 @@ public class EditCommand extends WorkoutCommand {
         model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
 
         String outputMessage = String.format(MESSAGE_EDIT_WORKOUT_SUCCESS,
-                editedWorkout.getWorkoutName().toString());
+                workoutToEdit.getWorkoutName().fullName,
+                editedWorkout.getWorkoutName().fullName);
         return new CommandResult(outputMessage);
     }
 

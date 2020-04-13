@@ -78,7 +78,12 @@ public class StatisticsWindow extends UiPart<Stage> {
                 DateViewUtil.getPrettyDateTime(statisticsData.getEndRange())));
 
 
+        // removeAll() not working as intended
+        // See: https://stackoverflow.com/questions/28925381/is-there-a-way-to-remove-all-the-contents-in-vbox-in-javafx
+        dataPoints.getChildren().clear();
+        dataPoints.getChildren().removeAll();
         dataPoints.getChildren().removeAll(dataPoints.getChildren());
+
         dataPoints.getChildren().addAll(statisticsData.getDataPoints()
             .stream().map(point -> (new DataPointView(point).getRoot())).collect(Collectors.toList()));
 
@@ -102,9 +107,9 @@ public class StatisticsWindow extends UiPart<Stage> {
 
         lineChart.getData().add(dataSeries);
 
-        if (lineChartContainer.getChildren().size() > 0) {
-            lineChartContainer.getChildren().removeAll();
-        }
+        lineChartContainer.getChildren().clear();
+        lineChartContainer.getChildren().removeAll();
+        lineChartContainer.getChildren().removeAll(lineChartContainer.getChildren());
 
         lineChartContainer.getChildren().add(lineChart);
     }

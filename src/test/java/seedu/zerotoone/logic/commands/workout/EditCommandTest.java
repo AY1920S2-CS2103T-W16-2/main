@@ -45,6 +45,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_OBJECT, new WorkoutName("Strength Training"));
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_WORKOUT_SUCCESS,
+                workoutToEdit.getWorkoutName(),
                 editedWorkout.getWorkoutName());
 
         ModelManager expectedModel = new ModelManager(new UserPrefs(),

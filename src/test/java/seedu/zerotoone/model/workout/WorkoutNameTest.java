@@ -25,7 +25,6 @@ public class WorkoutNameTest {
 
         // invalid Workout Name
         assertFalse(WorkoutName.isValidWorkoutName("")); // empty string
-        assertFalse(WorkoutName.isValidWorkoutName(" ")); // spaces only
         assertFalse(WorkoutName.isValidWorkoutName("^")); // only non-alphanumeric characters
         assertFalse(WorkoutName.isValidWorkoutName("strength*")); // contains non-alphanumeric characters
 

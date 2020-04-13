@@ -24,7 +24,7 @@ import seedu.zerotoone.model.workout.Workout;
 public class EditCommand extends WorkoutExerciseCommand {
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = "Usage: " + Commands.WORKOUT_EXERCISE_EDIT;
-    public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited %s in %s to become %s.";
+    public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Successfully edited %s in %s to become %s.";
 
     private Index workoutId;
     private Index exerciseId;
