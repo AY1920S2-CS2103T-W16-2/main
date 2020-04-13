@@ -27,7 +27,7 @@
 <li><a href="#exercise">3.2. Exercise</a></li>
 <li><a href="#workout">3.3. Workout</a></li>
 <li><a href="#schedule">3.4. Schedule</a></li>
-<li><a href="#log">3.5. Log</a></li>
+<li><a href="#log-statistics">3.5. Log Statistics</a></li>
 <li><a href="#configuration">3.6. Configuration</a></li>
 </ul>
 </li>
@@ -1244,25 +1244,218 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 </div>
 </div>
 <div class="sect2">
-<h3 id="log"><a class="link" href="#log">3.5. Log</a></h3>
+<h3 id="log-statistics"><a class="link" href="#log-statistics">3.5. Log Statistics</a></h3>
 <div class="paragraph">
-<p>For logging, we propose saving the completedExercise data in the following class architecture.</p>
+<p>The log statistics feature in ZeroToOne allows users to view their completed workouts visually with meaningful aggregated information so they can see how much progress made.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
+<h4 id="overview-4"><a class="link" href="#overview-4">3.5.1. Overview</a></h4>
+<div class="paragraph">
+<p>The ZeroToOne user can generate and view these statistics via the <code>log display</code> command which takes in two optional parameters <code>startRange</code> and <code>endRange</code>. Workouts will only be considered if they fall within the <code>startTime</code> and <code>endTime</code> range.</p>
+</div>
+<div class="sect4">
+<h5 id="architecture"><a class="link" href="#architecture">Architecture</a></h5>
+<div class="paragraph">
+<p>The log statistics feature was built from the ground up with modularity and extensibility in mind which is inline with SLAP and SOLID principles. This is exemplified in the decision to have a <code>DataPoint</code> abstract class. The class diagram is shown below.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="images/developer-guide/log/WorkoutSessionDiagram.png" alt="WorkoutSessionDiagram">
+<img src="images/developer-guide/log/DataPointAbstractClass.png" alt="DataPointAbstractClass">
+</div>
+<div class="title">Figure 28. DataPoint Abstract Class</div>
+</div>
+<div class="paragraph">
+<p>This abstract class is then extended by concrete class as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/log/StatisticsDataPointsClassDiagram.png" alt="StatisticsDataPointsClassDiagram">
+</div>
+<div class="title">Figure 29. Example Concrete Data Points</div>
+</div>
+<div class="paragraph">
+<p>Through this abstraction we make it easy to extend and include new metrics to track in the future. All that needs to be done is to create a new class that extends <code>DataPoint</code> and implements the <code>calculate</code> function that takes as input a list of <code>CompletedWorkout</code> and does the necessary calculations and sets the results.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.2. Implementation</a></h4>
 <div class="paragraph">
-<p>Immutability was a huge consideration for us and hence we came up with the <code>ReadOnly</code> interface.</p>
+<p>To help explain the implementation of this feature, this portion of the developer guide will examine the command execution of the <code>log display</code> command.</p>
 </div>
 <div class="paragraph">
-<p>Also, due to the lack of a database backing our application, we have no choice but to nest our object.</p>
+<p>For the sake of clarity, this portion of implementation has been broken down into two phases.</p>
+</div>
+<div class="paragraph">
+<p>Phase 1 will primarily deal with the actual command parsing, execution and the storing of the <code>startRange</code> and <code>endRage</code> in the model while Phase 2 will then go on to generate statistics based on the <code>startRange</code> and <code>endRange</code> provided in phase 1.</p>
+</div>
+<div class="sect4">
+<h5 id="execution-phase-1"><a class="link" href="#execution-phase-1">Execution Phase 1</a></h5>
+<div class="paragraph">
+<p>The sequence diagram below describes the flow when the <code>log display</code> command is invoked by the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/log/DisplayCommandSequenceDiagramPart1.png" alt="DisplayCommandSequenceDiagramPart1">
+</div>
+<div class="title">Figure 30. Display Command Invocation Phase 1</div>
+</div>
+<div class="paragraph">
+<p>This next section goes over in a little more detail how the program unfolds.</p>
+</div>
+<div class="paragraph">
+<p>Step 1: When the user enters the <code>log display</code> command, the <code>MainWindow#executeCommand()</code> is executed and in turn calls on the <code>LogicManager</code> to help with this.</p>
+</div>
+<div class="paragraph">
+<p>Step 2: The <code>LogicManager</code> then goes through with the normal flow of parsing the command and its parameters and then returning a valid  <code>DisplayCommand</code>. This section will not go into details and specifics of this process as it has already been covered above.</p>
+</div>
+<div class="paragraph">
+<p>Step 3: Once the <code>Logic Manager</code> receives the <code>DisplayCommand</code>, it will call the concrete implementation of the <code>DisplayCommand#execute(Model model)</code> to run the command with the current model.</p>
+</div>
+<div class="paragraph">
+<p>Step 4: The <code>execute</code> function will then go ahead and store the <code>startRange</code> and <code>endRange</code> in the model via the <code>Model#setStatisticsDataRange</code> function.</p>
+</div>
+<div class="paragraph">
+<p>Step 5: This is where the display command differs from all the other commands. When constructing the <code>CommandResult</code> to be returned, the <code>showReport</code> flag in <code>CommandResult</code> is set to <code>True</code>.</p>
+</div>
+<div class="paragraph">
+<p>Summary:
+<code>startRange</code> and <code>endRange</code> are updated in the current <code>Model</code>
+The <code>showReport</code> flag in <code>CommandResult</code> being returned is set to <code>True</code></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="executionphase-2"><a class="link" href="#executionphase-2">ExecutionPhase 2</a></h5>
+<div class="paragraph">
+<p>Following immediately from phase 1, phase 2 will commence with the return of <code>CommandResult</code> to the <code>MainWindow#executeCommand</code> function. The sequence diagram below documents the execution flow.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/log/DisplayCommandSequenceDiagramPart2.png" alt="DisplayCommandSequenceDiagramPart2">
+</div>
+<div class="title">Figure 31. Example Display Command Invocation Phase 2</div>
+</div>
+<div class="paragraph">
+<p>Similar to phase 1, this next section will detail the steps taken in a little more detail.</p>
+</div>
+<div class="paragraph">
+<p>Step 1: When <code>CommandResult</code> is returned to the main window, it is checked for the <code>showReport</code> to decide if the report page should be shown.</p>
+</div>
+<div class="paragraph">
+<p>Step 2: Since the <code>showResult</code> flag will be set to <code>True</code>, the <code>MainWindow</code> will call <code>LogicManager#generateStatistics</code> to help with the generating of the statistics.</p>
+</div>
+<div class="paragraph">
+<p>Step 3: The <code>LogicManager</code> will then query all the information it requires from the model including the <code>startRange</code> and <code>endRange</code> described in phase 1.</p>
+</div>
+<div class="paragraph">
+<p>Step 4: Next, the static function <code>Statistics#generate</code> will be invoked. This function will then instantiate new instances of all the <code>DataPoints</code> configured.</p>
+</div>
+<div class="paragraph">
+<p>Step 5: Once instantiated, the <code>DataPoint#calculate</code> function will be invoked on all the <code>DataPoint</code> objects. This used to calculate and populate each data point with valid data from the list of workouts.</p>
+</div>
+<div class="paragraph">
+<p>Step 6: Once this is done, a new <code>StatisticsData</code> object is created with the data points and the list of workouts and returned.</p>
+</div>
+<div class="paragraph">
+<p>Step 7: Lastly, the view <code>StatisticsWindow#show</code> function is called with the <code>StatisticsData</code> previously returned. This renders the new window with the computed statistics.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.3. Design Considerations</a></h4>
+<div class="paragraph">
+<p>The following section will detail some of the design consideration and design choices we made while implementing the log statics feature.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="flexibility-and-sensible-defaults"><a class="link" href="#flexibility-and-sensible-defaults">3.5.4. Flexibility and Sensible Defaults</a></h4>
+<div class="paragraph">
+<p>We wanted to build the statistics feature to be flexible. This is why we decided to include a <code>startRange</code> and <code>endRange</code> to the <code>log display</code> command. This allows users to generate reports for custom datetime ranges.</p>
+</div>
+<div class="paragraph">
+<p>Due to this flexibility we had to think hard of sensible defaults for this date range if they were not specified. We eventually decided on the flow specified by the activity diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/glog/LogDateRangeSensibleDefaults.png" alt="LogDateRangeSensibleDefaults">
+</div>
+<div class="title">Figure 32. Log sensible date range defaults</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Do not support date range in log command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Less flexible and metrics used will be limited.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 :</strong> Require <code>startRange</code> and <code>endRange</code> in all display commands</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Would have to consider sensible defaults</p>
+</li>
+<li>
+<p>Cons: More for the user to type if he/she wants to view statistics over all workouts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3 :</strong> Allow optional <code>startRange</code> and <code>endRange</code> use start of epoch for start time and current datetime for end date.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement</p>
+</li>
+<li>
+<p>Cons: Statistics generated using the number of days might not make sense.
+[Note] For example, the average workout time per day would not make sense since the number of days since epoch will be huge.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 4 (current choice):</strong> Allow optional <code>startRange</code> and <code>endRange</code> and if not given take earliest start date time and latest end datetime</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More meaningful metrics and statistics</p>
+</li>
+<li>
+<p>Cons: More complicated model and defaults might not seem intuitive at first</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="defensive-programming"><a class="link" href="#defensive-programming">Defensive Programming</a></h5>
+<div class="paragraph">
+<p>We decided to build these features with security at the forefront. This can be seen in</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The use of optionals and <code>ifPresent()</code> functions guards against <code>NullPointerExceptions</code> when the user does not provide optional fields.</p>
+</li>
+<li>
+<p><code>requireNonNull</code> are frequently used to check for <code>null</code> values.</p>
+</li>
+<li>
+<p>Strong exception handling when parsing <code>startRange</code> and <code>endRange</code> in the display command and throwing a <code>ParseCommandException</code> if date times provided are not valid in the specified format.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1885,4 +2078,4 @@ This meant we were later to start coding and making PRs than other teams (as see
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:15:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:21:08 UTC</div></div></div></body></html>
