@@ -269,7 +269,7 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master//src/main/java/seedu/zerotoone/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code>,</p>
+<p>The <code>Model</code>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -289,7 +289,13 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 <p>stores a <code>LogList</code> that represents the list of completed data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Exercise&gt;</code>, <code>ObservableList&lt;Workout&gt;</code>, <code>ObservableList&lt;ScheduledWorkout&gt;</code>, <code>ObservableList&lt;Log&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>stores a <code>TimerList</code> that represents a time delta in seconds.</p>
+</li>
+<li>
+<p>stores an <code>Optional</code> <code>OngoingWorkout</code> that may contain a session, if started.</p>
+</li>
+<li>
+<p>exposes an unmodifiable <code>ObservableList&lt;Exercise&gt;</code>, <code>ObservableList&lt;Workout&gt;</code>, <code>ObservableList&lt;ScheduledWorkout&gt;</code>, <code>ObservableList&lt;Log&gt;</code>, <code>ObservableList&lt;OngoingSet&gt;</code>, and <code>ObservableList&lt;Integer&gt;</code> (time delta) that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes.</p>
 </li>
 <li>
 <p>does not depend on any of the other components.</p>
@@ -360,6 +366,9 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 <code>OngoingWorkout</code>, <code>OngoingSession</code>, <code>OngoingSet</code>, and <code>OngoingSetList</code> are models that are vital components of the feature.</p>
 </div>
 <div class="paragraph">
+<p>The Session feature also seamlessly incorporates a functional timer. Timer functionality is found embedded in the session related functions in <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
 <p>The activity diagram below demonstrates the actions of a user with this feature.</p>
 </div>
 <div class="imageblock">
@@ -379,7 +388,7 @@ and <code>skip</code> (no of the conditional branch). <code>Stop</code> is optio
 </div>
 <hr>
 <div class="paragraph">
-<p>The operations handling these actions are found in OngoingSession:</p>
+<p>The operations handling these actions are found in <code>OngoingWorkout</code>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -394,28 +403,46 @@ and <code>skip</code> (no of the conditional branch). <code>Stop</code> is optio
 <div class="paragraph">
 <p>Further operations are exposed in the <code>Model</code> interface as <code>Model#startSession()</code> and <code>Model#stopSession()</code>.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/session/SessionModel.png" alt="SessionModel">
+</div>
+<div class="title">Figure 11. Session related models</div>
+</div>
+<div class="paragraph">
+<p>The above class diagram briefly depicts how the session related models (in <code>OngoingWorkout</code>) interact with surrounding classes.</p>
+</div>
+<div class="paragraph">
+<p>The <code>OngoingWorkout</code> class has a dependency on <code>Workout</code>, which has been abstracted for clarity.</p>
+</div>
+<div class="paragraph">
+<p>In turn, <code>CompletedWorkout</code> class has a dependency on <code>OngoingWorkout</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>OngoingWorkout</code> objects are created at the start of a workout session, and can be thought of as 'converted' to <code>CompletedWorkout</code> objects at the end of a workout session. <code>Workout</code> and <code>CompletedWorkout</code> objects are immutable, hence the design choice for using an intermediary, stateuful, <code>OngoingWorkout</code> class.</p>
+</div>
 <hr>
 <div class="paragraph">
-<p>The inner workings of the feature are briefly expounded below through example usage.
+<p>The inner workings of the feature are briefly expounded below through a simple simulation.
 <code>Arms Day</code> is a <code>Workout</code> with ID = <code>2</code> and consists of 2 sets of one exercise called <code>Bench Press</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/session/sessionExample.png" alt="sessionExample">
 </div>
-<div class="title">Figure 11. Example Workout Session</div>
+<div class="title">Figure 12. Example Workout Session</div>
 </div>
 <div class="paragraph">
-<p>Step 1. The user selects an existing <code>Workout</code> called <code>Arms Day</code> with ID = <code>2</code> and starts a completedExercise with <code>start 2</code>.</p>
+<p>Step 1. The user selects an existing <code>Workout</code> called <code>Arms Day</code> with ID = <code>2</code> and starts a session with <code>start 2</code>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Logic</code> and <code>Parser</code> redirects control to <code>StartCommand#execute()</code> where an instance of <code>OngoingSession</code> is created with
-<code>Arms Day</code>. The upcoming set of the next exercise is displayed for the user.</p>
+<p><code>Logic</code> and <code>Parser</code> redirect control to <code>StartCommand#execute()</code> where an instance of <code>OngoingWorkout</code> is created with
+the <code>Arms Day</code> object. The upcoming set of the next exercise is displayed for the user.</p>
 </li>
 <li>
-<p>The timer starts counting. This acts as a visual cue for the user that notifies the start of the workout and is essentially superfluous, since it&#8217;s main purpose is to time rest between sets.</p>
+<p>The timer starts counting. This acts as a visual cue for the user that notifies the start of the workout and is essentially a once-off, superfluous action, since it&#8217;s main purpose is to time rest between sets.</p>
 </li>
 </ul>
 </div>
@@ -425,11 +452,11 @@ and <code>skip</code> (no of the conditional branch). <code>Stop</code> is optio
 <div class="ulist">
 <ul>
 <li>
-<p><code>DoneCommand#execute()</code> is invoked, which in turn calls <code>OngoingSession#done()</code> to obtain the next set and statefully
+<p><code>DoneCommand#execute()</code> is invoked, which in turn calls <code>Model#done()</code> to obtain the last <code>CompletedSet</code> object to display on the UI, and statefully
 updates the instance of <code>OngoingWorkout</code>.</p>
 </li>
 <li>
-<p>The rest timer resets and starts counting from 00:00.</p>
+<p>The rest timer resets to 00:00 and starts counting.</p>
 </li>
 </ul>
 </div>
@@ -437,7 +464,7 @@ updates the instance of <code>OngoingWorkout</code>.</p>
 <div class="content">
 <img src="images/developer-guide/session/DoneCommandSequenceDiagram.png" alt="DoneCommandSequenceDiagram">
 </div>
-<div class="title">Figure 12. DoneCommand sequence diagram</div>
+<div class="title">Figure 13. DoneCommand sequence diagram</div>
 </div>
 <div class="ulist">
 <ul>
@@ -469,8 +496,8 @@ is saved and passed on for use by the <code>Log</code> feature.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>[Note] In the usual flow, the <code>stop</code> command is not used, and is reserved only for a premature (incomplete) ending of a
-workout session.</p>
+<p>[Note] In the usual flow, the <code>stop</code> command is not used, and is reserved only for a premature ending of a
+workout session, where all remaining sets are marked as incomplete.</p>
 </div>
 </div>
 <div class="sect3">
@@ -480,7 +507,7 @@ workout session.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current Implementation:</strong> Minimal commands and typing during an ongoing session.</p>
+<p><strong>Current Implementation:</strong> Minimal commands and typing during an ongoing session. Timer functionality is completely automatic.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -496,7 +523,7 @@ workout session.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-beginner-friendly-automatic-set-ordering"><a class="link" href="#aspect-beginner-friendly-automatic-set-ordering">Aspect: Beginner-friendly automatic set-ordering</a></h5>
+<h5 id="aspect-beginner-friendly-set-order"><a class="link" href="#aspect-beginner-friendly-set-order">Aspect: Beginner-friendly set order</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -504,7 +531,7 @@ workout session.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier for new user to follow a workout session, less typing required during a workout session.</p>
+<p>Pros: Easier for new user to follow a workout session, less typing required during a workout session. Session has simple and predictable behaviour.</p>
 </li>
 <li>
 <p>Cons: Experienced users are not able to have an ad-hoc, customizable workout without creating a new workout with the specific order they want.</p>
@@ -536,7 +563,7 @@ workout session.</p>
 <div class="content">
 <img src="images/developer-guide/exercise/ExerciseModelClassDiagram.png" alt="ExerciseModelClassDiagram">
 </div>
-<div class="title">Figure 13. Exercise Model Structure</div>
+<div class="title">Figure 14. Exercise Model Structure</div>
 </div>
 <div class="paragraph">
 <p>The figure above depicts the Model of the Exercise feature. Starting from the most primitive type:</p>
@@ -579,7 +606,7 @@ workout session.</p>
 <div class="content">
 <img src="images/developer-guide/exercise/ExerciseStorageClassDiagram.png" alt="ExerciseStorageClassDiagram">
 </div>
-<div class="title">Figure 14. Exercise Storage Structure</div>
+<div class="title">Figure 15. Exercise Storage Structure</div>
 </div>
 <div class="paragraph">
 <p>The Storage component provides the functionalities that enable the persistent storage of the model. Starting from the most primitive type:</p>
@@ -607,7 +634,7 @@ workout session.</p>
 <div class="content">
 <img src="images/developer-guide/exercise/ExerciseCommandClassDiagram.png" alt="ExerciseCommandClassDiagram">
 </div>
-<div class="title">Figure 15. Exercise Commands Structure</div>
+<div class="title">Figure 16. Exercise Commands Structure</div>
 </div>
 <div class="paragraph">
 <p>The Exercise Commands package stores the business logic of the exercise feature. The commands are organised in a hierarchical fashion, in the order of precedence in a valid input. For example, <code>SetCommand</code> inherits from <code>ExerciseCommand</code> as the <code>set</code> comes after <code>exercise</code> in the input <code>exercise set</code>.</p>
@@ -622,7 +649,7 @@ workout session.</p>
 <div class="content">
 <img src="images/developer-guide/exercise/ExerciseParserClassDiagram.png" alt="ExerciseParserClassDiagram">
 </div>
-<div class="title">Figure 16. Exercise Parser Structure</div>
+<div class="title">Figure 17. Exercise Parser Structure</div>
 </div>
 <div class="paragraph">
 <p>The parsers are responsible for parsing a user input into a <code>Command</code> object. For the Exercise component, there are parsers for every command that accepts user arguments. For example, since <code>exercise list</code> does not take in any argument, there is no parser for the <code>ListCommand</code>. After parsing the user input, the parser will return <code>Command</code> object to the caller, which will execute the command via the <code>execute</code> method.</p>
@@ -637,7 +664,7 @@ workout session.</p>
 <div class="content">
 <img src="images/developer-guide/exercise/CreateCommandSequenceDiagram.png" alt="CreateCommandSequenceDiagram">
 </div>
-<div class="title">Figure 17. Exercise&#8217;s CreateCommand Sequence Diagram</div>
+<div class="title">Figure 18. Exercise&#8217;s CreateCommand Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>In this portion, we will trace the sequence diagram of the <code>exercise create</code> command to better understand the internals of the Exercise feature.</p>
@@ -695,7 +722,7 @@ workout session.</p>
 <div class="content">
 <img src="images/developer-guide/exercise/EditSetActivityDiagram.png" alt="EditSetActivityDiagram">
 </div>
-<div class="title">Figure 18. Editing Exercise Set Activity Diagram</div>
+<div class="title">Figure 19. Editing Exercise Set Activity Diagram</div>
 </div>
 <div class="paragraph">
 <p>At this point, you should have gather enough information to start developing the Exercise feature. As a summary, this is a sample Activity Diagram that depicts a user flow when they want to edit an exercise set.</p>
@@ -745,7 +772,7 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <div class="content">
 <img src="images/developer-guide/workout/WorkoutClassDiagram.png" alt="WorkoutClassDiagram">
 </div>
-<div class="title">Figure 19. Workout Class Diagram</div>
+<div class="title">Figure 20. Workout Class Diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -801,7 +828,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 <div class="content">
 <img src="images/developer-guide/workout/WorkoutSequenceDiagram.png" alt="WorkoutSequenceDiagram">
 </div>
-<div class="title">Figure 20. Sequence Diagram for Finding a Workout</div>
+<div class="title">Figure 21. Sequence Diagram for Finding a Workout</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -891,7 +918,7 @@ other than the context that they are referenced in. In addition, this would make
 <div class="content">
 <img src="images/developer-guide/schedule/ModelScheduleClassDiagram.png" alt="ModelScheduleClassDiagram">
 </div>
-<div class="title">Figure 21. Scheduler Class Diagram</div>
+<div class="title">Figure 22. Scheduler Class Diagram</div>
 </div>
 <div class="paragraph">
 <p>As seen in the diagram above, The <code>Scheduler</code> consists two lists, <code>ScheduleList</code> and <code>ScheduledWorkoutList</code>.</p>
@@ -960,7 +987,7 @@ The decision to have both <code>ScheduleList</code> and <code>ScheduledWorkoutLi
 <div class="content">
 <img src="images/developer-guide/schedule/ScheduleCreateSequenceDiagram.png" alt="ScheduleCreateSequenceDiagram">
 </div>
-<div class="title">Figure 22. Sequence Diagram for Creating a Schedule</div>
+<div class="title">Figure 23. Sequence Diagram for Creating a Schedule</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1012,7 +1039,7 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 <div class="content">
 <img src="images/developer-guide/schedule/PopulateSortedScheduledWorkoutList.png" alt="PopulateSortedScheduledWorkoutList">
 </div>
-<div class="title">Figure 23. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
+<div class="title">Figure 24. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1657,4 +1684,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:09:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 08:16:31 UTC</div></div></div></body></html>
