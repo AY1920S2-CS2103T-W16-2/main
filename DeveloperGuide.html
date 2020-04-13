@@ -809,7 +809,7 @@ depicts flow of the program when the command <code>workout find w/Arms Workout</
 <p>When the user runs the command <code>workout find w/Arms Workout</code>, the <code>LogicManager</code> will first take in the command, by calling the <code>execute()</code> function on it.</p>
 </li>
 <li>
-<p>The <code>ParserManager</code> then has to <code>parse("workout find w/Arms Workout"</code>.</p>
+<p>The <code>ParserManager</code> then has to <code>parse("workout find w/Arms Workout")</code>.</p>
 </li>
 <li>
 <p>Next, the <code>WorkoutCommandParser</code> has to <code>parse("find w/Arms Workout")</code> for the command.</p>
@@ -877,58 +877,234 @@ other than the context that they are referenced in. In addition, this would make
 <div class="sect2">
 <h3 id="schedule"><a class="link" href="#schedule">3.4. Schedule</a></h3>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.4.1. Implementation</a></h4>
+<h4 id="overview-3"><a class="link" href="#overview-3">3.4.1. Overview</a></h4>
 <div class="paragraph">
-<p>The following sequence diagram shows how the <code>schedule create</code> operation works:</p>
+<p>The schedule feature in ZeroToOne allows users to plan their workouts! Users will be able to create a schedule on a specific date and time in the future, edit the date and time, as well as delete the schedule.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="components-2"><a class="link" href="#components-2">3.4.2. Components</a></h4>
+<div class="paragraph">
+<p>The following class diagram shows the overview of the <code>Scheduler</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developer-guide/schedule/ModelScheduleClassDiagram.png" alt="ModelScheduleClassDiagram">
+</div>
+<div class="title">Figure 21. Scheduler Class Diagram</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, The <code>Scheduler</code> consists two lists, <code>ScheduleList</code> and <code>ScheduledWorkoutList</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ScheduleList</code> contains a number of <code>Schedule</code> that the user has created, while the <code>ScheduledWorkoutList</code> is essentially a chronologically sorted list of <code>ScheduledWorkout</code> that allows JavaFX listeners to track changes when they occur.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The decision to have both <code>ScheduleList</code> and <code>ScheduledWorkoutList</code> may seem bizarre at first glance, but it is implemented this way after careful consideration, to better support operations on 'RecurringSchedule'(Proposed). Refer to <a href="#model-design-considerations">Section 3.4.5, &#8220;Model Design Considerations&#8221;</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="schedule-model"><a class="link" href="#schedule-model">3.4.3. Schedule Model</a></h4>
+<div class="paragraph">
+<p>ZeroToOne’s <code>Model</code> extends the <code>SchedulerModel</code>. Here are all the functions to carry out schedule-related activities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#hasSchedule(Schedule schedule)</code> - Returns true if a schedule exists in the schedule list</p>
+</li>
+<li>
+<p><code>Model#addSchedule(Schedule schedule)</code> - Adds a new schedule to the schedule list</p>
+</li>
+<li>
+<p><code>Model#setSchedule(Schedule scheduleToEdit, Schedule editedSchedule)</code> - Replaces a particular schedule with an edited schedule</p>
+</li>
+<li>
+<p><code>Model#populateSortedScheduledWorkoutList()</code> - Clear and populate <code>SortedScheduledWorkoutList</code> by querying every <code>Schedule</code> in <code>SchedueList</code> through method <code>Schedule#getScheduledWorkout()</code></p>
+</li>
+<li>
+<p><code>Model#getSortedScheduledWorkoutList()</code> - Returns an unmodifiable view of <code>ObservableList&lt;ScheduledWorkout&gt;</code></p>
+</li>
+<li>
+<p><code>Model#deleteScheduledWorkout(ScheduledWorkout scheduledWorkoutToDelete)</code> - Deletes the <code>Schedule</code> that generated the specified <code>ScheduledWorkout</code> from the schedule list, then re-populates <code>SortedScheduledWorkoutList</code></p>
+</li>
+<li>
+<p><code>Model#deleteWorkoutNameFromSchedule(WorkoutName workoutNameToDelete)</code> - Deletes all instances of schedules that are associated with the specified workout name</p>
+</li>
+<li>
+<p><code>Model#editWorkoutNameInSchedule(WorkoutName workoutNameToEdit, WorkoutName editedWorkoutName)</code> - Updates all instances of schedules that are associated with the specified workout name to the new workout name</p>
+</li>
+<li>
+<p><code>Model#getScheduleList()</code> - Returns an unmodifiable <code>ReadOnlyScheduleList</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="command-execution-2"><a class="link" href="#command-execution-2">3.4.4. Command Execution</a></h4>
+<div class="sect4">
+<h5 id="creating-a-schedule"><a class="link" href="#creating-a-schedule">Creating a Schedule</a></h5>
+<div class="paragraph">
+<p>To illustrate an example of a command from the <code>Scheduler</code>, the following sequence diagram depicts flow of the program when the command <code>schedule create 1 d/2020-04-01 14:00</code> is run.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/schedule/ScheduleCreateSequenceDiagram.png" alt="ScheduleCreateSequenceDiagram">
 </div>
+<div class="title">Figure 22. Sequence Diagram for Creating a Schedule</div>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the user runs the command <code>schedule create 1 d/2020-04-01 14:00</code>, the <code>LogicManager</code> will first take in the command, by calling the <code>execute()</code> function on it.</p>
+</li>
+<li>
+<p>The <code>ParserManager</code> then has to <code>parse("schedule create 1 d/2020-04-01 14:00")</code>.</p>
+</li>
+<li>
+<p>Next, the <code>ScheduleCommandParser</code> has to <code>parse("create 1 d/2020-04-01 14:00")</code> for the command.</p>
+</li>
+<li>
+<p>Once the command has been parsed as a <code>CreateCommand</code>, it will be passed on to the <code>CreateCommandParser</code>, which will then parse the index using <code>ParserUtil</code>, and parse the date and time using <code>ScheduleParserUtil</code>.</p>
+</li>
+<li>
+<p>The <code>CreateCommandParser</code> can then create a <code>CreateCommand</code>, which is then passed back to <code>LogicManager</code> to execute.</p>
+</li>
+<li>
+<p>When <code>LogicManager</code> executes the <code>CreateCommand</code>, it creates a new <code>Schedule</code>, and checks whether the model already contains this <code>Schedule</code>.</p>
+</li>
+<li>
+<p>If the model does not contain this <code>Schedule</code>, the <code>LogicalManager</code> will then add it to the model by calling <code>Model#addSchedule(schedule)</code>.</p>
+</li>
+<li>
+<p>Finally, the resulting output message will be returned as the <code>CommandResult</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="populating-the-sortedscheduledworkoutlist"><a class="link" href="#populating-the-sortedscheduledworkoutlist">Populating the SortedScheduledWorkoutList</a></h5>
 <div class="paragraph">
-<p>The following sequence diagram shows how the <code>scheduledWorkout</code> are populated to user view:</p>
+<p>And the following sequence diagram shows how the <code>ScheduledWorkoutList</code> is populated after the method <code>Model#addSchedule(schedule)</code> is called:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/schedule/PopulateSortedScheduledWorkoutList.png" alt="PopulateSortedScheduledWorkoutList">
 </div>
+<div class="title">Figure 23. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>After the <code>LogicManager</code> calls the method <code>Model#addSchedule(schedule)</code>, <code>ModelManager</code> calls <code>Scheduler#addSchedule(schedule)</code>, which in turns calls <code>ScheduleList#addSchedule(schedule)</code> and adds the <code>Schedule</code> in the <code>ScheduleList</code>.</p>
+</li>
+<li>
+<p>The <code>Scheduler</code> will then populate the <code>ScheduledWorkoutList</code> by calling the method <code>populateSortedScheduledWorkoutList()</code>.</p>
+</li>
+<li>
+<p>First, <code>Scheduler</code> gets the current date and time by calling <code>DateTime#now()</code>.</p>
+</li>
+<li>
+<p>Then, <code>Scheduler</code> iterates through every <code>Schedule</code> in <code>ScheduleList</code>, and requests to get <code>ScheduledWorkout</code> by calling <code>Schedule#getScheduledWorkout(now)</code> on each of them.</p>
+</li>
+<li>
+<p>Finally, <code>Scheduler</code> resets the <code>SortedScheduledWorkoutList</code> with the latest <code>ScheduledWorkout</code> by calling <code>ScheduledWorkoutList#setScheduledWorkouts(scheduledWorkouts)</code>, and user&#8217;s view of <code>ScheduledWorkout</code> is refreshed.</p>
+</li>
+<li>
+<p>And in the end, the resulting output message will be passed back to <code>LogicManager</code> and display to user.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Scheduler#populateSortedScheduledWorkoutList()</code> is called whenever the schedules in <code>ScheduleList</code> have been changed.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="model-design-considerations"><a class="link" href="#model-design-considerations">3.4.5. Model Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-handle-editing-and-deletion-of-recurring-schedules"><a class="link" href="#aspect-how-to-handle-editing-and-deletion-of-recurring-schedules">Aspect: How to handle editing and deletion of recurring schedules</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1:</strong> Saves <code>scheduledWorkout</code> objects.</p>
+<p><strong>Option 1:</strong> <code>Model</code> stores only <code>ScheduledWorkout</code> objects.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Easier to implement.</p>
 </li>
 <li>
-<p>Cons: Hard to maintain when it comes to <code>edit</code> or <code>delete</code> of recurring scheduled workouts.</p>
+<p>Cons: Harder to maintain when it comes to <code>edit</code> or <code>delete</code> of recurring scheduled workouts.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2 (current choice):</strong> Saves <code>schedule</code> objects that can be used to produce <code>scheduledWorkout</code> when
-requested.</p>
+<p><strong>Option 2 (current choice):</strong> Saves <code>Schedule</code> objects that can be used to produce <code>ScheduledWorkout</code> when requested.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Changes to recurring schedules can populated to <code>scheduledWorkout</code> more easily.</p>
+<p>Pros: Changes can be made to recurring schedules instead, and in turn reflect in all related <code>ScheduledWorkout</code>.</p>
 </li>
 <li>
-<p>Cons: Much more complicated model.</p>
+<p>Cons: Makes model much more complicated.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In the end, I decided to go with option 2 as it is easier to maintain, more extensible and less computationally expensive.</p>
+</div>
+<div class="paragraph">
+<p>When the system has a number of recurring schedules that do not have an end date, it introduces a few problems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How many scheduled workouts to create/store for each recurring schedule</p>
+</li>
+<li>
+<p>How to efficiently retrieve and update all related scheduled workouts when a recurring schedule is edited or deleted</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Implementing option 1 would mean that we will have to impose an additional constraint onto the system, which is either how many scheduled workouts to display for each recurring schedule or what is the longest time frame of scheduled workouts to display to user, as we simply can&#8217;t generate indefinite number of scheduled workouts for technically everlasting recurring schedules. Additionally, when the number of high frequency recurring schedules in the system increases, it will be extremly computationally expensive to edit or delete recurring schedules, as the system will have to iterate through every ScheduledWorkout objects and update accordingly.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, implementing option 2 makes it easier to handle these problems by storing changes to the Schedule objects instead, which can be used to generate ScheduleWorkout objects when requested. Moreover, it is more extensible because if we are going to introduce a calendar view in the future, where user can view a specific time frame of scheduled workouts, the system only needs to generate for that time frame only, which can be done much more efficiently!</p>
 </div>
 </div>
 </div>
@@ -939,7 +1115,7 @@ requested.</p>
 <p>For logging, we propose saving the completedExercise data in the following class architecture.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.5.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/log/WorkoutSessionDiagram.png" alt="WorkoutSessionDiagram">
@@ -947,7 +1123,7 @@ requested.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Immutability was a huge consideration for us and hence we came up with the <code>ReadOnly</code> interface.</p>
 </div>
@@ -1481,4 +1657,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 21:58:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:43:50 UTC</div></div></div></body></html>

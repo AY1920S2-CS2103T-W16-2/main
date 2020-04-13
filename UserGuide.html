@@ -913,12 +913,12 @@ workout import p/data/myFriendsWorkout.txt</code></pre>
 <div class="sect2">
 <h3 id="managing-your-scheduled-sessions"><a class="link" href="#managing-your-scheduled-sessions">5.10. Managing Your Scheduled Sessions</a></h3>
 <div class="paragraph">
-<p>You are now an expert in managing your workouts, and can start a workout any time! However, wouldn’t you like to have the ability to schedule your workout completedExercises? In this section, we will guide you to learn how ZeroToOne can help you in this aspect!</p>
+<p>You are now an expert in managing your workouts, and can start a workout any time! However, wouldn’t you like to have the ability to schedule your workout sessions? In this section, we will guide you to learn how ZeroToOne can help you in this aspect!</p>
 </div>
 <div class="sect3">
-<h4 id="scheduling-a-new-workout-completedexercise"><a class="link" href="#scheduling-a-new-workout-completedexercise">5.10.1. Scheduling a new workout completedExercise</a></h4>
+<h4 id="scheduling-a-new-workout-session"><a class="link" href="#scheduling-a-new-workout-session">5.10.1. Scheduling a new workout session</a></h4>
 <div class="paragraph">
-<p>To schedule a new workout completedExercise, simply type in this command:</p>
+<p>To schedule a new workout session, simply type in this command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -928,27 +928,27 @@ workout import p/data/myFriendsWorkout.txt</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>Example use:
-schedule create 1 d/2020-02-06 18:00</code></pre>
+schedule create 1 d/2020-05-06 18:00</code></pre>
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/user-guide/UgScheduleSession.png" alt="UgScheduleSession">
+<img src="images/user-guide/schedule/UgScheduleSession.png" alt="UgScheduleSession">
 </div>
-<div class="title">Figure 14. Scheduling a workout completedExercise</div>
+<div class="title">Figure 14. Scheduling a workout session</div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
-WORKOUT_ID refers to the index of the workout in `workout list`
-&lt;datetime&gt; must follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* &lt;datetime&gt; must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-future-scheduled-completedexercises"><a class="link" href="#listing-all-future-scheduled-completedexercises">5.10.2. Listing all future scheduled completedExercises</a></h4>
+<h4 id="listing-all-scheduled-sessions"><a class="link" href="#listing-all-scheduled-sessions">5.10.2. Listing all scheduled sessions</a></h4>
 <div class="paragraph">
-<p>To view all of your future schedule completedExercises, type the following command:</p>
+<p>To view all of your schedule sessions, type the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -957,18 +957,18 @@ WORKOUT_ID refers to the index of the workout in `workout list`
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/user-guide/UgCalendarSchedule.png" alt="UgCalendarSchedule">
+<img src="images/user-guide/schedule/UgListSchedule.png" alt="UgListSchedule">
 </div>
-<div class="title">Figure 15. Calendar display of schedule</div>
+<div class="title">Figure 15. Display of schedule in chronological order</div>
 </div>
 <div class="paragraph">
-<p>ZeroToOne displays an intuitive calendar view, showing your upcoming schedule! From this graphical view, you can see what workout completedExercises are coming up, as well as their corresponding schedule IDs.</p>
+<p>ZeroToOne displays an intuitive chronological view, showing your upcoming schedule! From this view, you can see what workout sessions are coming up, which workout sessions are outdated, as well as their corresponding schedule IDs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-a-scheduled-completedexercise-to-another-date"><a class="link" href="#changing-a-scheduled-completedexercise-to-another-date">5.10.3. Changing a scheduled completedExercise to another date</a></h4>
+<h4 id="changing-a-scheduled-session-to-another-date"><a class="link" href="#changing-a-scheduled-session-to-another-date">5.10.3. Changing a scheduled session to another date</a></h4>
 <div class="paragraph">
-<p>If you need to shift your scheduled completedExercise to another date, try the following command:</p>
+<p>If you need to shift your scheduled session to another date, try the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -978,7 +978,7 @@ WORKOUT_ID refers to the index of the workout in `workout list`
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>Example use:
-schedule edit 1 d/2020-02-08 18:00</code></pre>
+schedule edit 1 d/2020-05-08 18:00</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -986,21 +986,21 @@ schedule edit 1 d/2020-02-08 18:00</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>Edited schedule: Strength Workout on 2020-02-08 18:00</code></pre>
+<pre class="CodeRay highlight"><code>Edited schedule: Strength Workout on 2020-05-08 18:00</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
 * SCHEDULED_WORKOUT_ID refers to the index of the scheduled workout in `schedule list`
-* &lt;datetime&gt; must follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
+* &lt;datetime&gt; must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-scheduled-completedexercise"><a class="link" href="#deleting-a-scheduled-completedexercise">5.10.4. Deleting a scheduled completedExercise</a></h4>
+<h4 id="deleting-a-scheduled-session"><a class="link" href="#deleting-a-scheduled-session">5.10.4. Deleting a scheduled session</a></h4>
 <div class="paragraph">
-<p>Want to delete a scheduled completedExercise? You can do so by typing the following command:</p>
+<p>Want to delete a scheduled session? You can do so by typing the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1014,7 +1014,7 @@ schedule delete 1</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This deletes an existing scheduled workout completedExercise with the corresponding scheduled workout ID. If this is successful, the following message will be displayed in the feedback display:</p>
+<p>This deletes an existing scheduled workout session with the corresponding scheduled workout ID. If this is successful, the following message will be displayed in the feedback display:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1029,9 +1029,9 @@ schedule delete 1</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="scheduling-a-recurring-workout-completedexercise-proposed"><a class="link" href="#scheduling-a-recurring-workout-completedexercise-proposed">5.10.5. Scheduling a recurring workout completedExercise (Proposed)</a></h4>
+<h4 id="scheduling-a-recurring-workout-session-proposed"><a class="link" href="#scheduling-a-recurring-workout-session-proposed">5.10.5. Scheduling a recurring workout session (Proposed)</a></h4>
 <div class="paragraph">
-<p>Sometimes you will want to schedule a workout completedExercise that repeats over time, with a certain frequency. No problem! Simply type the following command:</p>
+<p>Sometimes you will want to schedule a workout session that repeats over time, with a certain frequency. No problem! Simply type the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1041,22 +1041,22 @@ schedule delete 1</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>Example use:
-schedule recurring create WORKOUT_ID d/2020-03-26 10:00 f/MONTHLY</code></pre>
+schedule recurring create WORKOUT_ID d/2020-05-26 10:00 f/MONTHLY</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, if you want to have the workout Arms Workout on a monthly basis, starting from the 26th of March 2020 at 10am, you can type <code>schedule recurring create WORKOUT_ID d/2020-03-26 10:00 f/MONTHLY</code>.  If this is successful, the following message will be displayed in the feedback display:</p>
+<p>For example, if you want to have the workout Arms Workout on a monthly basis, starting from the 26th of May 2020 at 10am, you can type <code>schedule recurring create WORKOUT_ID d/2020-05-26 10:00 f/MONTHLY</code>.  If this is successful, the following message will be displayed in the feedback display:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>New recurring schedule added: Strength Workout on 2020-02-06 18:00 Monthly</code></pre>
+<pre class="CodeRay highlight"><code>New recurring schedule added: Strength Workout on 2020-05-06 18:00 Monthly</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>NOTE:
 * WORKOUT_ID refers to the index of the workout in `workout list`
-* &lt;datetime&gt; must follow the format {yyyy}-{mm}-{dd} {HH:mm}
+* &lt;datetime&gt; must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}
 * &lt;frequency&gt; must be one of the following: DAILY, WEEKLY, MONTHLY</code></pre>
 </div>
 </div>
@@ -1440,4 +1440,4 @@ users to interact with electronic devices through graphical means, not textual m
 A workout that has been completed and stored away safely.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 21:58:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:43:50 UTC</div></div></div></body></html>

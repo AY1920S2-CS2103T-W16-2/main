@@ -20,63 +20,40 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: I implemented the Scheduler core feature of ZeroToOne.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to schedule workout sessions.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature is essential to the product as it enbale user to make plans of their workout sessions, stick to the plans and finally achieve a life transformation.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This feature affects efficiency and responsiveness if not implemented correctly. It required careful consideration and analysis of design alternatives. The implementation itself was challenging because it required implementation of a fairly complex model and its storage.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed on RepoSense</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=guofeng-tang&amp;sort=groupTitle&amp;sortWithin=title&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">RepoSense</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Help refactor and create modular exercise list application (Pull request <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66">#66</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
+<p>Enchancement to the GUI of Schedule tab (Pull requests <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/221">#221</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/172">#172</a>)</p>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Wrote sufficient tests for scheduler features to increase its code coverage (except UI) to near 100% (Pull requests <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/192">#192</a>)</p>
 </li>
 </ul>
 </div>
@@ -86,29 +63,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/103">#103</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/174">#174</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/192">#192</a></p>
 </li>
 </ul>
 </div>
@@ -117,9 +72,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +88,158 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="managing-your-scheduled-sessions"><a class="link" href="#managing-your-scheduled-sessions">Managing Your Scheduled Sessions</a></h3>
+<div class="paragraph">
+<p>You are now an expert in managing your workouts, and can start a workout any time! However, wouldn’t you like to have the ability to schedule your workout sessions? In this section, we will guide you to learn how ZeroToOne can help you in this aspect!</p>
+</div>
+<div class="sect3">
+<h4 id="scheduling-a-new-workout-session"><a class="link" href="#scheduling-a-new-workout-session">Scheduling a new workout session</a></h4>
+<div class="paragraph">
+<p>To schedule a new workout session, simply type in this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule create WORKOUT_ID d/&lt;datetime&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule create 1 d/2020-05-06 18:00</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/schedule/UgScheduleSession.png" alt="UgScheduleSession">
+</div>
+<div class="title">Figure 1. Scheduling a workout session</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* &lt;datetime&gt; must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-scheduled-sessions"><a class="link" href="#listing-all-scheduled-sessions">Listing all scheduled sessions</a></h4>
+<div class="paragraph">
+<p>To view all of your schedule sessions, type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule list</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/schedule/UgListSchedule.png" alt="UgListSchedule">
+</div>
+<div class="title">Figure 2. Display of schedule in chronological order</div>
+</div>
+<div class="paragraph">
+<p>ZeroToOne displays an intuitive chronological view, showing your upcoming schedule! From this view, you can see what workout sessions are coming up, which workout sessions are outdated, as well as their corresponding schedule IDs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-a-scheduled-session-to-another-date"><a class="link" href="#changing-a-scheduled-session-to-another-date">Changing a scheduled session to another date</a></h4>
+<div class="paragraph">
+<p>If you need to shift your scheduled session to another date, try the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule edit SCHEDULED_WORKOUT_ID d/&lt;datetime&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule edit 1 d/2020-05-08 18:00</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited schedule: Strength Workout on 2020-05-08 18:00</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* SCHEDULED_WORKOUT_ID refers to the index of the scheduled workout in `schedule list`
+* &lt;datetime&gt; must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-scheduled-session"><a class="link" href="#deleting-a-scheduled-session">Deleting a scheduled session</a></h4>
+<div class="paragraph">
+<p>Want to delete a scheduled session? You can do so by typing the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule delete SCHEDULED_WORKOUT_ID</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule delete 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This deletes an existing scheduled workout session with the corresponding scheduled workout ID. If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted scheduled workout: Strength Training</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* SCHEDULED_WORKOUT_ID refers to the index of the scheduled workout in `schedule list`</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scheduling-a-recurring-workout-session-proposed"><a class="link" href="#scheduling-a-recurring-workout-session-proposed">Scheduling a recurring workout session (Proposed)</a></h4>
+<div class="paragraph">
+<p>Sometimes you will want to schedule a workout session that repeats over time, with a certain frequency. No problem! Simply type the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>schedule recurring create WORKOUT_ID d/&lt;datetime&gt; f/&lt;frequency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Example use:
+schedule recurring create WORKOUT_ID d/2020-05-26 10:00 f/MONTHLY</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if you want to have the workout Arms Workout on a monthly basis, starting from the 26th of May 2020 at 10am, you can type <code>schedule recurring create WORKOUT_ID d/2020-05-26 10:00 f/MONTHLY</code>.  If this is successful, the following message will be displayed in the feedback display:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>New recurring schedule added: Strength Workout on 2020-05-06 18:00 Monthly</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>NOTE:
+* WORKOUT_ID refers to the index of the workout in `workout list`
+* &lt;datetime&gt; must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}
+* &lt;frequency&gt; must be one of the following: DAILY, WEEKLY, MONTHLY</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -151,14 +255,240 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect2">
+<h3 id="schedule"><a class="link" href="#schedule">Schedule</a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">Overview</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>The schedule feature in ZeroToOne allows users to plan their workouts! Users will be able to create a schedule on a specific date and time in the future, edit the date and time, as well as delete the schedule.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 21:58:30 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="components"><a class="link" href="#components">Components</a></h4>
+<div class="paragraph">
+<p>The following class diagram shows the overview of the <code>Scheduler</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/schedule/ModelScheduleClassDiagram.png" alt="ModelScheduleClassDiagram">
+</div>
+<div class="title">Figure 3. Scheduler Class Diagram</div>
+</div>
+<div class="paragraph">
+<p>As seen in the diagram above, The <code>Scheduler</code> consists two lists, <code>ScheduleList</code> and <code>ScheduledWorkoutList</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>ScheduleList</code> contains a number of <code>Schedule</code> that the user has created, while the <code>ScheduledWorkoutList</code> is essentially a chronologically sorted list of <code>ScheduledWorkout</code> that allows JavaFX listeners to track changes when they occur.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The decision to have both <code>ScheduleList</code> and <code>ScheduledWorkoutList</code> may seem bizarre at first glance, but it is implemented this way after careful consideration, to better support operations on 'RecurringSchedule'(Proposed). Refer to <a href="#model-design-considerations">Model Design Considerations</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="schedule-model"><a class="link" href="#schedule-model">Schedule Model</a></h4>
+<div class="paragraph">
+<p>ZeroToOne’s <code>Model</code> extends the <code>SchedulerModel</code>. Here are all the functions to carry out schedule-related activities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Model#hasSchedule(Schedule schedule)</code> - Returns true if a schedule exists in the schedule list</p>
+</li>
+<li>
+<p><code>Model#addSchedule(Schedule schedule)</code> - Adds a new schedule to the schedule list</p>
+</li>
+<li>
+<p><code>Model#setSchedule(Schedule scheduleToEdit, Schedule editedSchedule)</code> - Replaces a particular schedule with an edited schedule</p>
+</li>
+<li>
+<p><code>Model#populateSortedScheduledWorkoutList()</code> - Clear and populate <code>SortedScheduledWorkoutList</code> by querying every <code>Schedule</code> in <code>SchedueList</code> through method <code>Schedule#getScheduledWorkout()</code></p>
+</li>
+<li>
+<p><code>Model#getSortedScheduledWorkoutList()</code> - Returns an unmodifiable view of <code>ObservableList&lt;ScheduledWorkout&gt;</code></p>
+</li>
+<li>
+<p><code>Model#deleteScheduledWorkout(ScheduledWorkout scheduledWorkoutToDelete)</code> - Deletes the <code>Schedule</code> that generated the specified <code>ScheduledWorkout</code> from the schedule list, then re-populates <code>SortedScheduledWorkoutList</code></p>
+</li>
+<li>
+<p><code>Model#deleteWorkoutNameFromSchedule(WorkoutName workoutNameToDelete)</code> - Deletes all instances of schedules that are associated with the specified workout name</p>
+</li>
+<li>
+<p><code>Model#editWorkoutNameInSchedule(WorkoutName workoutNameToEdit, WorkoutName editedWorkoutName)</code> - Updates all instances of schedules that are associated with the specified workout name to the new workout name</p>
+</li>
+<li>
+<p><code>Model#getScheduleList()</code> - Returns an unmodifiable <code>ReadOnlyScheduleList</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="command-execution"><a class="link" href="#command-execution">Command Execution</a></h4>
+<div class="sect4">
+<h5 id="creating-a-schedule"><a class="link" href="#creating-a-schedule">Creating a Schedule</a></h5>
+<div class="paragraph">
+<p>To illustrate an example of a command from the <code>Scheduler</code>, the following sequence diagram depicts flow of the program when the command <code>schedule create 1 d/2020-04-01 14:00</code> is run.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/schedule/ScheduleCreateSequenceDiagram.png" alt="ScheduleCreateSequenceDiagram">
+</div>
+<div class="title">Figure 4. Sequence Diagram for Creating a Schedule</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the user runs the command <code>schedule create 1 d/2020-04-01 14:00</code>, the <code>LogicManager</code> will first take in the command, by calling the <code>execute()</code> function on it.</p>
+</li>
+<li>
+<p>The <code>ParserManager</code> then has to <code>parse("schedule create 1 d/2020-04-01 14:00")</code>.</p>
+</li>
+<li>
+<p>Next, the <code>ScheduleCommandParser</code> has to <code>parse("create 1 d/2020-04-01 14:00")</code> for the command.</p>
+</li>
+<li>
+<p>Once the command has been parsed as a <code>CreateCommand</code>, it will be passed on to the <code>CreateCommandParser</code>, which will then parse the index using <code>ParserUtil</code>, and parse the date and time using <code>ScheduleParserUtil</code>.</p>
+</li>
+<li>
+<p>The <code>CreateCommandParser</code> can then create a <code>CreateCommand</code>, which is then passed back to <code>LogicManager</code> to execute.</p>
+</li>
+<li>
+<p>When <code>LogicManager</code> executes the <code>CreateCommand</code>, it creates a new <code>Schedule</code>, and checks whether the model already contains this <code>Schedule</code>.</p>
+</li>
+<li>
+<p>If the model does not contain this <code>Schedule</code>, the <code>LogicalManager</code> will then add it to the model by calling <code>Model#addSchedule(schedule)</code>.</p>
+</li>
+<li>
+<p>Finally, the resulting output message will be returned as the <code>CommandResult</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="populating-the-sortedscheduledworkoutlist"><a class="link" href="#populating-the-sortedscheduledworkoutlist">Populating the SortedScheduledWorkoutList</a></h5>
+<div class="paragraph">
+<p>And the following sequence diagram shows how the <code>ScheduledWorkoutList</code> is populated after the method <code>Model#addSchedule(schedule)</code> is called:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/schedule/PopulateSortedScheduledWorkoutList.png" alt="PopulateSortedScheduledWorkoutList">
+</div>
+<div class="title">Figure 5. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>After the <code>LogicManager</code> calls the method <code>Model#addSchedule(schedule)</code>, <code>ModelManager</code> calls <code>Scheduler#addSchedule(schedule)</code>, which in turns calls <code>ScheduleList#addSchedule(schedule)</code> and adds the <code>Schedule</code> in the <code>ScheduleList</code>.</p>
+</li>
+<li>
+<p>The <code>Scheduler</code> will then populate the <code>ScheduledWorkoutList</code> by calling the method <code>populateSortedScheduledWorkoutList()</code>.</p>
+</li>
+<li>
+<p>First, <code>Scheduler</code> gets the current date and time by calling <code>DateTime#now()</code>.</p>
+</li>
+<li>
+<p>Then, <code>Scheduler</code> iterates through every <code>Schedule</code> in <code>ScheduleList</code>, and requests to get <code>ScheduledWorkout</code> by calling <code>Schedule#getScheduledWorkout(now)</code> on each of them.</p>
+</li>
+<li>
+<p>Finally, <code>Scheduler</code> resets the <code>SortedScheduledWorkoutList</code> with the latest <code>ScheduledWorkout</code> by calling <code>ScheduledWorkoutList#setScheduledWorkouts(scheduledWorkouts)</code>, and user&#8217;s view of <code>ScheduledWorkout</code> is refreshed.</p>
+</li>
+<li>
+<p>And in the end, the resulting output message will be passed back to <code>LogicManager</code> and display to user.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Scheduler#populateSortedScheduledWorkoutList()</code> is called whenever the schedules in <code>ScheduleList</code> have been changed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="model-design-considerations"><a class="link" href="#model-design-considerations">Model Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-handle-editing-and-deletion-of-recurring-schedules"><a class="link" href="#aspect-how-to-handle-editing-and-deletion-of-recurring-schedules">Aspect: How to handle editing and deletion of recurring schedules</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Option 1:</strong> <code>Model</code> stores only <code>ScheduledWorkout</code> objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement.</p>
+</li>
+<li>
+<p>Cons: Harder to maintain when it comes to <code>edit</code> or <code>delete</code> of recurring scheduled workouts.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Option 2 (current choice):</strong> Saves <code>Schedule</code> objects that can be used to produce <code>ScheduledWorkout</code> when requested.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Changes can be made to recurring schedules instead, and in turn reflect in all related <code>ScheduledWorkout</code>.</p>
+</li>
+<li>
+<p>Cons: Makes model much more complicated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the end, I decided to go with option 2 as it is easier to maintain, more extensible and less computationally expensive.</p>
+</div>
+<div class="paragraph">
+<p>When the system has a number of recurring schedules that do not have an end date, it introduces a few problems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How many scheduled workouts to create/store for each recurring schedule</p>
+</li>
+<li>
+<p>How to efficiently retrieve and update all related scheduled workouts when a recurring schedule is edited or deleted</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Implementing option 1 would mean that we will have to impose an additional constraint onto the system, which is either how many scheduled workouts to display for each recurring schedule or what is the longest time frame of scheduled workouts to display to user, as we simply can&#8217;t generate indefinite number of scheduled workouts for technically everlasting recurring schedules. Additionally, when the number of high frequency recurring schedules in the system increases, it will be extremly computationally expensive to edit or delete recurring schedules, as the system will have to iterate through every ScheduledWorkout objects and update accordingly.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, implementing option 2 makes it easier to handle these problems by storing changes to the Schedule objects instead, which can be used to generate ScheduleWorkout objects when requested. Moreover, it is more extensible because if we are going to introduce a calendar view in the future, where user can view a specific time frame of scheduled workouts, the system only needs to generate for that time frame only, which can be done much more efficiently!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:43:50 UTC</div></div></div></body></html>
