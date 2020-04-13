@@ -5,8 +5,6 @@
 
 == PROJECT: ZeroToOne
 
-.Screenshot
-image::user-guide/UgStartWorkout.png[]
 
 == Overview
 
@@ -18,15 +16,15 @@ ZeroToOne is a desktop application that serves as an all-in-one exercise tracker
 .Workout Session Feature
 image::user-guide/UgDoneSet.png[]
 
-* *Major enhancement*: added the *Workout Session Functionality*
+* *Major enhancement*: added the *Workout Session Feature*
 ** What it does: Allows the user to start a workout session by providing a `WORKOUT_ID`.
 The session keeps track of the user's workout by providing a queue of upcoming sets and the progress of the previous set.
 The session also includes a rest timer that helps users keep to their workout schedule between sets.
 ** Justification: This feature is a core feature within the app. It helps users keep to their workouts and ensures that even the most tired user will not forget any exercise during a workout session.
 ** Highlights: This feature required major design consideration in order to maintain a bug-free, stateful representation of a workout session, with a user-facing experience that automatically logs completed sessions.
 
-* *Major enhancement*: added the *Rest Timer feature*
-** What it does: Seamlessly integrated with the *Workout Session Functionality*, the timer helps users keep to their workout schedule and times rest between sets.
+* *Major enhancement*: added the *Rest Timer Feature*
+** What it does: Seamlessly integrated with the *Workout Session Feature*, the timer helps users keep to their workout schedule and times rest between sets.
 ** Justification: Helps users manage their workout session and keep to their rest time for an optimal workout.
 ** Highlights: This feature requires the use of a thread to update the clock.
 Major design consideration was required to ensure that the timer was not computationally expensive yet reliable, and that the feature was user-facing and integrated with the session feature seamlessly.
@@ -58,7 +56,7 @@ Major design consideration was required to ensure that the timer was not computa
 *** Organised and managed weekly team meetings including taking minutes on google docs.
 *** Facilitated task delegation at the inception of the tP.
 ** Enhancements to existing features:
-*** Edit GUI for overall cohesiveness (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/213[#213], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/213[#219])
+*** Edit GUI for overall cohesiveness (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/213[#213], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/219[#219])
 *** Disabled non session related commands during a session for more predictable app behaviour (no editing of workouts during workout) (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/187[#187])
 ** Documentation:
 *** Add documentation coverage for the entire workout session feature including diagrams. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/110[#14]
@@ -66,7 +64,8 @@ Major design consideration was required to ensure that the timer was not computa
 *** Update all screenshots in user guide. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/241[#241]
 *** Add DG Appendix G: Effort. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/244[#244]
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S2-CS2103T-W16-2/main/pull/114[#114], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66[#66]
+*** PRs reviewed (with non-trivial review comments):
+https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66[#66], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/114[#114]
 *** Total PRs reviewed: https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Agb3h[15]
 *** Reviewed other teams documentation: https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/29[#29]
 
