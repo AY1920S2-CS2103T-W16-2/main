@@ -65,7 +65,7 @@ Major design consideration was required to ensure that the timer was not computa
 ** Review Contributions:
 *** PRs reviewed (with non-trivial review comments):
 https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66[#66], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/114[#114]
-*** Total PRs reviewed: https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Agb3h[15]
+*** Total PRs reviewed: https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Agb3h[21+]
 ** Community:
 *** Reviewed other teams documentation: https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/29[#29]
 
