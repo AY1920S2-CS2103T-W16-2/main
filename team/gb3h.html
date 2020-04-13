@@ -61,52 +61,61 @@ Major design consideration was required to ensure that the timer was not computa
 <li>
 <p><strong>Overview</strong>: <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=gb3h&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Reposense</a></p>
 </li>
-<li>
-<p><strong>Functional Code</strong>:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/commands">github folder</a> &#8592; Commands (Start, Stop, Skip, Done)</p>
-</li>
-<li>
-<p><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/session">github folder</a> &#8592; Parsers</p>
-</li>
-<li>
-<p><a href="https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/model/session">github folder</a> &#8592; Models (All the Ongoing- models and worked in collaboration with @Jiachen247 for some Completed- models)</p>
-</li>
-<li>
-<p><a href="https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/ui/views/home">github folder</a> &#8592; UI work</p>
-</li>
-<li>
-<p><a href="https://github.com/gb3h/main/tree/master/src/main/resources/view/home">github folder</a> &#8592; FXML</p>
-</li>
-<li>
-<p><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/java/seedu/zerotoone/model/ModelManager.java">github file</a> &#8592; Timer functionality (and major session-related functions)</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>Tests</strong>:</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/commands">github folder</a> &#8592; Command Tests (Start, Stop, Skip, Done)</p>
-</li>
-<li>
-<p><a href="https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/session">github folder</a> &#8592; Parser Tests</p>
-</li>
-<li>
-<p><a href="https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/model/session">github folder</a> &#8592; Model Tests</p>
-</li>
-</ol>
-</div>
-</li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Feature</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Component</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Functional Code</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Test Code</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock">Session feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Commands (Start, Stop, Skip, Done)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/commands">github folder</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/commands">github folder</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parsers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/session">github folder</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/session">github folder</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Models (Ongoing- prefixed)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/model/session">github folder</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/gb3h/main/tree/master/src/test/java/seedu/zerotoone/model/session">github folder</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ui</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/gb3h/main/tree/master/src/main/java/seedu/zerotoone/ui/views/home">github folder</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FXML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/gb3h/main/tree/master/src/main/resources/view/home">github folder</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timer feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Found in ModelManager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/AY1920S2-CS2103T-W16-2/main/blob/master/src/main/java/seedu/zerotoone/model/ModelManager.java">github file</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NA</p></td>
+</tr>
+</tbody>
+</table>
 <hr>
 <div class="ulist">
 <ul>
@@ -145,7 +154,7 @@ Major design consideration was required to ensure that the timer was not computa
 <div class="ulist">
 <ul>
 <li>
-<p>Add documentation coverage for the entire workout session feature including diagrams. <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/110">#14</a></p>
+<p>Add documentation coverage for the entire workout session feature including diagrams. <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/110">#110</a></p>
 </li>
 <li>
 <p>Edit Model Component diagram. <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/238">#238</a></p>
@@ -168,7 +177,7 @@ Major design consideration was required to ensure that the timer was not computa
 <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/66">#66</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/114">#114</a></p>
 </li>
 <li>
-<p>Total PRs reviewed: <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Agb3h">15</a></p>
+<p>Total PRs reviewed: <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Agb3h">21+</a></p>
 </li>
 </ul>
 </div>
@@ -204,10 +213,7 @@ Major design consideration was required to ensure that the timer was not computa
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="starting-a-workout-session"><a class="link" href="#starting-a-workout-session">Starting A Workout Session</a></h3>
-<div class="paragraph">
-<p>Gabriel Yeo</p>
-</div>
+<h3 id="starting-a-workout-session-gabriel-yeo"><a class="link" href="#starting-a-workout-session-gabriel-yeo">Starting A Workout Session [Gabriel Yeo]</a></h3>
 <div class="paragraph">
 <p>Are you ready to start working out now? To begin a new workout session, simply enter the following command into the command box:</p>
 </div>
@@ -240,7 +246,7 @@ start 1</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="completing-a-set"><a class="link" href="#completing-a-set">Completing a Set</a></h3>
+<h3 id="completing-a-set-gabriel-yeo"><a class="link" href="#completing-a-set-gabriel-yeo">Completing a Set [Gabriel Yeo]</a></h3>
 <div class="paragraph">
 <p>Completed your exercise set? To mark the current exercise set as complete and move on to the next set, simply enter this command into the command box:</p>
 </div>
@@ -267,7 +273,7 @@ Additionally, the timer will reset to 00:00 and begin counting your rest for you
 </div>
 </div>
 <div class="sect2">
-<h3 id="skipping-an-exercise-set"><a class="link" href="#skipping-an-exercise-set">Skipping An Exercise Set</a></h3>
+<h3 id="skipping-an-exercise-set-gabriel-yeo"><a class="link" href="#skipping-an-exercise-set-gabriel-yeo">Skipping An Exercise Set [Gabriel Yeo]</a></h3>
 <div class="paragraph">
 <p>Unable to complete your current exercise set? No worries, it happens to the best of us. To skip the current exercise set, simply enter this command into the command box:</p>
 </div>
@@ -290,7 +296,7 @@ Additionally, the timer will reset to 00:00 and begin counting your rest for you
 </div>
 </div>
 <div class="sect2">
-<h3 id="stopping-a-workout-session"><a class="link" href="#stopping-a-workout-session">Stopping A Workout Session</a></h3>
+<h3 id="stopping-a-workout-session-gabriel-yeo"><a class="link" href="#stopping-a-workout-session-gabriel-yeo">Stopping A Workout Session [Gabriel Yeo]</a></h3>
 <div class="paragraph">
 <p>Need to stop the workout session prematurely? Simply enter this command into the command box:</p>
 </div>
@@ -324,7 +330,7 @@ Additionally, the timer will reset to 00:00 and begin counting your rest for you
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="session-home"><a class="link" href="#session-home">Session (Home)</a></h3>
+<h3 id="session-home-gabriel-yeo"><a class="link" href="#session-home-gabriel-yeo">Session (Home) [Gabriel Yeo]</a></h3>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <div class="paragraph">
@@ -513,11 +519,8 @@ workout session, where all remaining sets are marked as incomplete.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="effort"><a class="link" href="#effort">Appendix A: Effort</a></h2>
+<h2 id="effort-zerotoone-team"><a class="link" href="#effort-zerotoone-team">Appendix A: Effort [ZeroToOne Team]</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Gabriel Yeo</p>
-</div>
 <table class="tableblock frame-all grid-all" style="width: 59%;">
 <colgroup>
 <col style="width: 31.4285%;">
@@ -594,12 +597,11 @@ However, the ZeroToOne team believes that taking a user-experience-first philoso
 <div class="paragraph">
 <p>The largest challenge we faced as a team was communication.
 Being fast-moving and driven individuals, taking the initiative sometimes meant being able to make decisions for the team as an individual. This meant that it was vital that we were on the same page with our goals and expectations from the project.
-Thus, we took more time than usual at the beginning of the project to plan our road-map moving forward, delegating work and defining our expectations clearly.
-This meant we were later to start coding and making PRs than other teams (as seen on reposense), which we felt was a more-than-fair trade-off for our team dynamic.</p>
+Thus, we took more time than usual at the beginning of the project to plan our road-map moving forward, delegating work and defining our expectations clearly.</p>
 </div>
 <div class="paragraph">
 <p>We hope you have enjoyed this journey and learnt as much as we have!
 - The ZeroToOne Team</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:47:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:00:46 UTC</div></div></div></body></html>

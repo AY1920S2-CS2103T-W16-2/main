@@ -12,22 +12,22 @@
 <li><a href="#setting-up">1. Setting up</a></li>
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Main">2.2. Main Component</a></li>
-<li><a href="#Design-Ui">2.3. UI Component</a></li>
-<li><a href="#Design-Logic">2.4. Logic Component</a></li>
-<li><a href="#Design-Model">2.5. Model Component</a></li>
-<li><a href="#Design-Storage">2.6. Storage Component</a></li>
+<li><a href="#Design-Architecture">2.1. Architecture [Wong Chi Shan]</a></li>
+<li><a href="#Design-Main">2.2. Main Component [Aloysius Chan]</a></li>
+<li><a href="#Design-Ui">2.3. UI Component [Aloysius Chan]</a></li>
+<li><a href="#Design-Logic">2.4. Logic Component [Aloysius Chan]</a></li>
+<li><a href="#Design-Model">2.5. Model Component [Aloysius Chan]</a></li>
+<li><a href="#Design-Storage">2.6. Storage Component [Aloysius Chan]</a></li>
 <li><a href="#Design-Commons">2.7. Common Classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#session-home">3.1. Session (Home)</a></li>
-<li><a href="#exercise">3.2. Exercise</a></li>
-<li><a href="#workout">3.3. Workout</a></li>
-<li><a href="#schedule">3.4. Schedule</a></li>
-<li><a href="#log-statistics">3.5. Log Statistics</a></li>
+<li><a href="#session-home-gabriel-yeo">3.1. Session (Home) [Gabriel Yeo]</a></li>
+<li><a href="#exercise-aloysius-chan">3.2. Exercise [Aloysius Chan]</a></li>
+<li><a href="#workout-wong-chi-shan">3.3. Workout [Wong Chi Shan]</a></li>
+<li><a href="#schedule-tang-guofeng">3.4. Schedule [Tang Guofeng]</a></li>
+<li><a href="#log-statistics-liow-jiachen">3.5. Log Statistics [Liow Jiachen]</a></li>
 <li><a href="#configuration">3.6. Configuration</a></li>
 </ul>
 </li>
@@ -35,18 +35,18 @@
 <li><a href="#testing">5. Testing</a></li>
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
-<li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#user-stories-wong-chi-shan">Appendix B: User Stories [Wong Chi Shan]</a></li>
+<li><a href="#use-cases-wong-chi-shan">Appendix C: Use Cases [Wong Chi Shan]</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing-gabriel-yeo">Appendix F: Instructions for Manual Testing [Gabriel Yeo]</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
 <li><a href="#starting-a-workout-session">F.2. Starting a workout session</a></li>
 <li><a href="#saving-a-workout-session">F.3. Saving a workout session</a></li>
 </ul>
 </li>
-<li><a href="#effort">Appendix G: Effort</a></li>
+<li><a href="#effort-zerotoone-team">Appendix G: Effort [ZeroToOne Team]</a></li>
 </ul>
 </div>
 </div>
@@ -62,7 +62,7 @@
 <h2 id="design"><a class="link" href="#design">2. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture [Wong Chi Shan]</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/common/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -152,7 +152,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Main"><a class="link" href="#Design-Main">2.2. Main Component</a></h3>
+<h3 id="Design-Main"><a class="link" href="#Design-Main">2.2. Main Component [Aloysius Chan]</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/common/MainClassDiagram.png" alt="MainClassDiagram">
@@ -173,7 +173,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.3. UI Component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.3. UI Component [Aloysius Chan]</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/common/UiClassDiagram.png" alt="UiClassDiagram">
@@ -197,7 +197,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.4. Logic Component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.4. Logic Component [Aloysius Chan]</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/developer-guide/common/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -259,7 +259,7 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.5. Model Component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.5. Model Component [Aloysius Chan]</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/common/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -308,7 +308,7 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.6. Storage Component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.6. Storage Component [Aloysius Chan]</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developer-guide/common/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -359,7 +359,7 @@ The lifeline for <code>ExerciseCommandParser</code> and <code>DeleteCommandParse
 <p>This section describes some noteworthy details on how each features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="session-home"><a class="link" href="#session-home">3.1. Session (Home)</a></h3>
+<h3 id="session-home-gabriel-yeo"><a class="link" href="#session-home-gabriel-yeo">3.1. Session (Home) [Gabriel Yeo]</a></h3>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">3.1.1. Implementation</a></h4>
 <div class="paragraph">
@@ -546,10 +546,7 @@ workout session, where all remaining sets are marked as incomplete.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exercise"><a class="link" href="#exercise">3.2. Exercise</a></h3>
-<div class="paragraph">
-<p>Aloysius Chan</p>
-</div>
+<h3 id="exercise-aloysius-chan"><a class="link" href="#exercise-aloysius-chan">3.2. Exercise [Aloysius Chan]</a></h3>
 <div class="sect3">
 <h4 id="overview"><a class="link" href="#overview">3.2.1. Overview</a></h4>
 <div class="paragraph">
@@ -756,7 +753,7 @@ workout session, where all remaining sets are marked as incomplete.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="workout"><a class="link" href="#workout">3.3. Workout</a></h3>
+<h3 id="workout-wong-chi-shan"><a class="link" href="#workout-wong-chi-shan">3.3. Workout [Wong Chi Shan]</a></h3>
 <div class="sect3">
 <h4 id="overview-2"><a class="link" href="#overview-2">3.3.1. Overview</a></h4>
 <div class="paragraph">
@@ -826,7 +823,7 @@ Each workout consists of a <code>WorkoutId</code>, a <code>WorkoutName</code> an
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Each <code>Workout</code> can contain any number of <code>Exercise</code> objects, including zero. However, a <code>Workout</code> must not be empty i.e. have at least one <code>Exercise</code>, in order to be scheduled. This is implemented in the Schedule feature as referenced in <a href="#schedule">Section 3.4, &#8220;Schedule&#8221;</a>.
+Each <code>Workout</code> can contain any number of <code>Exercise</code> objects, including zero. However, a <code>Workout</code> must not be empty i.e. have at least one <code>Exercise</code>, in order to be scheduled. This is implemented in the Schedule feature as referenced in <a href="#Schedule">[Schedule]</a>.
 </td>
 </tr>
 </table>
@@ -1012,10 +1009,7 @@ other than the context that they are referenced in. In addition, this would make
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule"><a class="link" href="#schedule">3.4. Schedule</a></h3>
-<div class="paragraph">
-<p>Guofeng Tang</p>
-</div>
+<h3 id="schedule-tang-guofeng"><a class="link" href="#schedule-tang-guofeng">3.4. Schedule [Tang Guofeng]</a></h3>
 <div class="sect3">
 <h4 id="overview-3"><a class="link" href="#overview-3">3.4.1. Overview</a></h4>
 <div class="paragraph">
@@ -1259,7 +1253,7 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 </div>
 </div>
 <div class="sect2">
-<h3 id="log-statistics"><a class="link" href="#log-statistics">3.5. Log Statistics</a></h3>
+<h3 id="log-statistics-liow-jiachen"><a class="link" href="#log-statistics-liow-jiachen">3.5. Log Statistics [Liow Jiachen]</a></h3>
 <div class="paragraph">
 <p>The log statistics feature in ZeroToOne allows users to view their completed workouts visually with meaningful aggregated information so they can see how much progress made.</p>
 </div>
@@ -1550,7 +1544,7 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
+<h2 id="user-stories-wong-chi-shan"><a class="link" href="#user-stories-wong-chi-shan">Appendix B: User Stories [Wong Chi Shan]</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
@@ -1672,7 +1666,7 @@ Manage workouts faster than a typical mouse/GUI-driven app</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<h2 id="use-cases-wong-chi-shan"><a class="link" href="#use-cases-wong-chi-shan">Appendix C: Use Cases [Wong Chi Shan]</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>ZeroToOne</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
@@ -1900,7 +1894,7 @@ Stands for Graphical User Interface, which is a form of user interface that allo
 </div>
 </div>
 <div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing-gabriel-yeo"><a class="link" href="#instructions-for-manual-testing-gabriel-yeo">Appendix F: Instructions for Manual Testing [Gabriel Yeo]</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -2013,11 +2007,8 @@ Expected: Error message displayed in the status bar.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="effort"><a class="link" href="#effort">Appendix G: Effort</a></h2>
+<h2 id="effort-zerotoone-team"><a class="link" href="#effort-zerotoone-team">Appendix G: Effort [ZeroToOne Team]</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Gabriel Yeo</p>
-</div>
 <table class="tableblock frame-all grid-all" style="width: 59%;">
 <colgroup>
 <col style="width: 31.4285%;">
@@ -2094,12 +2085,11 @@ However, the ZeroToOne team believes that taking a user-experience-first philoso
 <div class="paragraph">
 <p>The largest challenge we faced as a team was communication.
 Being fast-moving and driven individuals, taking the initiative sometimes meant being able to make decisions for the team as an individual. This meant that it was vital that we were on the same page with our goals and expectations from the project.
-Thus, we took more time than usual at the beginning of the project to plan our road-map moving forward, delegating work and defining our expectations clearly.
-This meant we were later to start coding and making PRs than other teams (as seen on reposense), which we felt was a more-than-fair trade-off for our team dynamic.</p>
+Thus, we took more time than usual at the beginning of the project to plan our road-map moving forward, delegating work and defining our expectations clearly.</p>
 </div>
 <div class="paragraph">
 <p>We hope you have enjoyed this journey and learnt as much as we have!
 - The ZeroToOne Team</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:47:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:00:46 UTC</div></div></div></body></html>
