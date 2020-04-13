@@ -15,7 +15,7 @@ ZeroToOne is a desktop application that serves as an all-in-one exercise tracker
 
 ** What it does: allows the user to schedule workout sessions.
 
-** Justification: this feature is essential to the product as it enbale user to make plans of their workout sessions, stick to the plans and finally achieve a life transformation.
+** Justification: this feature is essential to the product as it enable user to make plans of their workout sessions, stick to the plans and finally achieve a life transformation.
 
 ** Highlights: this feature affects efficiency and responsiveness if not implemented correctly. It required careful consideration and analysis of design alternatives. The implementation itself was challenging because it required implementation of a fairly complex model as well as its storage.
 

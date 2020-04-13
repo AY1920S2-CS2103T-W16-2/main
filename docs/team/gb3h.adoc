@@ -58,7 +58,7 @@ Major design consideration was required to ensure that the timer was not computa
 *** Edit GUI for overall cohesiveness (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/213[#213], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/219[#219])
 *** Disabled non session related commands during a session for more predictable app behaviour (no editing of workouts during workout) (Pull requests https://github.com/AY1920S2-CS2103T-W16-2/main/pull/187[#187])
 ** Documentation:
-*** Add documentation coverage for the entire workout session feature including diagrams. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/110[#14]
+*** Add documentation coverage for the entire workout session feature including diagrams. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/110[#110]
 *** Edit Model Component diagram. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/238[#238]
 *** Update all screenshots in user guide. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/241[#241]
 *** Add DG Appendix F and G. https://github.com/AY1920S2-CS2103T-W16-2/main/pull/244[#244], https://github.com/AY1920S2-CS2103T-W16-2/main/pull/254[#254]
