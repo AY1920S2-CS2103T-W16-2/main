@@ -74,7 +74,7 @@ image::user-guide/UgMainPage.png[]
 At this stage, you should have successfully started ZeroToOne and will be able see the main page as described in Figure 1. If the application did not start, please refer to <<Troubleshooting>> for more information to resolve the issue. Otherwise, the next step is to begin your ZeroToOne journey, by customising your favourite workout programmes!
 
 // tag::ui[]
-== User Interface Basics
+== User Interface Basics [Wong Chi Shan]
 
 Before we delve into the commands that you can use, let us first explain the components of the User Interface, and how we can navigate through them.
 
@@ -98,7 +98,7 @@ You type all of your commands in here. To execute the command, simply press the 
 
 At this point, you should have sufficient knowledge to start using ZeroToOne. In this section, we will describe in-depth the features that ZeroToOne has, and how you can interact with them.
 
-=== Overview
+=== Overview [Wong Chi Shan]
 For ZeroToOne commands, every user-fillable parameter is identified by a flag prefix. This allows ZeroToOne to accept parameters in any order. However, to correctly parse your command, we have reserved these flags as special symbols that are to be used only by the program. Please avoid using them in your commands. The reserved flags are listed as follows:
 
 * `e/` - exercise name
@@ -113,7 +113,7 @@ For ZeroToOne commands, every user-fillable parameter is identified by a flag pr
 * `et/` - end datetime
 
 // tag::about[]
-=== Viewing App Information
+=== Viewing App Information [Wong Chi Shan]
 Can’t remember the commands off the top of your head? Fret not. ZeroToOne provides you with a convenient way to view a list of all available commands that you can try. Simply enter the following command into the command box:
 
 ```
@@ -126,7 +126,7 @@ The app view will switch tabs to show the About tab.
 
 // end::about[]
 
-=== Closing ZeroToOne
+=== Closing ZeroToOne [Wong Chi Shan]
 After you have finished using the application, you can exit the application by simply entering the following command into the command box:
 
 ```
@@ -141,7 +141,7 @@ Thank you for using ZeroToOne! Your data has been saved successfully. Hope to se
 
 //tag::session[]
 
-=== Starting A Workout Session
+=== Starting A Workout Session [Gabriel Yeo]
 
 Are you ready to start working out now? To begin a new workout session, simply enter the following command into the command box:
 
@@ -165,7 +165,7 @@ NOTE:
 * WORKOUT_ID cannot be null and should be a value of a workout from the workout tab.
 ```
 
-=== Completing a Set
+=== Completing a Set [Gabriel Yeo]
 Completed your exercise set? To mark the current exercise set as complete and move on to the next set, simply enter this command into the command box:
 
 ```
@@ -182,7 +182,7 @@ After however many seconds you wish to rest, you may continue on to your next se
 
 If you were already on your last set, ZeroToOne will automatically stop the workout session after this command is executed and save your session to the `Log`.
 
-=== Skipping An Exercise Set
+=== Skipping An Exercise Set [Gabriel Yeo]
 Unable to complete your current exercise set? No worries, it happens to the best of us. To skip the current exercise set, simply enter this command into the command box:
 
 ```
@@ -196,7 +196,7 @@ The background color of the completed set will turn red, indicating that the set
 
 This action is otherwise identical to the `done` command.
 
-=== Stopping A Workout Session
+=== Stopping A Workout Session [Gabriel Yeo]
 Need to stop the workout session prematurely? Simply enter this command into the command box:
 
 ```
@@ -213,7 +213,7 @@ Stopped workout session: Push Day at 13 Apr 2020, 3:36:17 PM
 //end::session[]
 
 // tag::exercise[]
-=== Managing Your Exercises
+=== Managing Your Exercises [Aloysius Chan]
 The commands in this section allows you to manage your customised exercises in ZeroToOne. These exercises will eventually be the building blocks of a workout.
 
 ==== Creating a new exercise
@@ -394,7 +394,7 @@ Deleted Exercise: Deadlift
 // end::exercise[]
 
 // tag::workout[]
-=== Managing Your Workouts
+=== Managing Your Workouts [Wong Chi Shan]
 
 After creating and modifying your exercises however you desire, it’s time to use those exercises to create workouts! In this section, we will walk you through how to manage all your workouts.
 
@@ -619,7 +619,7 @@ Successfully imported /data/myFriendsWorkout.txt as a new workout: My Friend's W
 // end::workout[]
 
 // tag::schedule[]
-=== Managing Your Scheduled Sessions
+=== Managing Your Scheduled Sessions [Tang Guofeng]
 
 You are now an expert in managing your workouts, and can start a workout any time! However, wouldn’t you like to have the ability to schedule your workout sessions? In this section, we will guide you to learn how ZeroToOne can help you in this aspect!
 
@@ -645,7 +645,7 @@ NOTE:
 * <datetime> must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm}
 ```
 
-==== Listing all scheduled sessions
+==== Listing all scheduled sessions [Tang Guofeng]
 
 To view all of your schedule sessions, type the following command:
 
@@ -735,7 +735,7 @@ NOTE:
 // end::schedule[]
 
 // tag::log[]
-=== Managing Your Session Logs
+=== Managing Your Session Logs [Liow Jiachen]
 Well done, you have successfully gone through the whole process of setting up your workouts, scheduling them and even logging the workout. In addition to all these cool features, ZeroToOne also allows you to manage your workout log history and even provides you with meaningful statistics to help you track your current progress to help you hit all those fitness goals.
 
 ==== Viewing your logs
@@ -939,7 +939,7 @@ A single type of exercise, for example push ups or crunches.
 
 *Gradle*
 
-A build automation tool...
+A build automation tool.
 
 *GUI*
 
@@ -952,7 +952,7 @@ A specific instantiation of an object.
 
 *Java*
 
-A programming language...
+A programming language.
 
 *Mainstream OS*
 
@@ -975,4 +975,5 @@ An exercise set that consists of the number of repetitions and its weight.
 A list of exercises to be done together, in a certain order.
 
 *Log*
+
 A workout that has been completed and stored away safely.
