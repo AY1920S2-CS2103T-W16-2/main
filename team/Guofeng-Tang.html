@@ -32,21 +32,53 @@
 <p>What it does: allows the user to schedule workout sessions.</p>
 </li>
 <li>
-<p>Justification: This feature is essential to the product as it enbale user to make plans of their workout sessions, stick to the plans and finally achieve a life transformation.</p>
+<p>Justification: this feature is essential to the product as it enbale user to make plans of their workout sessions, stick to the plans and finally achieve a life transformation.</p>
 </li>
 <li>
-<p>Highlights: This feature affects efficiency and responsiveness if not implemented correctly. It required careful consideration and analysis of design alternatives. The implementation itself was challenging because it required implementation of a fairly complex model and its storage.</p>
+<p>Highlights: this feature affects efficiency and responsiveness if not implemented correctly. It required careful consideration and analysis of design alternatives. The implementation itself was challenging because it required implementation of a fairly complex model as well as its storage.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Code contributed on RepoSense</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=guofeng-tang&amp;sort=groupTitle&amp;sortWithin=title&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">RepoSense</a>]</p>
+<p><strong>Minor enhancement</strong>: Created a DateTime class and its utility functions for team members' usage to standardize datetime formatting across the app and compare different datetime objects easily.</p>
+</li>
+<li>
+<p><strong>Code contributed on RepoSense</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Overview</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=guofeng-tang&amp;sort=groupTitle&amp;sortWithin=title&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">RepoSense</a>]</p>
+</li>
+<li>
+<p><strong>Functional Code</strong>: [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/main/java/seedu/zerotoone/logic/commands/schedule">Commands</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/main/java/seedu/zerotoone/logic/parser/schedule">Parsers</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/main/java/seedu/zerotoone/model/schedule">Models</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/main/java/seedu/zerotoone/storage/schedule">Storage</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/main/java/seedu/zerotoone/ui/views/schedule">UI</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/main/resources/view/schedule">FXML</a>]</p>
+</li>
+<li>
+<p><strong>Tests</strong>: [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/test/java/seedu/zerotoone/logic/commands/schedule">Commands Tests</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/test/java/seedu/zerotoone/logic/parser/schedule">Parsers Tests</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/test/java/seedu/zerotoone/model/schedule">Models Tests</a>] [<a href="https://github.com/Guofeng-Tang/main/tree/master/src/test/java/seedu/zerotoone/storage/schedule">Storage Tests</a>]</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Organised and facilitated brainstorming sessions at the inception of the tP.</p>
+</li>
+<li>
+<p>Proposed and finalized the overall fitness theme of the app and its epic features.</p>
+</li>
+<li>
+<p>Facilitated delegation of epic features to each team members.</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
@@ -69,6 +101,12 @@
 <ul>
 <li>
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/103">#103</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/174">#174</a>, <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pull/192">#192</a></p>
+</li>
+<li>
+<p>Total PRs reviewed: <a href="https://github.com/AY1920S2-CS2103T-W16-2/main/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3Aguofeng-tang">18+</a></p>
+</li>
+<li>
+<p>I advocated standardized git workflow to my team and regularly helped troubleshoot git related errors for my teammates.</p>
 </li>
 </ul>
 </div>
@@ -140,7 +178,7 @@ schedule create 1 d/2020-10-06 18:00</code></pre>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/user-guide/schedule/UgListSchedule.png" alt="UgListSchedule">
+<img src="../images/user-guide/UgListSchedule.png" alt="UgListSchedule">
 </div>
 <div class="title">Figure 3. Display of schedule in chronological order</div>
 </div>
@@ -267,6 +305,15 @@ schedule recurring create WORKOUT_ID d/2020-05-26 10:00 f/MONTHLY</code></pre>
 <div class="paragraph">
 <p>The schedule feature in ZeroToOne allows users to plan their workouts! Users will be able to create a schedule on a specific date and time in the future, edit the date and time, as well as delete the schedule.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/developer-guide/schedule/ScheduleActivityDiagram.png" alt="ScheduleActivityDiagram">
+</div>
+<div class="title">Figure 4. Activity Diagram for Creating a Schedule</div>
+</div>
+<div class="paragraph">
+<p>This is an activity diagram for the user to create a new schedule. First, the user will try to find workout to schedule, and if their desired workout cannot be found, the user will create one and schedule them on a specified date.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="components"><a class="link" href="#components">Components</a></h4>
@@ -277,10 +324,10 @@ schedule recurring create WORKOUT_ID d/2020-05-26 10:00 f/MONTHLY</code></pre>
 <div class="content">
 <img src="../images/developer-guide/schedule/ModelScheduleClassDiagram.png" alt="ModelScheduleClassDiagram">
 </div>
-<div class="title">Figure 4. Scheduler Class Diagram</div>
+<div class="title">Figure 5. Scheduler Class Diagram</div>
 </div>
 <div class="paragraph">
-<p>As seen in the diagram above, The <code>Scheduler</code> consists two lists, <code>ScheduleList</code> and <code>ScheduledWorkoutList</code>.</p>
+<p>As seen in the diagram above, the <code>Scheduler</code> consists two lists, <code>ScheduleList</code> and <code>ScheduledWorkoutList</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>ScheduleList</code> contains a number of <code>Schedule</code> that the user has created, while the <code>ScheduledWorkoutList</code> is essentially a chronologically sorted list of <code>ScheduledWorkout</code> that allows JavaFX listeners to track changes when they occur.</p>
@@ -346,7 +393,7 @@ The decision to have both <code>ScheduleList</code> and <code>ScheduledWorkoutLi
 <div class="content">
 <img src="../images/developer-guide/schedule/ScheduleCreateSequenceDiagram.png" alt="ScheduleCreateSequenceDiagram">
 </div>
-<div class="title">Figure 5. Sequence Diagram for Creating a Schedule</div>
+<div class="title">Figure 6. Sequence Diagram for Creating a Schedule</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -398,7 +445,7 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 <div class="content">
 <img src="../images/developer-guide/schedule/PopulateSortedScheduledWorkoutList.png" alt="PopulateSortedScheduledWorkoutList">
 </div>
-<div class="title">Figure 6. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
+<div class="title">Figure 7. Sequence Diagram for Populating <code>SortedScheduledWorkoutList</code></div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -496,4 +543,4 @@ Date and time must not be outdated and follow the format {yyyy}-{mm}-{dd} {HH:mm
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:08:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:13:42 UTC</div></div></div></body></html>
