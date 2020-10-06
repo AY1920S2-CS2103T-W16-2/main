@@ -1,0 +1,663 @@
+/*
+  This example comes from a short article series in the Linux 
+  Gazette by Richard A. Sevenich and Christopher Lopes, titled
+  "Compiler Construction Tools". The article series starts at
+
+  http://www.linuxgazette.com/issue39/sevenich.html
+
+  Small changes and updates to newest JFlex+Cup versions 
+  by Gerwin Klein
+*/
+
+/*
+  Commented By: Christopher Lopes
+  File Name: ycalc.cup
+  To Create: > java java_cup.Main < ycalc.cup
+*/
+   
+   
+/* ----------------------Preliminary Declarations Section--------------------*/
+   
+/* Import the class java_cup.runtime.*  */
+import java_cup.runtime.*;
+import main.java.parsetree.expression.*;
+import main.java.parsetree.shared.*;
+import main.java.parsetree.statement.*;
+import main.java.parsetree.operator.*;
+import main.java.parsetree.*;
+import java.util.*;
+
+/* Parser code to change the way the parser reports errors (include
+   line and column number of the error). */
+parser code {:
+    int errorCount = 0;
+    String METHOD_BODY_ERROR = "Error in method body!";
+    String GENERIC_FAIL_ERROR = "Failed to parse input program! Common errors include, \t\n - trying to parse an empty program \t\n - typos or spelling mistakes\n";
+    String MISSING_MAIN_CLASS_ERROR = "Failed to find a Main class! Jlite expects a the first class to be a Main class containing exactly one main method of type Void. Eg. Void main(...) { ... }. \n\t Common causes of this include, \n\t\t- missing main class \n\t\t- misspelling the name of the 'main' function \n\t\t- having a return type other than `Void` \n\t\t- having additional functions in the main class";
+    String MALFORMED_CLASS = "Error in class! Common errors, include forgetting to group all your class variable declarations at the top before all the methods.";
+    String MISSING_SEMI = "Missing a semicolon";
+    String ILLEGAL_CLASSNAME = "Class name should start with a upper case letter.";
+    String ILLEGAL_ID = "Identifiers should start with a lower case letter.";
+    String MISSING_STMT_IN_MDBODY = "Method body has to contain at least one statement!";
+    /* Change the method report_error so it will display the line and
+       column of where the error occurred in the input as well as the
+       reason for the error which is passed into the method in the
+       String 'message'. */
+    public void report_error(int row, int col, String message) {
+   errorCount += 1;
+//        /* Create a StringBuilder called 'm' with the string 'Error' in it. */
+//        StringBuilder m = new StringBuilder("Error");
+//
+//        /* Check if the information passed to the method is the same
+//           type as the type java_cup.runtime.Symbol. */
+////        if (info instanceof java_cup.runtime.Symbol) {
+//            /* Declare a java_cup.runtime.Symbol object 's' with the
+//               information in the object info that is being typecasted
+//               as a java_cup.runtime.Symbol object. */
+//            // java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
+//
+//            /* Check if the line number in the input is greater or
+//               equal to zero. */
+//            // if (row >= 0) {
+//                /* Add to the end of the StringBuilder error message
+//                   the line number of the error in the input. */
+//                m.append(" in line ").append(row + 1);
+//                /* Check if the column number in the input is greater
+//                   or equal to zero. */
+//               //  if (col >= 0)
+//                    /* Add to the end of the StringBuilder error message
+//                       the column number of the error in the input. */
+//                    m.append(", column ").append(col + 1);
+//            }
+//        // }
+//
+//        /* Add to the end of the StringBuilder error message created in
+//           this method the message that was passed into this method. */
+//        m.append(" : ").append(message);
+   
+        /* Print the contents of the StringBuilder 'm', which contains
+           an error message, out on a line. */
+        System.err.println(String.format("Error in line %d, column %d : %s", row + 1, col + 1, message));
+    }
+    /* Change the method report_fatal_error so when it reports a fatal
+       error it will display the line and column number of where the
+       fatal error occurred in the input as well as the reason for the
+       fatal error which is passed into the method in the object
+       'message' and then exit.*/
+    public void report_error_summary() {
+        System.out.println(String.format("Failed to parse program. %d errors found. Please fix them and then try again!", errorCount));
+        System.exit(1);
+    }
+:};
+   
+
+   
+/* ------------Declaration of Terminals and Non Terminals Section----------- */
+   
+/* Terminals (tokens returned by the scanner).  
+
+   Terminals that have no value are listed first and then terminals
+   that do have an value, in this case an integer value, are listed on
+   the next line down. */
+terminal    SEMI, COMMA, PLUS, MINUS, TIMES, DIVIDE, LPAREN, RPAREN, LBRACE, RBRACE, CLASS, IF, ELSE, WHILE, READLN, PRINTLN, RETURN, MAIN, THIS, NEW, NULL;
+terminal    GT, LT, GEQ, LEQ, EQ, NEQ;
+terminal    AND, OR, NOT, IN;
+terminal    ASSIGN, VOID;
+terminal Bolean    TRUE, FALSE;
+terminal Integer   INTEGER_LITERAL;
+terminal String    STRING_LITERAL, ID, CNAME;
+terminal    INT, BOOL, STRING;
+
+   
+/* Non terminals used in the grammar section.  
+
+   Non terminals that have an object value are listed first and then
+   non terminals that have an integer value are listed.  An object
+   value means that it can be any type, it isn't set to a specific
+   type.  So it could be an Integer or a String or whatever. */
+non terminal Type Type;
+non terminal Program Program;
+non terminal MainClass MainClass;
+non terminal LinkedList<ClassDecl> ClassDeclList;
+non terminal ClassDecl ClassDecl;
+non terminal LinkedList<VarDecl> VarDeclList;
+non terminal VarDecl VarDecl;
+non terminal List<MdDecl> MdDeclList;
+non terminal MdDecl MdDecl;
+non terminal MdBody MdBody;
+non terminal LinkedList<Argument> FmlList, FmlRest;
+non terminal Statement Stmt;
+non terminal LinkedList<Statement> Stmts, StmtRest;
+non terminal Expression Exp, BExp, Conj, RExp, BGrd, NotOp, ASExp, Term, Ftr, Atom;
+non terminal LinkedList<Expression> ExpList, ExpRest;
+non terminal BinaryOperator BOp;
+
+
+/* -------------Precedence and AssociativeStaly of Terminals Section----------- */
+   
+/*
+  Precedence of non terminals could be defined here.  If you do define
+  precedence here you won't need to worry about precedence in the
+  Grammar Section, i.e. that TIMES should have a higher precedence
+  than PLUS.
+  
+  The precedence defined here would look something like this where the
+  lower line always will have higher precedence than the line before it.
+   
+  precedence left PLUS, MINUS; 
+  precedence left TIMES, DIVIDE; 
+*/
+
+/* ----------------------------Grammar Section-------------------- */
+Program
+::= MainClass:mainClass ClassDeclList:classDeclList
+  {:
+    if (errorCount > 0) {
+        report_error_summary();
+    }
+    System.out.println("Successfully parsed program! :-)\n");
+    RESULT = new Program(mainClass, classDeclList);
+  :}
+  | error:e
+  {:
+    report_error(eleft, eright, GENERIC_FAIL_ERROR);
+    report_error_summary();
+  :}
+  ;
+
+MainClass
+::= CLASS CNAME:cname LBRACE VOID MAIN LPAREN FmlList:args RPAREN MdBody:mdBody RBRACE
+  {:
+    RESULT = new MainClass(new Type(cname), args, mdBody);
+  :}
+
+  | CLASS error:e RBRACE
+    {:
+      report_error(eleft, eright, MISSING_MAIN_CLASS_ERROR);
+      RESULT = new MainClass(new Type(""), new LinkedList<>(), null);
+    :}
+   ;
+
+ClassDeclList
+::= ClassDeclList:classDeclList ClassDecl:classDecl
+{:
+  classDeclList.add(classDecl);
+  RESULT = classDeclList;
+:}
+|
+{:
+  RESULT = new LinkedList<>();
+:}
+;
+
+ClassDecl
+::= CLASS CNAME:cname LBRACE VarDeclList:varDeclList MdDeclList:mdDeclList RBRACE
+  {:
+    RESULT = new ClassDecl(new Type(cname), varDeclList, mdDeclList);
+  :}
+  // Panic mode recovery! Skip token until '}', ignore methods and extra declarations
+  | CLASS CNAME:cname LBRACE VarDeclList:varDeclList  error:e RBRACE
+  {:
+    report_error(eleft, eright, MALFORMED_CLASS);
+    RESULT = new ClassDecl(new Type(cname), varDeclList, new LinkedList<>());
+  :}
+  | CLASS ID:id LBRACE VarDeclList:varDeclList MdDeclList:mdDeclList RBRACE
+  {:
+    report_error(idleft, idright, ILLEGAL_CLASSNAME);
+    RESULT = new ClassDecl(new Type(id), varDeclList, mdDeclList);
+  :}
+  | CLASS error:e RBRACE
+  {:
+    report_error(eleft, eright, MALFORMED_CLASS);
+    RESULT = new ClassDecl(new Type(""), new LinkedList<>(), new LinkedList<>());
+  :}
+  ;
+
+VarDeclList
+::= VarDeclList:varDeclList VarDecl:valDecl
+  {:
+    varDeclList.add(valDecl);
+    RESULT = varDeclList;
+  :}
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
+
+VarDecl
+::= Type:type ID:id SEMI
+  {:
+    RESULT = new VarDecl(type, new Id(id));
+  :}
+| Type:type CNAME:cname SEMI
+    {:
+      report_error(cnameleft, cnameright, ILLEGAL_CLASSNAME);
+      RESULT = new VarDecl(type, new Id(cname));
+        :}
+| Type:type ID:id
+    {:
+      report_error(idleft, idright, MISSING_SEMI);
+      RESULT = new VarDecl(type, new Id(id));
+    :}
+
+  ;
+
+MdDecl
+::= Type:type ID:id LPAREN FmlList:args RPAREN MdBody:mdBody
+  {:
+    RESULT = new MdDecl(type, new Id(id), args, mdBody);
+  :}
+  | Type:type CNAME:cname LPAREN FmlList:args RPAREN MdBody:mdBody
+  {:
+    report_error(cnameleft, cnameright, ILLEGAL_ID);
+    RESULT = new MdDecl(type, new Id(cname), args, mdBody);
+  :}
+  ;
+
+MdDeclList
+::= MdDecl:mdDecl MdDeclList:mdDeclList
+  {:
+    mdDeclList.add(mdDecl);
+    RESULT = mdDeclList;
+  :}
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
+
+FmlList
+::= Type:type ID:id FmlRest:args
+  {:
+    args.addFirst(new Argument(type, new Id(id)));
+    RESULT = args;
+  :}
+  | Type:type CNAME:cname FmlRest:args
+      {:
+        report_error(cnameleft, cnameright, ILLEGAL_ID);
+        args.addFirst(new Argument(type, new Id(cname)));
+        RESULT = args;
+      :}
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
+
+FmlRest
+::= COMMA Type:type ID:id FmlRest:args
+  {:
+    args.addFirst(new Argument(type, new Id(id)));
+    RESULT = args;
+  :}
+
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
+
+Type
+::= INT
+    {:
+      RESULT = new Type("Int");
+    :}
+  | BOOL
+    {:
+      RESULT = new Type("Bool");
+    :}
+  | STRING
+    {:
+      RESULT = new Type("String");
+    :}
+  | CNAME:cname
+    {:
+      RESULT = new Type(cname);
+    :}
+  | VOID
+    {:
+      RESULT = new Type("Void");
+    :}
+  ;
+
+MdBody
+::= LBRACE VarDeclList:varDeclList Stmts:stmts RBRACE
+  {:
+    RESULT = new MdBody(varDeclList, stmts);
+  :}
+  | LBRACE VarDeclList:varDeclList RBRACE:r
+  {:
+    report_error(rleft, rright, MISSING_STMT_IN_MDBODY);
+    RESULT = new MdBody(varDeclList, new LinkedList<>());
+  :}
+  | LBRACE error:e RBRACE
+  {:
+    report_error(eleft, eright, METHOD_BODY_ERROR);
+    RESULT = new MdBody(new LinkedList<>(), new LinkedList<>());
+  :}
+  ;
+
+Stmt
+::= IF LPAREN Exp:exp RPAREN LBRACE Stmts:ifBlock RBRACE ELSE LBRACE Stmts:elseBlock RBRACE
+  {:
+    RESULT = new IfStatement(exp, ifBlock, elseBlock);
+  :}
+  | WHILE LPAREN Exp:exp RPAREN LBRACE StmtRest:stmtRest RBRACE
+  {:
+    RESULT = new WhileStatement(exp, stmtRest);
+  :}
+  | READLN LPAREN ID:id RPAREN SEMI
+  {:
+    RESULT = new ReadLineStatement(new Id(id));
+  :}
+  | PRINTLN LPAREN Exp:exp RPAREN SEMI
+  {:
+    RESULT = new PrintLineStatement(exp);
+  :}
+  | ID:id ASSIGN Exp:exp SEMI
+  {:
+    RESULT = new AssignmentStatement(new Id(id), exp);
+  :}
+  | Atom:atom IN ID:property ASSIGN Exp:exp SEMI
+  {:
+    RESULT = new PropertyAssignmentStatement(atom, new Id(property), exp);
+  :}
+  | Atom:callee LPAREN ExpList:args RPAREN SEMI
+  {:
+    RESULT = new CallStatement(new CallExpression(callee, args));
+  :}
+  | RETURN Exp:exp SEMI
+  {:
+    RESULT = new ReturnStatement(exp);
+  :}
+  | RETURN SEMI
+  {:
+    RESULT = new EmptyReturnStatement();
+  :}
+  ;
+
+
+Stmts
+::= Stmt:stmt StmtRest:stmtRest
+  {:
+    stmtRest.addFirst(stmt);
+    RESULT = stmtRest;
+  :}
+  ;
+
+StmtRest
+::= Stmt:stmt StmtRest:stmtRest
+  {:
+    stmtRest.addFirst(stmt);
+    RESULT = stmtRest;
+  :}
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
+
+
+Exp
+::= BExp:booleanExpr
+  {:
+    RESULT = booleanExpr;
+  :}
+  | ASExp:arithmeticExpr
+  {:
+    RESULT = arithmeticExpr;
+  :}
+  ;
+
+BExp
+::= BExp:booleanExp OR:op Conj:conjunction
+  {:
+    RESULT = new BinaryExpression(new OrOperator(), booleanExp, conjunction);
+  :}
+  | BExp:booleanExp OR:op Atom:atom
+  {:
+    RESULT = new BinaryExpression(new OrOperator(), booleanExp, atom);
+  :}
+  | Atom:atom OR:op Conj:conjunction
+  {:
+    RESULT = new BinaryExpression(new OrOperator(), atom, conjunction);
+  :}
+  | Atom:atom1 OR:op Atom:atom2
+  {:
+    RESULT = new BinaryExpression(new OrOperator(), atom1, atom2);
+  :}
+  | Conj:conj
+  {:
+    RESULT = conj;
+  :}
+  ;
+
+Conj
+::= Conj:conj AND:op RExp:exp
+  {:
+    RESULT = new BinaryExpression(new AndOperator(), conj, exp);
+  :}
+  | Conj:conj AND:op Atom:atom
+  {:
+    RESULT = new BinaryExpression(new AndOperator(), conj, atom);
+  :}
+  | Atom:atom AND:op RExp:exp
+  {:
+    RESULT = new BinaryExpression(new AndOperator(), atom, exp);
+  :}
+  | Atom:atom1 AND:op Atom:atom2
+  {:
+    RESULT = new BinaryExpression(new AndOperator(), atom1, atom2);
+  :}
+  | RExp:exp
+  {:
+    RESULT = exp;
+  :}
+  ;
+
+RExp
+::= ASExp:exp1 BOp:bop ASExp:exp2
+  {:
+    RESULT = new BinaryExpression(bop, exp1, exp2);
+  :}
+  | BGrd:exp
+  {:
+    RESULT = exp;
+  :}
+  ;
+
+BOp
+::= LT
+  {:
+    RESULT = new LTOperator();
+  :}
+  | GT
+  {:
+    RESULT = new GTOperator();
+  :}
+  | LEQ
+  {:
+    RESULT = new LEQOperator();
+  :}
+  | GEQ
+  {:
+    RESULT = new GEQOperator();
+  :}
+  | EQ
+  {:
+    RESULT = new EqualOperator();
+  :}
+  | NEQ
+  {:
+    RESULT = new NotEqualOperator();
+  :}
+  ;
+
+BGrd
+::= TRUE
+  {:
+    RESULT = new BoolLiteral(true);
+  :}
+  | FALSE
+  {:
+    RESULT = new BoolLiteral(false);
+  :}
+  | NotOp:e
+  {:
+    RESULT = e;
+  :}
+  ;
+
+NotOp
+::= NOT TRUE
+  {:
+    RESULT = new UnaryExpression(new NotOperator(), new BoolLiteral(true));
+  :}
+  | NOT FALSE
+  {:
+    RESULT = new UnaryExpression(new NotOperator(), new BoolLiteral(false));
+  :}
+  | NOT Atom:atom
+  {:
+    RESULT = new UnaryExpression(new NotOperator(), atom);
+  :}
+  | NOT NotOp:notOp
+  {:
+    RESULT = new UnaryExpression(new NotOperator(), notOp);
+  :}
+  ;
+
+
+ASExp
+::= ASExp:exp PLUS:op Term:term
+  {:
+    RESULT = new BinaryExpression(new PlusOperator(), exp, term);
+  :}
+  // example of panic mode recovery (https://www.geeksforgeeks.org/error-handling-compiler-design/)
+  | ASExp:exp PLUS:op error:e Term:term
+  {:
+    report_error(eleft, eright, "Failed to parse arithmetic expression.");
+    RESULT = new BinaryExpression(new PlusOperator(), exp, term);
+   :}
+  | ASExp:exp1 MINUS:op Term:term
+  {:
+    RESULT = new BinaryExpression(new MinusOperator(), exp1, term);
+  :}
+  | Term:term
+  {:
+    RESULT = term;
+  :}
+  ;
+
+Term
+::= Term:term TIMES:op Ftr:ftr
+  {:
+    RESULT = new BinaryExpression(new TimesOperator(), term, ftr);
+  :}
+  | Term:term DIVIDE:op Ftr:ftr
+  {:
+    RESULT = new BinaryExpression(new DivideOperator(), term, ftr);
+  :}
+  | Ftr:ftr
+  {:
+    RESULT = ftr;
+  :}
+  | STRING_LITERAL:slit
+  {:
+     RESULT = new StringLiteral(slit);;
+  :}
+  ;
+
+Ftr
+::= INTEGER_LITERAL:intLit
+  {:
+    RESULT = new IntLiteral(intLit);
+  :}
+  | MINUS Ftr:ftr
+  {:
+    RESULT = new UnaryExpression(new NegateOperator(), ftr);
+  :}
+  | Atom:atom
+  {:
+    RESULT = atom;
+  :}
+  ;
+
+//SExp
+//::= SExp:s1 PLUS SExpTerm:s2
+//  {:
+//    RESULT = new ConcatExpression(s1, s2);
+//  :}
+//  | SExpTerm:term
+//  {:
+//    RESULT = term;
+//  :}
+//
+//  ;
+
+//SExpTerm
+//::= STRING_LITERAL:slit
+//  {:
+//    RESULT = new StringLiteral(slit);
+//  :}
+//  | Atom:atom
+//  {:
+//    RESULT = atom;
+//  :}
+//  ;
+
+Atom
+::= Atom:atom IN ID:id
+  {:
+    RESULT = new InExpression(atom, new Id(id));
+  :}
+  | Atom:atom LPAREN ExpList:expList RPAREN
+  {:
+    RESULT = new CallExpression(atom, expList);
+  :}
+  | THIS
+  {:
+    RESULT = new ThisExpression();
+  :}
+  | ID:id
+  {:
+    RESULT = new IdExpression(new Id(id));
+  :}
+  | NEW CNAME:cname LPAREN RPAREN
+  {:
+    RESULT = new NewExpression(new Type(cname));
+  :}
+  | LPAREN Exp:exp RPAREN
+  {:
+    RESULT = new ParenthesizedExpression(exp);
+  :}
+  | NULL
+  {:
+    RESULT = new NullLiteral();
+  :}
+  ;
+
+ExpList
+::= Exp:exp ExpRest:rest
+  {:
+    rest.addFirst(exp);
+    RESULT = rest;
+  :}
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
+
+ExpRest
+::= COMMA Exp:exp ExpRest:rest
+  {:
+    rest.addFirst(exp);
+    RESULT = rest;
+  :}
+  |
+  {:
+    RESULT = new LinkedList<>();
+  :}
+  ;
